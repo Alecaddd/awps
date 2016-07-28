@@ -1,0 +1,30 @@
+{
+	"name": "wp-starter",
+	"version": "1.0.0",
+	"description": "Barebone starter theme for WordPress with built-in Gulp workflow",
+	"author": "Alecaddd",
+	"repository" :
+	{
+	    "type" : "git", 
+	    "url" : "https://github.com/Alecaddd/WP-Starter"
+	},
+	"keywords": [
+	    "nodejitsu",
+	    "example",
+	    "browsenpm"
+	],
+	"dependencies": {},
+	"devDependencies": {
+		"browser-sync": "^2.11.1",
+		"gulp": "^3.9.1",
+		"gulp-concat": "^2.5.2",
+		"gulp-notify": "^2.2.0",
+		"gulp-rename": "^1.2.0",
+		"gulp-sass": "^2.0.0",
+		"gulp-sourcemaps": "^1.5.2",
+		"gulp-uglify": "^1.1.0",
+		"gulp-uglifycss": "^1.0.4"
+	},
+	
+	"license": "GPL"
+}
