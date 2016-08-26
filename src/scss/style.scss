@@ -1,0 +1,46 @@
+/*
+
+base/
+	_reset.scss
+	_typography.scss
+	_color.scss
+components/
+	_buttons.scss
+	_navigation.scss
+	_gallery.scss
+layout/
+	_header.scss
+	_grid.scss
+	_sidebar.scss
+pages/
+	_home.scss
+	_about.scss
+	_contact.scss
+themes/
+	_theme.scss
+	_admin.scss
+helpers/
+	_variables.scss
+	_functions.scss
+	_mixins.scss
+vendors/
+	_bootstrap.scss
+	_jquery-ui.scss
+main.scss
+
+*/
+/*--------------------------------------------------------------
+# Base
+--------------------------------------------------------------*/
+@import "base/variables";
+@import "base/mixins";
+@import "base/normalize";		// Normalize browser styles
+@import "base/grid";			// Grid system
+@import "base/wordpress";		// WordPress default styling
+
+/*--------------------------------------------------------------
+# Partials
+--------------------------------------------------------------*/
+@import "partials/typography";
+@import "partials/forms";
+@import "partials/alignemtns";
