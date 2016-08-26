@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.4.10" version="2.0"
+         xmlns="http://pear.php.net/dtd/package-2.0"
+         xmlns:tasks="http://pear.php.net/dtd/tasks-1.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+                      http://pear.php.net/dtd/tasks-1.0.xsd
+                      http://pear.php.net/dtd/package-2.0
+                      http://pear.php.net/dtd/package-2.0.xsd">
+    <name>DirectoryScanner</name>
+    <channel>pear.netpirates.net</channel>
+    <summary>A recursive directory scanner and filter</summary>
+    <description>A recursive directory scanner and filter</description>
+    <lead>
+        <name>Arne Blankerts</name>
+        <user>theseer</user>
+        <email>arne@blankerts.de</email>
+        <active>yes</active>
+    </lead>
+    <date>2014-11-25</date>
+    <version>
+        <release>1.3.1</release>
+        <api>1.3.0</api>
+    </version>
+    <stability>
+        <release>stable</release>
+        <api>stable</api>
+    </stability>
+    <license>BSD License</license>
+    <notes>http://github.com/theseer/DirectoryScanner/tree</notes>
+    <contents>
+        <dir name="/">
+            <dir name="TheSeer">
+                <dir name="DirectoryScanner">
+                    <file name="autoload.php" role="php">
+                        <tasks:replace from="%version%" to="version" type="package-info"/>
+                    </file>
+                    <file name="directoryscanner.php" role="php">
+                        <tasks:replace from="%version%" to="version" type="package-info"/>
+                    </file>
+                    <file name="filesonlyfilter.php" role="php">
+                        <tasks:replace from="%version%" to="version" type="package-info"/>
+                    </file>
+                    <file name="includeexcludefilter.php" role="php">
+                        <tasks:replace from="%version%" to="version" type="package-info"/>
+                    </file>
+                    <file name="phpfilter.php" role="php">
+                        <tasks:replace from="%version%" to="version" type="package-info"/>
+                    </file>
+                </dir>
+            </dir>
+            <file baseinstalldir="/" name="LICENSE" role="doc"/>
+            <file baseinstalldir="/" name="phpunit.xml.dist" role="test"/>
+            <dir name="tests">
+                <dir name="_data">
+                    <dir name="empty" />
+                    <dir name="nested">
+                        <file name="1.txt" role="test"/>
+                        <file name="2.xml" role="test"/>
+                        <!--<file name="empty" role="test"/>-->
+                    </dir>
+                    <dir name="phpfilter">
+                        <file name="javascript.js" role="test"/>
+                        <file name="mixed.html" role="test"/>
+                        <file name="phponly.php" role="test"/>
+                        <file name="stupid.inc" role="test"/>
+                    </dir>
+                    <file name="1.txt" role="test"/>
+                    <file name="2.xml" role="test"/>
+                    <file name="3.xml" role="test"/>
+                </dir>
+                <file name="directoryscanner.test.php" role="test"/>
+                <file name="phpfilter.test.php" role="test"/>
+            </dir>
+        </dir>
+    </contents>
+    <dependencies>
+        <required>
+            <php>
+                <min>5.3.1</min>
+            </php>
+            <pearinstaller>
+                <min>1.8.1</min>
+            </pearinstaller>
+            <extension>
+                <name>SPL</name>
+            </extension>
+            <extension>
+                <name>fileinfo</name>
+            </extension>
+        </required>
+    </dependencies>
+    <phprelease/>
+</package>

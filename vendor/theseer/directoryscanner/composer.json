@@ -1,0 +1,26 @@
+{
+  "name" : "theseer/directoryscanner",
+  "description" : "A recursive directory scanner and filter",
+  "license" : "BSD-2-Clause",
+  "authors" : [
+    {
+      "name" : "Arne Blankerts",
+      "email" : "arne@blankerts.de",
+      "role" : "Developer"
+    }
+  ],
+  "require" : {
+    "php" : ">=5.3.1"
+  },
+  "support" : {
+    "issues" : "https://github.com/theseer/DirectoryScanner/issues"
+  },
+  "autoload" : {
+    "classmap" : [ "src/" ]
+  },
+  "extra" : {
+    "branch-alias": {
+      "dev-master": "1.0.x-dev"
+    }
+  }
+}
