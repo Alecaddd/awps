@@ -1,0 +1,5 @@
+{
+    "require": {
+        "theseer/autoload": "^1.22"
+    }
+}

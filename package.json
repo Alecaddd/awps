@@ -5,7 +5,7 @@
 	"author": "Alecaddd",
 	"repository" :
 	{
-	    "type" : "git", 
+	    "type" : "git",
 	    "url" : "https://github.com/Alecaddd/WP-Starter"
 	},
 	"keywords": [
@@ -23,8 +23,10 @@
 		"gulp-sass": "^2.0.0",
 		"gulp-sourcemaps": "^1.5.2",
 		"gulp-uglify": "^1.1.0",
-		"gulp-uglifycss": "^1.0.4"
+		"gulp-uglifycss": "^1.0.4",
+		"gulp-autoprefixer": "^3.1.1",
+		"gulp-plumber": "^1.1.0"
 	},
-	
-	"license": "GPL"
+
+	"license": "GPL-3.0"
 }
