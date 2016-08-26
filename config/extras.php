@@ -1,21 +1,23 @@
 <?php
 
+namespace awps;
+
 /**
 * extras
 */
-class extrasController extends baseController {
-	
+class extras{
+
 	/*
 		Contrusct class to activate actions and hooks as soon as the class is initialized
 	*/
-	function __construct() {
-		
+	public function __construct() {
+
 		add_filter( 'body_class', array( &$this,'body_class' ) );
 
 	}
-		
+
 	public function body_class( $classes ) {
-		
+
 		// Adds a class of group-blog to blogs with more than 1 published author.
 		if ( is_multi_author() ) {
 			$classes[] = 'group-blog';
@@ -25,7 +27,7 @@ class extrasController extends baseController {
 			$classes[] = 'hfeed';
 		}
 		return $classes;
-		
+
 	}
-	
+
 }

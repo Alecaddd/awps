@@ -1,22 +1,24 @@
 <?php
 
+namespace awps;
+
 /**
 * tags
 */
-class tagsController extends baseController {
-	
+class tags {
+
 	/*
 		Contrusct class to activate actions and hooks as soon as the class is initialized
 	*/
-	function __construct() {
-		
+	public function __construct() {
+
 		add_action( 'edit_category', array( &$this,'category_transient_flusher' ) );
 		add_action( 'save_post', array( &$this,'category_transient_flusher' ) );
 
 	}
-	
+
 	static public function psoted_on() {
-		
+
 		$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 		if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
 			$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
@@ -36,11 +38,11 @@ class tagsController extends baseController {
 			'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 		);
 		echo '<span class="posted-on">' . $posted_on . '</span><span class="byline"> ' . $byline . '</span>'; // WPCS: XSS OK.
-		
+
 	}
-	
+
 	static public function _s_entry_footer() {
-		
+
 		// Hide category and tag text for pages.
 		if ( 'post' === get_post_type() ) {
 			/* translators: used between list items, there is a space after the comma */
@@ -69,11 +71,11 @@ class tagsController extends baseController {
 			'<span class="edit-link">',
 			'</span>'
 		);
-		
+
 	}
-	
+
 	static public function _s_categorized_blog() {
-		
+
 		if ( false === ( $all_the_cool_cats = get_transient( '_s_categories' ) ) ) {
 			// Create an array of all the categories that are attached to posts.
 			$all_the_cool_cats = get_categories( array(
@@ -93,16 +95,16 @@ class tagsController extends baseController {
 			// This blog has only 1 category so _s_categorized_blog should return false.
 			return false;
 		}
-		
+
 	}
-		
+
 	public function category_transient_flusher() {
-		
+
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 			return;
 		}
 		delete_transient( 'awps_categories' );
-		
+
 	}
-	
+
 }

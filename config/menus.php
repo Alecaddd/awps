@@ -1,19 +1,21 @@
 <?php
 
+namespace awps;
+
 /**
 * menus
 */
-class menusController extends baseController {
-	
+class menus {
+
 	/*
 		Contrusct class to activate actions and hooks as soon as the class is initialized
 	*/
-	function __construct() {
-		
+	public function __construct() {
+
 		add_action( 'after_setup_theme', array( &$this,'menus' ) );
 
 	}
-		
+
 	public function menus() {
 		/*
 			Register all your menus here
@@ -21,7 +23,7 @@ class menusController extends baseController {
 		register_nav_menus( array(
 			'primary' => esc_html__( 'Primary', 'awps' ),
 		) );
-		
+
 	}
-	
+
 }

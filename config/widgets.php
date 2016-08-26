@@ -1,24 +1,26 @@
 <?php
 
+namespace awps;
+
 /**
 * widgets
 */
-class widgetsController extends baseController {
-	
+class widgets {
+
 	/*
 		Contrusct class to activate actions and hooks as soon as the class is initialized
 	*/
-	function __construct() {
-		
+	public function __construct() {
+
 		add_action( 'widgets_init', array( &$this, 'widgets_init' ) );
 
 	}
-	
+
 	/*
 		Define the sidebar
 	*/
 	public function widgets_init() {
-		
+
 		register_sidebar( array(
 			'name'          => esc_html__( 'Sidebar', 'awps' ),
 			'id'            => 'awps-sidebar',
@@ -28,8 +30,8 @@ class widgetsController extends baseController {
 			'before_title'  => '<h2 class="widget-title">',
 			'after_title'   => '</h2>',
 		) );
-		
+
 	}
-	
-	
+
+
 }
