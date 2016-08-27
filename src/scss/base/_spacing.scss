@@ -1,0 +1,19 @@
+@each $pd, $padding in $paddings {
+
+  @for $i from 1 through $columns {
+    .#{$pd}-#{$i} {
+      #{$padding}: $gutter * $i;
+    }
+  }
+
+}
+
+@each $mg, $margin in $margins {
+
+  @for $i from 1 through $columns {
+    .#{$mg}-#{$i} {
+      #{$margin}: $gutter * $i;
+    }
+  }
+
+}

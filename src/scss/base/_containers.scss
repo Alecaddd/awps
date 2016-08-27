@@ -1,0 +1,22 @@
+.container {
+  max-width: $xl;
+
+  &,
+  &.container-fluid,
+  &.container-narrow {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: $gutter / 2;
+    padding-right: $gutter / 2;
+    @include clearfix();
+  }
+}
+
+.container-fluid {
+  max-width: 100%;
+}
+
+.container-narrow {
+  max-width: $lg;
+}
