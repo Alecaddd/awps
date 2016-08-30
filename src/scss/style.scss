@@ -8,10 +8,20 @@
 @import "base/grid";			  // Grid system
 @import "base/spacing";
 @import "base/wordpress";		// WordPress default styling
+@import "base/forms";
 
 /*--------------------------------------------------------------
 # Partials
 --------------------------------------------------------------*/
 @import "partials/typography";
-@import "partials/forms";
-@import "partials/alignemtns";
+@import "partials/helpers";
+@import "partials/media";
+
+/*--------------------------------------------------------------
+# Components
+--------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------
+# Pages
+--------------------------------------------------------------*/

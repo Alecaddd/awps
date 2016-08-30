@@ -1,3 +1,4 @@
+// helper
 @mixin clearfix() {
   &::after {
     content: "";
@@ -5,3 +6,86 @@
     clear: both;
   }
 }
+
+// typography
+@function calculateRem($size) {
+  $remSize: $size / $base-fs;
+  @return $remSize * 1rem;
+}
+
+@mixin font-size($size, $line: $size * 1.5, $space: 0) {
+  font-size: $size;
+  font-size: calculateRem($size);
+  line-height: $line;
+  line-height: calculateRem($line);
+  letter-spacing: $space;
+  letter-spacing: calculateRem($space);
+}
+
+// transition
+@mixin transition ( $val... ){
+    -webkit-transition: $val;
+    -moz-transition: $val;
+    -ms-transition: $val;
+    -o-transition: $val;
+    transition: $val;
+}
+
+@mixin transition-delay ( $val ){
+    -webkit-transition-delay: $val;
+    -moz-transition-delay: $val;
+    -ms-transition-delay: $val;
+    -o-transition-delay: $val;
+    transition-delay: $val;
+}
+
+@mixin transform( $val... ) {
+    -webkit-transform: $val;
+    -moz-transform: $val;
+    -ms-transform: $val;
+    -o-transform: $val;
+    transform: $val;
+}
+
+@mixin transform-origin( $val ) {
+    -webkit-transform-origin: $val;
+    -moz-transform-origin: $val;
+    -ms-transform-origin: $val;
+    -o-transform-origin: $val;
+    transform-origin: $val;
+}
+
+// animation
+@mixin animation($animate...) {
+    $max: length($animate);
+    $animations: '';
+
+    @for $i from 1 through $max {
+        $animations: #{$animations + nth($animate, $i)};
+
+        @if $i < $max {
+            $animations: #{$animations + ", "};
+        }
+    }
+    -webkit-animation: $animations;
+    -moz-animation:    $animations;
+    -o-animation:      $animations;
+    animation:         $animations;
+}
+
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
+
+@import "mixins/animations";

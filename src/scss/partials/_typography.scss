@@ -1,0 +1,7 @@
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800';
+
+body {
+  font-family: $base-font;
+  @include font-size( $base-fs, ( $base-fs * 1.5 ), 0.5px );
+  font-weight: 400;
+}
