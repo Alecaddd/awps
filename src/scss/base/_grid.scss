@@ -36,6 +36,7 @@
 }
 
 %grid-column {
+  box-sizing: border-box;
   position: relative;
   min-height: 1px;
   padding-right: ($gutter / 2);

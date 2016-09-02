@@ -5,38 +5,53 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+<div class="container">
 
-		<?php
-		if ( have_posts() ) :
+	<div class="row">
 
-			if ( is_home() && ! is_front_page() ) : ?>
-				<header>
-					<h1 class="page-title"><?php single_post_title(); ?></h1>
-				</header>
+		<div class="col-sm-8">
 
-			<?php
-			endif;
+			<div id="primary" class="content-area">
+				<main id="main" class="site-main" role="main">
 
-			/* Start the Loop */
-			while ( have_posts() ) : the_post();
+				<?php
+				if ( have_posts() ) :
 
-				get_template_part( 'src/views/content/content', get_post_format() );
+					if ( is_home() && ! is_front_page() ) : ?>
+						<header>
+							<h1 class="page-title"><?php single_post_title(); ?></h1>
+						</header>
 
-			endwhile;
+					<?php
+					endif;
 
-			the_posts_navigation();
+					/* Start the Loop */
+					while ( have_posts() ) : the_post();
 
-		else :
+						get_template_part( 'src/views/content/content', get_post_format() );
 
-			get_template_part( 'src/views/content/content', 'none' );
+					endwhile;
 
-		endif; ?>
+					the_posts_navigation();
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
+				else :
+
+					get_template_part( 'src/views/content/content', 'none' );
+
+				endif; ?>
+
+				</main><!-- #main -->
+			</div><!-- #primary -->
+
+		</div><!-- .col- -->
+
+		<div class="col-sm-4">
+			<?php get_sidebar(); ?>
+		</div><!-- .col- -->
+
+	</div><!-- .row -->
+
+</div><!-- .container -->
 
 <?php
-get_sidebar();
 get_footer();
