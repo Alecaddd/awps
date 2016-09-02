@@ -54,22 +54,15 @@ gulp.task( 'browser-sync', function() {
 
 gulp.task( 'styles', function() {
 	gulp.src( styleSRC )
-		.pipe( sourcemaps.init() )
+		.pipe(sourcemaps.init())
 		.pipe( sass({
 			errLogToConsole: true,
-			outputStyle: 'compressed',
-			precision: 10
+			outputStyle: 'compressed'
 		}) )
 		.on('error', console.error.bind(console))
- 		.pipe( sourcemaps.write( { includeContent: false } ) )
- 		.pipe( sourcemaps.init( { loadMaps: true } ) )
- 		.pipe( sourcemaps.write ( mapURL ) )
- 		.pipe( gulp.dest( styleURL ) )
- 		.pipe( browserSync.stream() )
- 		.pipe( rename( { suffix: '.min' } ) )
- 		.pipe( minifycss( {
- 			maxLineLen: 10
- 		}))
+		.pipe( autoprefixer({ browsers: ['last 2 versions', '> 5%', 'Firefox ESR'] }) )
+		.pipe( rename( { suffix: '.min' } ) )
+		.pipe( sourcemaps.write ( mapURL ) )
  		.pipe( gulp.dest( styleURL ) )
  		.pipe( browserSync.stream() );
 });
