@@ -1,8 +1,0 @@
-phpunit.xml
-/.buildpath
-/.project
-/.settings/org.eclipse.php.core.prefs
-.idea
-build
-vendor
-composer.lock
