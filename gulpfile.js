@@ -9,6 +9,10 @@ var minifycss    = require('gulp-uglifycss');
 // JS related plugins
 var concat       = require('gulp-concat');
 var uglify       = require('gulp-uglify');
+var babelify 	 = require("babelify");
+var browserify 	 = require("browserify");
+var source 		 = require("vinyl-source-stream");
+var buffer 		 = require('vinyl-buffer');
 
 // Utility plugins
 var rename       = require('gulp-rename');
@@ -27,7 +31,7 @@ var styleSRC	 = './src/scss/style.scss';
 var styleURL	 = './assets/css/';
 var mapURL		 = './';
 
-var jsSRC		 = './src/scripts/*.js';
+var jsSRC		 = './src/scripts/main.js';
 var jsURL		 = './assets/js/';
 
 var imgSRC		 = './src/images/**/*';
@@ -37,7 +41,7 @@ var fontsSRC	 = './src/fonts/**/*';
 var fontsURL	 = './assets/fonts/';
 
 var styleWatch	 = './src/scss/**/*.scss';
-var jsWatch		 = './src/scripts/*.js';
+var jsWatch		 = './src/scripts/**/*.js';
 var imgWatch	 = './src/images/**/*.*';
 var fontsWatch	 = './src/fonts/**/*.*';
 var phpWatch	 = './**/*.php';
@@ -68,15 +72,18 @@ gulp.task( 'styles', function() {
 });
 
 gulp.task( 'js', function() {
-  	gulp.src( jsSRC )
- 		.pipe( concat( 'main.js' ) )
- 		.pipe( gulp.dest( jsURL ) )
- 		.pipe( rename( {
- 			basename: 'main',
- 			suffix: '.min'
- 		}))
- 		.pipe( uglify() )
- 		.pipe( gulp.dest( jsURL ) );
+	return browserify({
+		entries: [jsSRC]
+	})
+	.transform(babelify)
+	.bundle()
+	.pipe(source("main.min.js"))
+	.pipe(buffer())
+	.pipe(sourcemaps.init({loadMaps: true}))
+	.pipe(uglify())
+	.pipe(sourcemaps.write("."))
+	.pipe(gulp.dest( jsURL ))
+	.pipe( browserSync.stream() );
  });
 
 gulp.task( 'images', function() {
