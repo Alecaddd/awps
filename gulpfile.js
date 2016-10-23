@@ -21,34 +21,34 @@ var browserSync  = require('browser-sync').create();
 var reload       = browserSync.reload;
 
 // Project related variables
-var projectURL   = 'wp.dev';
+var projectURL   = 'http://wp.dev';
 
-var styleSRC	   = './src/scss/style.scss';
-var styleURL	   = './assets/css/';
-var mapURL		   = './';
+var styleSRC	 = './src/scss/style.scss';
+var styleURL	 = './assets/css/';
+var mapURL		 = './';
 
-var jsSRC		     = './src/scripts/*.js';
-var jsURL		     = './assets/js/';
+var jsSRC		 = './src/scripts/*.js';
+var jsURL		 = './assets/js/';
 
-var imgSRC		   = './src/images/**/*';
-var imgURL		   = './assets/images/';
+var imgSRC		 = './src/images/**/*';
+var imgURL		 = './assets/images/';
 
-var fontsSRC		   = './src/fonts/**/*';
-var fontsURL		   = './assets/fonts/';
+var fontsSRC	 = './src/fonts/**/*';
+var fontsURL	 = './assets/fonts/';
 
 var styleWatch	 = './src/scss/**/*.scss';
-var jsWatch		   = './src/scripts/*.js';
-var imgWatch	   = './src/images/**/*.*';
+var jsWatch		 = './src/scripts/*.js';
+var imgWatch	 = './src/images/**/*.*';
 var fontsWatch	 = './src/fonts/**/*.*';
-var phpWatch	   = './**/*.php';
+var phpWatch	 = './**/*.php';
 
 
 // Tasks
 gulp.task( 'browser-sync', function() {
 	browserSync.init({
 		proxy: projectURL,
-		open: false,
 		injectChanges: true,
+		open: false
 	});
 });
 

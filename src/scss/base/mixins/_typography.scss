@@ -1,0 +1,13 @@
+@function calculateRem($size) {
+  $remSize: $size / $base-fs;
+  @return $remSize * 1rem;
+}
+
+@mixin font-size($size, $line: $size * 1.5, $space: 0) {
+  font-size: $size;
+  font-size: calculateRem($size);
+  line-height: $line;
+  line-height: calculateRem($line);
+  letter-spacing: $space;
+  letter-spacing: calculateRem($space);
+}

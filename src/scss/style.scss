@@ -3,6 +3,7 @@
 --------------------------------------------------------------*/
 @import "base/variables";
 @import "base/mixins";
+@import "base/animations";
 @import "base/normalize";
 @import "base/containers";
 @import "base/grid";
@@ -14,6 +15,7 @@
 # Partials
 --------------------------------------------------------------*/
 @import "partials/typography";
+@import "partials/colours";
 @import "partials/helpers";
 @import "partials/media";
 

@@ -6,5 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-  'awps\\' => array( $baseDir . '/config' ),
+    'awps\\' => array($baseDir . '/config'),
 );

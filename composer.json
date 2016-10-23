@@ -1,5 +1,10 @@
 {
-    "require": {
-        "theseer/autoload": "^1.22"
+	"name": "Awps",
+    "description": "Alecaddd WordPress starter Thee",
+    "keywords": ["WordPress", "Theme", "Starter"],
+    "license": "MIT",
+    "type": "project",
+    "autoload": {
+        "psr-4": {"awps\\": "./config"}
     }
 }

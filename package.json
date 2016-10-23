@@ -1,5 +1,5 @@
 {
-	"name": "wp-starter",
+	"name": "awps",
 	"version": "1.0.0",
 	"description": "Barebone starter theme for WordPress with built-in Gulp workflow",
 	"author": "Alecaddd",
@@ -9,9 +9,9 @@
 	    "url" : "https://github.com/Alecaddd/WP-Starter"
 	},
 	"keywords": [
-	    "nodejitsu",
-	    "example",
-	    "browsenpm"
+	    "wordpress",
+	    "theme",
+	    "starter"
 	],
 	"dependencies": {},
 	"devDependencies": {

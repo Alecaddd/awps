@@ -1,0 +1,19 @@
+@each $colour, $hex in $colours
+{
+
+	.text-#{$colour}
+	{
+		color: $hex;
+	}
+
+	.background-#{$colour}
+	{
+		background-color: $hex;
+	}
+
+	.border-#{$colour}
+	{
+		border-color: $hex;
+	}
+
+}

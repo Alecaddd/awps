@@ -37,7 +37,7 @@ Thumbs.db
 
 # Composer #
 ##########
-vendors/composer/
+vendor
 !assets/js/vendor/
 wpcs/
 composer.lock

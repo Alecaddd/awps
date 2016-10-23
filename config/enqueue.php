@@ -13,13 +13,13 @@ class enqueue {
 	public function __construct() {
 
 		add_action( 'wp_enqueue_scripts', array( &$this,'enqueue_scripts' ) );
-		
+
 	}
 
 	public function enqueue_scripts() {
 
 		// Deregister the built-in version of jQuery from WordPress
-		wp_deregister_script( 'jquery' );
+		//wp_deregister_script( 'jquery' );
 
 		// CSS
 		wp_enqueue_style( 'main', get_template_directory_uri() . '/assets/css/style.min.css', array(), '1.0.0', 'all');
