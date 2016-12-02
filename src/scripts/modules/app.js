@@ -1,21 +1,18 @@
 "use strict";
 
-var App = class App
-{
-	constructor()
-	{
+var App = class App {
+
+	constructor() {
 		this.init();
 
 		$('.el').on('click', this.elClick);
 	}
 
-	init()
-	{
+	init() {
 		console.log('App Initialized');
 	}
 
-	elClick(event)
-	{
+	elClick(event) {
 
 	}
 
