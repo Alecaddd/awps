@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * @package awps
 */
 
@@ -19,7 +19,33 @@
 
 	<header id="masthead" class="site-header" role="banner">
 
-		<nav id="site-navigation" class="main-navigation" role="navigation"></nav>
+    <div class="container container-fluid">
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-4">
+          
+          <div class="site-branding">
+            <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+            <?php 
+            $description = get_bloginfo( 'description', 'display' );
+            if ( $description || is_customize_preview() ) : ?>
+              <p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
+            <?php
+            endif; ?>
+          </div><!-- .site-branding -->
+
+        </div><!-- .col -->
+
+        <div class="col-xs-12 col-sm-8">
+
+          <nav id="site-navigation" class="main-navigation" role="navigation">
+            <?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>  
+          </nav>
+
+        </div><!-- .col -->
+
+      </div><!-- .row -->
+    </div><!-- .container-fluid -->
 
 	</header><!-- #masthead -->
 

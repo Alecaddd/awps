@@ -3,7 +3,7 @@
 namespace awps\setup;
 
 /**
- * menus.
+ * menus
  */
 class menus
 {
