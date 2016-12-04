@@ -1,7 +1,7 @@
 <?php
-/*
+/**
  * @package awps
-*/
+ */
 
 if (!is_active_sidebar('awps-sidebar')) {
 	return;
