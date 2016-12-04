@@ -4,7 +4,7 @@
 */
 
 if (!is_active_sidebar('awps-sidebar')) {
-    return;
+	return;
 }
 ?>
 

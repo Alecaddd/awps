@@ -67,8 +67,8 @@ gulp.task( 'styles', function() {
 		.pipe( autoprefixer({ browsers: ['last 2 versions', '> 5%', 'Firefox ESR'] }) )
 		.pipe( rename( { suffix: '.min' } ) )
 		.pipe( sourcemaps.write ( mapURL ) )
- 		.pipe( gulp.dest( styleURL ) )
- 		.pipe( browserSync.stream() );
+		.pipe( gulp.dest( styleURL ) )
+		.pipe( browserSync.stream() );
 });
 
 gulp.task( 'js', function() {

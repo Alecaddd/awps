@@ -1,10 +1,10 @@
 {
 	"name": "Awps",
-    "description": "Alecaddd WordPress starter Thee",
-    "keywords": ["WordPress", "Theme", "Starter"],
-    "license": "GPL-3.0+",
-    "type": "project",
-    "autoload": {
-        "psr-4": {"awps\\": "./config"}
-    }
+		"description": "Alecaddd WordPress starter Thee",
+		"keywords": ["WordPress", "Theme", "Starter"],
+		"license": "GPL-3.0+",
+		"type": "project",
+		"autoload": {
+			"psr-4": {"awps\\": "./config"}
+		}
 }

@@ -26,5 +26,4 @@ And please contribute to help make it better.
 
 * SASS example of basic component
 * JS import common plugins (defining list in progress..)
-* CONFIG refactor code and cleaner folder structure
 * VIEWS default components for posts, pages, etc.
