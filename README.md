@@ -49,9 +49,9 @@ This theme relies on **NPM** and **Composer** in order to load dependencies and 
 * SASS example of basic component
 * VIEWS default components for posts, pages, etc.
 * JS import common plugins:
-⋅⋅ * Slick Slider
-⋅⋅ * Tooltip
-⋅⋅ * Dropdown
-⋅⋅ * Mason grid
-⋅⋅ * Modal
-⋅⋅ * Alerts and Notifications
+  * Slick Slider
+  * Tooltip
+  * Dropdown
+  * Mason grid
+  * Modal
+  * Alerts and Notifications
