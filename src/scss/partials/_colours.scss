@@ -1,19 +1,24 @@
-@each $colour, $hex in $colours
-{
+@each $colour, $hex in $colours {
+  .text-#{$colour} {
+    color: $hex;
+  }
 
-	.text-#{$colour}
-	{
-		color: $hex;
-	}
+  .background-#{$colour} {
+    background-color: $hex;
+  }
 
-	.background-#{$colour}
-	{
-		background-color: $hex;
-	}
+  .border-#{$colour} {
+    border-color: $hex;
+  }
+}
 
-	.border-#{$colour}
-	{
-		border-color: $hex;
-	}
+// Customize text selection
+::selection {
+  background: $grey5;
+  color: $white;
+}
 
+::-moz-selection {
+  background: $grey5;
+  color: $white;
 }
