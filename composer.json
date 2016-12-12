@@ -4,6 +4,9 @@
 		"keywords": ["WordPress", "Theme", "Starter"],
 		"license": "GPL-3.0+",
 		"type": "project",
+    "require": {
+      "vlucas/phpdotenv": "^2.4"
+    },
 		"autoload": {
 			"psr-4": {"awps\\": "./config"}
 		}

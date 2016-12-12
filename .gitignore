@@ -12,6 +12,10 @@
 *.tgz
 *.map
 
+# Env files #
+######################
+.env
+
 # Logs and databases #
 ######################
 *.log
