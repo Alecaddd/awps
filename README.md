@@ -35,7 +35,7 @@ This theme relies on **NPM** and **Composer** in order to load dependencies and 
 
 * Bult-in `gulpfile.js` for fast development and compiling.
 * `OOP` PHP, and `namespaces` with `PSR4` autoload.
-* `Emac2015 Javascript` syntax ready.
+* `ES6 Javascript` syntax ready.
 * Compatible with `JetPack`, `WooCommerce` and all the most famous plugins.
 * Built-in `FlexBox` Responsive Grid.
 * Modular and Components based file structure.
