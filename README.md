@@ -46,8 +46,6 @@ This theme relies on **NPM** and **Composer** in order to load dependencies and 
 
 ### What's missing
 
-* SASS example of basic component
-* JS example of basic component
+* SASS example of basic components
+* JS example of basic components and plugins
 * VIEWS default components for posts, pages, etc.
-* JS import common plugins:
-  * Dropdown
