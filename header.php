@@ -1,9 +1,4 @@
-<?php
-/**
- * @package awps
-*/
-
-?><!DOCTYPE html>
+<!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
 <meta charset="<?php bloginfo('charset'); ?>">
@@ -25,10 +20,10 @@
         <div class="col-xs-12 col-sm-4">
           
           <div class="site-branding">
-            <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+            <h1 class="site-title"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a></h1>
             <?php 
-            $description = get_bloginfo( 'description', 'display' );
-            if ( $description || is_customize_preview() ) : ?>
+            $description = get_bloginfo('description', 'display');
+            if ($description || is_customize_preview()) : ?>
               <p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
             <?php
             endif; ?>
@@ -39,7 +34,11 @@
         <div class="col-xs-12 col-sm-8">
 
           <nav id="site-navigation" class="main-navigation" role="navigation">
-            <?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>  
+            <?php 
+            if (has_nav_menu('primary')) {
+                wp_nav_menu(array('theme_location' => 'primary', 'menu_id' => 'primary-menu', 'walker' => new awps\core\walkernav()));
+            }
+            ?>  
           </nav>
 
         </div><!-- .col -->
