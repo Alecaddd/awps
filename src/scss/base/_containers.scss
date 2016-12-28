@@ -10,7 +10,8 @@
     margin-right: auto;
     padding-left: $gutter;
     padding-right: $gutter;
-    @include clearfix();
+
+    @include clearfix;
   }
 }
 
