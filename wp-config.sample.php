@@ -1,6 +1,6 @@
 <?php
 /**
- * The base configuration for WordPress
+ * The base configuration for WordPress.
  *
  * The wp-config.php creation script uses this file during the
  * installation. You don't have to use the web site, you can
@@ -14,34 +14,32 @@
  * * ABSPATH
  *
  * @link https://codex.wordpress.org/Editing_wp-config.php
- *
- * @package WordPress
  */
 /**
  * Include Dotenv library to pull config options from .env file.
  */
-if(file_exists(__DIR__ . '/wp-content/themes/awps/vendor/autoload.php')) {
-  require_once __DIR__ . '/wp-content/themes/awps/vendor/autoload.php';
-  $dotenv = new Dotenv\Dotenv(__DIR__);
-  $dotenv->load();
+if (file_exists(__DIR__.'/wp-content/themes/awps/vendor/autoload.php')) {
+    require_once __DIR__.'/wp-content/themes/awps/vendor/autoload.php';
+    $dotenv = new Dotenv\Dotenv(__DIR__);
+    $dotenv->load();
 }
-if(file_exists(dirname(__DIR__) . '/wp-content/themes/awps/vendor/autoload.php')) {
-  require_once dirname(__DIR__) . '/wp-content/themes/awps/vendor/autoload.php';
-  $dotenv = new Dotenv\Dotenv(dirname(__DIR__));
-  $dotenv->load();
+if (file_exists(dirname(__DIR__).'/wp-content/themes/awps/vendor/autoload.php')) {
+    require_once dirname(__DIR__).'/wp-content/themes/awps/vendor/autoload.php';
+    $dotenv = new Dotenv\Dotenv(dirname(__DIR__));
+    $dotenv->load();
 }
 // ** MySQL settings - You can get this info from your web host ** //
-/** The name of the database for WordPress */
+/* The name of the database for WordPress */
 define('DB_NAME', getenv('DB_NAME'));
-/** MySQL database username */
+/* MySQL database username */
 define('DB_USER', getenv('DB_USER'));
-/** MySQL database password */
+/* MySQL database password */
 define('DB_PASSWORD', getenv('DB_PASSWORD'));
-/** MySQL hostname */
+/* MySQL hostname */
 define('DB_HOST', getenv('DB_HOST'));
-/** Database Charset to use in creating database tables. */
+/* Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
-/** The Database Collate type. Don't change this if in doubt. */
+/* The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
 /**#@+
  * Authentication Unique Keys and Salts.
@@ -67,8 +65,8 @@ define('NONCE_SALT',       'put your unique phrase here');
  * You can have multiple installations in one database if you give each a unique
  * prefix. Only numbers, letters, and underscores please!
  */
-$table_prefix  = get_env('DB_PREFIX');
-/**
+$table_prefix = getenv('DB_PREFIX');
+/*
  * For developers: WordPress debugging mode.
  *
  * Change this to true to enable the display of notices during development.
@@ -82,9 +80,9 @@ $table_prefix  = get_env('DB_PREFIX');
  */
 define('WP_DEBUG', getenv('APP_ENV') == 'development' ? true : false);
 /* That's all, stop editing! Happy blogging. */
-/** Absolute path to the WordPress directory. */
+/* Absolute path to the WordPress directory. */
 if (!defined('ABSPATH')) {
     define('ABSPATH', dirname(__FILE__).'/');
 }
 /** Sets up WordPress vars and included files. */
-require_once(ABSPATH . 'wp-settings.php');
+require_once ABSPATH.'wp-settings.php';
