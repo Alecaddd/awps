@@ -79,7 +79,34 @@ $table_prefix = getenv('DB_PREFIX');
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
 define('WP_DEBUG', getenv('APP_ENV') == 'development' ? true : false);
+
+/**
+ * Define home and site url 
+ * reduces DB calls and increase performance
+ */
+define('WP_HOME', getenv('WP_HOME'));
+define('WP_SITEURL', getenv('WP_SITEURL'));
+
+/**
+ * Manage Post revisions and autosave
+ */
+define('AUTOSAVE_INTERVAL', getenv('AUTOSAVE_INTERVAL'));
+define('WP_POST_REVISIONS', getenv('WP_POST_REVISIONS'));
+
+/**
+ * Manage Trash auto empty
+ */
+define('EMPTY_TRASH_DAYS', getenv('EMPTY_TRASH_DAYS'));
+
+/**
+ * Increase PHP memory limit
+ *
+ * This might not work for some hosting providers
+ */
+define('WP_MEMORY_LIMIT', getenv('WP_MEMORY_LIMIT'));
+
 /* That's all, stop editing! Happy blogging. */
+
 /* Absolute path to the WordPress directory. */
 if (!defined('ABSPATH')) {
     define('ABSPATH', dirname(__FILE__).'/');
