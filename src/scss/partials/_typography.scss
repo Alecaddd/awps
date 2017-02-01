@@ -2,16 +2,17 @@
 
 body {
   font-family: $base-font;
+  font-weight: 400;
 
   @include font-size($base-fs, $base-fs * 1.5, 0.5px);
 
-  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 // Headings
-h1, .h1 {
+h1,
+.h1 {
   @include font-size(40px);
 
   @media (max-width: #{$sm}) {
@@ -19,7 +20,8 @@ h1, .h1 {
   }
 }
 
-h2, .h2 {
+h2,
+.h2 {
   @include font-size(26px, 32px, 0.36px);
 
   @media (max-width: #{$sm}) {
@@ -27,7 +29,8 @@ h2, .h2 {
   }
 }
 
-h3, .h3 {
+h3,
+.h3 {
   @include font-size(22px, 27px, 0.3px);
 
   @media (max-width: #{$sm}) {
@@ -35,7 +38,8 @@ h3, .h3 {
   }
 }
 
-h4, .h4 {
+h4,
+.h4 {
   @include font-size(20px, 26px);
 
   @media (max-width: #{$sm}) {
@@ -43,7 +47,8 @@ h4, .h4 {
   }
 }
 
-h5, .h5 {
+h5,
+.h5 {
   @include font-size(18px);
 
   @media (max-width: #{$sm}) {
@@ -51,7 +56,8 @@ h5, .h5 {
   }
 }
 
-small, .small {
+small,
+.small {
   @include font-size(15px, 20px, 0.28px);
 }
 
