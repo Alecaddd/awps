@@ -1,0 +1,11 @@
+a
+{
+    @include transition(all $time $ease);
+
+    &,
+    &:hover,
+    &:focus
+    {
+        text-decoration: none;
+    }
+}

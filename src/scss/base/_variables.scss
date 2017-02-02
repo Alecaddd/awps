@@ -3,12 +3,13 @@
 *--------------------------*/
 $columns: 12;
 $gutter: 10px;
+$spacing: 20;
 
 /*-------------------------
 *  Spacing
 *--------------------------*/
-$paddings: ("pt": "padding-top", "pr": "padding-right", "pb": "padding-bottom", "pl": "padding-left");
-$margins: ("mt": "margin-top", "mr": "margin-right", "mb": "margin-bottom", "ml": "margin-left");
+$paddings: ('pt': 'padding-top', 'pr': 'padding-right', 'pb': 'padding-bottom', 'pl': 'padding-left');
+$margins: ('mt': 'margin-top', 'mr': 'margin-right', 'mb': 'margin-bottom', 'ml': 'margin-left');
 
 /*-------------------------
 *  Media Queries
@@ -20,23 +21,23 @@ $lg: 1190px;
 $xl: 1440px;
 $xxl: 1700px;
 
-$breakpoints: ("xs": $xs, "sm": $sm, "md": $md, "lg": $lg, "xl": $xl);
+$breakpoints: ('xs': $xs, 'sm': $sm, 'md': $md, 'lg': $lg, 'xl': $xl);
 
 /*-------------------------
 *  Colours
 *--------------------------*/
-$white: #FFFFFF;
-$black: #000000;
-$light-grey: #F0F0F0;
+$white: #fff;
+$black: #000;
+$light-grey: #f0f0f0;
 
 // custom colours
 
-$colours: ("white": $white, "black": $black, "light-grey": $light-grey);
+$colours: ('white': $white, 'black': $black, 'light-grey': $light-grey);
 
 /*-------------------------
 *  Typography
 *--------------------------*/
-$base-font: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$base-font: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
 $base-fs: 18px;
 
@@ -46,8 +47,8 @@ $base-fs: 18px;
 $time: 320ms;
 $time_slow: 700ms;
 
-$swing: cubic-bezier(0.55, 0, 0.1, 1);
-$swift: cubic-bezier(0.4, 0, 0.2, 1);
+$swing: cubic-bezier(.55, 0, .1, 1);
+$swift: cubic-bezier(.4, 0, .2, 1);
 $ease: ease;
 
 $transition-default: all $time $ease;

@@ -1,32 +1,34 @@
 /*--------------------------------------------------------------
 # Import Modules
 --------------------------------------------------------------*/
-@import "../../node_modules/normalize.css/normalize";
+@import '../../node_modules/normalize.css/normalize';
 /*--------------------------------------------------------------
 # Base
 --------------------------------------------------------------*/
-@import "base/variables";
-@import "base/mixins";
-@import "base/animations";
-@import "base/containers";
-@import "base/grid";
-@import "base/spacing";
-@import "base/wordpress";
-@import "base/forms";
+@import 'base/variables';
+@import 'base/mixins';
+@import 'base/animations';
+@import 'base/containers';
+@import 'base/grid';
+@import 'base/spacing';
+@import 'base/wordpress';
+@import 'base/forms';
 /*--------------------------------------------------------------
 # Partials
 --------------------------------------------------------------*/
-@import "partials/typography";
-@import "partials/colours";
-@import "partials/helpers";
-@import "partials/media";
+@import 'partials/typography';
+@import 'partials/buttons';
+@import 'partials/links';
+@import 'partials/colours';
+@import 'partials/helpers';
+@import 'partials/media';
 /*--------------------------------------------------------------
 # Components
 --------------------------------------------------------------*/
-@import "components/header";
-@import "components/sidebar";
-@import "components/footer";
+@import 'components/header';
+@import 'components/sidebar';
+@import 'components/footer';
 /*--------------------------------------------------------------
 # Pages
 --------------------------------------------------------------*/
-@import "pages/home";
+@import 'pages/home';

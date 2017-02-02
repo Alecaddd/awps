@@ -1,0 +1,45 @@
+button
+{
+    @include transition(all $time $ease);
+}
+
+.btn
+{
+    padding: ($gutter * 1.5) ($gutter * 3);
+
+    border: none;
+    border-radius: 2px;
+
+    @extend .h3;
+
+    &:active
+    {
+        box-shadow: none;
+    }
+
+    &:focus
+    {
+        outline: none;
+    }
+
+    &.btn-sm
+    {
+        padding: ($gutter * .8) ($gutter * 1.8);
+
+        @extend .h5;
+    }
+
+    &.btn-xs
+    {
+        padding: ($gutter * .8) ($gutter * 1.8);
+
+        @include font-size(13px, 13px, .4px);
+    }
+
+    &.btn-xxs
+    {
+        padding: ($gutter * .6) $gutter;
+
+        @include font-size(11px, 11px, .4px);
+    }
+}
