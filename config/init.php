@@ -12,6 +12,7 @@ use awps\setup\enqueue;
 use awps\custom\custom;
 use awps\custom\extras;
 use awps\vendor\jetpack;
+use awps\vendor\acf;
 
 class init
 {
@@ -39,6 +40,7 @@ class init
         new customizer();
         new extras();
         new jetpack();
+        new acf();
         new menus();
         new tags();
         new widgets();
