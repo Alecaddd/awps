@@ -10,10 +10,10 @@
  */
 
 if (file_exists(dirname(__FILE__).'/vendor/autoload.php')):
-	require_once dirname(__FILE__).'/vendor/autoload.php';
+    require_once dirname(__FILE__).'/vendor/autoload.php';
 
 endif;
 
 if (class_exists('awps\\init')):
-	 new \awps\init();
+     new \awps\init();
 endif;

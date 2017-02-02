@@ -18,10 +18,10 @@
 
       <div class="row">
         <div class="col-xs-12 col-sm-4">
-          
+
           <div class="site-branding">
             <h1 class="site-title"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a></h1>
-            <?php 
+            <?php
             $description = get_bloginfo('description', 'display');
             if ($description || is_customize_preview()) : ?>
               <p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
@@ -38,7 +38,7 @@
             if (has_nav_menu('primary')) {
                 wp_nav_menu(array('theme_location' => 'primary', 'menu_id' => 'primary-menu', 'walker' => new awps\core\walkernav()));
             }
-            ?>  
+            ?>
           </nav>
 
         </div><!-- .col -->
