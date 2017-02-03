@@ -1,6 +1,6 @@
 <?php
 
-namespace awps\vendor;
+namespace awps\plugins;
 
 /**
  * jetpack.

@@ -11,8 +11,8 @@ use awps\setup\header;
 use awps\setup\enqueue;
 use awps\custom\custom;
 use awps\custom\extras;
-use awps\vendor\jetpack;
-use awps\vendor\acf;
+use awps\plugins\jetpack;
+use awps\plugins\acf;
 
 class init
 {
