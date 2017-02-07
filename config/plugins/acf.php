@@ -1,6 +1,6 @@
 <?php
 
-namespace ritual\plugins;
+namespace awps\plugins;
 
 /**
  * jetpack.
