@@ -1,13 +1,22 @@
 {
-	"name": "Awps",
-		"description": "Alecaddd WordPress starter Thee",
-		"keywords": ["WordPress", "Theme", "Starter"],
-		"license": "GPL-3.0+",
-		"type": "project",
+	"name": "alecaddd/awps",
+	"description": "Alecaddd WordPress Starter Theme for savvy developers",
+	"keywords": ["WordPress", "Theme", "Starter"],
+	"homepage": "https://github.com/Alecaddd/awps",
+	"license": "GPL-3.0",
+	"version": "1.0.0",
+	"authors": [
+        {
+            "name": "Alessandro Castellani",
+            "email": "me@alecaddd.com",
+            "homepage": "http://alecaddd.com",
+            "role": "Developer"
+        }
+	],
     "require": {
-      "vlucas/phpdotenv": "^2.4"
+    	"vlucas/phpdotenv": "^2.4"
     },
-		"autoload": {
-			"psr-4": {"awps\\": "./config"}
-		}
+	"autoload": {
+		"psr-4": {"awps\\": "./config"}
+	}
 }

@@ -1,8 +1,8 @@
 {
 	"name": "awps",
 	"version": "1.0.0",
-	"description": "Barebone starter theme for WordPress with built-in Gulp workflow",
-	"author": "Alecaddd",
+	"description": "Alecaddd WordPress Starter Theme for savvy developers",
+	"author": "Alessandro Castellani <me@alecaddd.com> (http://alecaddd.com)",
 	"repository" :
 	{
 	    "type" : "git",
