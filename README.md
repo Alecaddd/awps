@@ -1,7 +1,7 @@
 # AWPS
 A modern starter theme for **WordPress** for a fast and agile workflow
 
-https://david-dm.org/alecaddd/awps.svg https://img.shields.io/npm/v/npm.svg
+![Dependecies](https://david-dm.org/alecaddd/awps.svg) ![NPM latest](https://img.shields.io/npm/v/npm.svg) ![GPL License](https://img.shields.io/badge/license-GPLv3-blue.svg)
 
 ---
 
