@@ -1,6 +1,6 @@
-"use strict";
+'use strict';
 
-var App = class App {
+const App = class App {
 
 	constructor() {
 		this.init();
@@ -16,6 +16,6 @@ var App = class App {
 
 	}
 
-}
+};
 
 module.exports = App;
