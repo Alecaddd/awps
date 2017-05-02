@@ -1,0 +1,6 @@
+{
+	"jquery" : true,
+	"browserify": true,
+	"node": true,
+	"esversion": 6
+}

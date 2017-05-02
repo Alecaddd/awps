@@ -1,10 +1,7 @@
 # AWPS
 A modern starter theme for **WordPress** for a fast and agile workflow
 
-## Warning!!!
-This is still a work in progress, **NOT READY FOR PRODUCTION**, use it for testing and fun.
-And please contribute to help make it better.
-
+https://david-dm.org/alecaddd/awps.svg https://img.shields.io/npm/v/npm.svg
 
 ---
 
@@ -36,7 +33,7 @@ This theme relies on **NPM** and **Composer** in order to load dependencies and 
 * Bult-in `gulpfile.js` for fast development and compiling.
 * `OOP` PHP, and `namespaces` with `PSR4` autoload.
 * `ES6 Javascript` syntax ready.
-* Compatible with `JetPack`, `WooCommerce` and all the most famous plugins.
+* Compatible with `JetPack`, `WooCommerce`, `ACF PRO` and all the most famous plugins.
 * Built-in `FlexBox` Responsive Grid.
 * Modular and Components based file structure.
 
@@ -46,6 +43,4 @@ This theme relies on **NPM** and **Composer** in order to load dependencies and 
 
 ### What's missing
 
-* SASS example of basic components
-* JS example of basic components and plugins
-* VIEWS default components for posts, pages, etc.
+* VIEWS default components for posts.
