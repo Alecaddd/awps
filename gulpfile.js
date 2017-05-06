@@ -9,10 +9,10 @@ var minifycss    = require('gulp-uglifycss');
 // JS related plugins
 var concat       = require('gulp-concat');
 var uglify       = require('gulp-uglify');
-var babelify 	 = require("babelify");
-var browserify 	 = require("browserify");
-var source 		 = require("vinyl-source-stream");
-var buffer 		 = require('vinyl-buffer');
+var babelify     = require("babelify");
+var browserify   = require("browserify");
+var source       = require("vinyl-source-stream");
+var buffer       = require('vinyl-buffer');
 
 // Utility plugins
 var rename       = require('gulp-rename');
@@ -27,81 +27,90 @@ var reload       = browserSync.reload;
 // Project related variables
 var projectURL   = 'http://wp.dev';
 
-var styleSRC	 = './src/scss/style.scss';
-var styleURL	 = './assets/css/';
-var mapURL		 = './';
+var styleSRC     = './src/scss/style.scss';
+var styleURL     = './assets/css/';
+var mapURL       = './';
 
-var jsSRC		 = './src/scripts/main.js';
-var jsURL		 = './assets/js/';
+var jsSRC        = './src/scripts/main.js';
+var jsURL        = './assets/js/';
 
-var imgSRC		 = './src/images/**/*';
-var imgURL		 = './assets/images/';
+var imgSRC       = './src/images/**/*';
+var imgURL       = './assets/images/';
 
-var fontsSRC	 = './src/fonts/**/*';
-var fontsURL	 = './assets/fonts/';
+var fontsSRC     = './src/fonts/**/*';
+var fontsURL     = './assets/fonts/';
 
-var styleWatch	 = './src/scss/**/*.scss';
-var jsWatch		 = './src/scripts/**/*.js';
-var imgWatch	 = './src/images/**/*.*';
-var fontsWatch	 = './src/fonts/**/*.*';
-var phpWatch	 = './**/*.php';
+var styleWatch   = './src/scss/**/*.scss';
+var jsWatch      = './src/scripts/**/*.js';
+var imgWatch     = './src/images/**/*.*';
+var fontsWatch   = './src/fonts/**/*.*';
+var phpWatch     = './**/*.php';
 
 
 // Tasks
 gulp.task( 'browser-sync', function() {
-	browserSync.init({
-		proxy: projectURL,
-		injectChanges: true,
-		open: false
-	});
+    browserSync.init({
+        proxy: projectURL,
+        injectChanges: true,
+        open: false
+    });
 });
 
 gulp.task( 'styles', function() {
-	gulp.src( styleSRC )
-		.pipe(sourcemaps.init())
-		.pipe( sass({
-			errLogToConsole: true,
-			outputStyle: 'compressed'
-		}) )
-		.on('error', console.error.bind(console))
-		.pipe( autoprefixer({ browsers: ['last 2 versions', '> 5%', 'Firefox ESR'] }) )
-		.pipe( rename( { suffix: '.min' } ) )
-		.pipe( sourcemaps.write ( mapURL ) )
-		.pipe( gulp.dest( styleURL ) )
-		.pipe( browserSync.stream() );
+    gulp.src( styleSRC )
+        .pipe(sourcemaps.init())
+        .pipe( sass({
+            errLogToConsole: true,
+            outputStyle: 'compressed'
+        }) )
+        .on('error', console.error.bind(console))
+        .pipe( autoprefixer({ browsers: ['last 2 versions', '> 5%', 'Firefox ESR'] }) )
+        .pipe( rename( { suffix: '.min' } ) )
+        .pipe( sourcemaps.write ( mapURL ) )
+        .pipe( gulp.dest( styleURL ) )
+        .pipe( browserSync.stream() );
 });
 
 gulp.task( 'js', function() {
-	return browserify({
-		entries: [jsSRC]
-	})
-	.transform(babelify)
-	.bundle()
-	.pipe(source("main.min.js"))
-	.pipe(buffer())
-	.pipe(sourcemaps.init({loadMaps: true}))
-	.pipe(uglify())
-	.pipe(sourcemaps.write("."))
-	.pipe(gulp.dest( jsURL ))
-	.pipe( browserSync.stream() );
+    return browserify({
+        entries: [jsSRC]
+    })
+    .transform(babelify)
+    .bundle()
+    .pipe( source("main.min.js") )
+    .pipe( buffer() )
+    .pipe( sourcemaps.init({loadMaps: true}) )
+    .pipe( uglify() )
+    .pipe( sourcemaps.write(".") )
+    .pipe( gulp.dest( jsURL ) )
+    .pipe( browserSync.stream() );
  });
 
 gulp.task( 'images', function() {
-	 return gulp.src( imgSRC )
-	 .pipe( plumber() )
-	 .pipe( gulp.dest( imgURL ) );
+    triggerPlumber(imgSRC, imgURL);
 });
 
 gulp.task( 'fonts', function() {
-	 return gulp.src( fontsSRC )
-	 .pipe( plumber() )
-	 .pipe( gulp.dest( fontsURL ) );
+    triggerPlumber(fontsSRC, fontsURL);
 });
 
- gulp.task( 'default', ['styles', 'js', 'images', 'fonts', 'browser-sync'], function() {
-	gulp.watch( phpWatch, reload );
-	gulp.watch( styleWatch, [ 'styles' ] );
-	gulp.watch( jsWatch, [ 'js', reload ] );
-	gulp.watch( imgWatch, [ 'images' ] );
-	gulp.watch( fontsWatch, [ 'fonts' ] );
+function triggerPlumber(src, url) {
+    return gulp.src( src )
+    .pipe( plumber() )
+    .pipe( gulp.dest( url ) );
+}
+
+ gulp.task( 'default', ['styles', 'js', 'images', 'fonts'], function() {
+    gulp.src(jsURL + 'main.min.js')
+        .pipe(notify({ message: "Assets Compiled!" }));
+ });
+
+ gulp.task( 'watch', ['default', 'browser-sync'], function() {
+    gulp.watch( phpWatch, reload );
+    gulp.watch( styleWatch, [ 'styles' ] );
+    gulp.watch( jsWatch, [ 'js', reload ] );
+    gulp.watch( imgWatch, [ 'images' ] );
+    gulp.watch( fontsWatch, [ 'fonts' ] );
+    gulp.src(jsURL + 'main.min.js')
+        .pipe(notify({ message: "Gulp is Watching, Happy Coding!" }));
  });

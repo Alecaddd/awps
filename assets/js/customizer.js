@@ -12,16 +12,15 @@
 (function($) {
 
 	// Site title and description.
-	wp.customize('blogname', function(value) {
+	wp.customize('blogname', awps_updateSiteText('.site--title a', value));
+
+	wp.customize('blogdescription', awps_updateSiteText('.site-description', value));
+
+	function awps_updateSiteText(selector, value) {
 		value.bind(function(to) {
-			$('.site-title a').text(to);
+			$(selector).text(to);
 		});
-	});
-	wp.customize('blogdescription', function(value) {
-		value.bind(function(to) {
-			$('.site-description').text(to);
-		});
-	});
+	}
 
 	// Header text color.
 	wp.customize('header_textcolor', function(value) {

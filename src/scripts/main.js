@@ -6,5 +6,5 @@ import Carousel from './modules/carousel.js';
 // export for others scripts to use
 window.$ = $;
 
-new App();
-new Carousel();
+App();
+Carousel();
