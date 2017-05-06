@@ -1,7 +1,14 @@
 <?php
-/*
+/**
+ * The template for displaying the footer
+ *
+ * Contains the closing of the #content div and all content after.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
  * @package awps
-*/
+ */
+
 ?>
 
 	</div><!-- #content -->
@@ -10,14 +17,6 @@
 
 	</footer><!-- #colophon -->
 </div><!-- #page -->
-
-<?php if (getenv('APP_ENV') === 'development'): ?>
-
-	 <script id="__bs_script__">//<![CDATA[
-		document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js'><\/script>".replace("HOST", location.hostname));
-//]]></script>
-
-<?php endif ?>
 
 <?php wp_footer(); ?>
 
