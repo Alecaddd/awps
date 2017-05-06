@@ -5,14 +5,14 @@ const App = class App {
 	constructor() {
 		this.init();
 
-		$('.el').on('click', this.elClick);
+		$( '.el' ).on( 'click', this.elClick );
 	}
 
 	init() {
-		console.log('App Initialized');
+		console.log( 'App Initialized' );
 	}
 
-	elClick(event) {
+	elClick( event ) {
 
 	}
 

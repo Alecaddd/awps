@@ -7,7 +7,7 @@ const Carousel = class Carousel {
     }
 
     init() {
-        $('.fade-carousel').slick({
+        $( '.fade-carousel' ).slick({
             dots: true,
             arrows: false,
             autoplay: true,
