@@ -1,7 +1,11 @@
 <?php
 /**
-* @package awps
-*/
+ * The template for displaying all single posts
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
+ *
+ * @package awps
+ */
 
 get_header(); ?>
 
@@ -19,7 +23,7 @@ get_header(); ?>
 					/* Start the Loop */
 					while ( have_posts() ) : the_post();
 
-						get_template_part('views/content/content', get_post_format() );
+						get_template_part( 'views/content/content', get_post_format() );
 
 						the_post_navigation();
 
