@@ -11,9 +11,10 @@
 		<exclude name="Generic.WhiteSpace.ScopeIndent.IncorrectExact" />
 		<exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />
 		<exclude name="PEAR.Functions.FunctionCallSignature.Indent" />
+		<exclude-pattern>acf-json/index.php</exclude-pattern>
+		<exclude-pattern>config/*</exclude-pattern>
 	</rule>
 
 	<!-- Include sniffs for PHP cross-version compatibility. -->
 	<config name="testVersion" value="5.3-99.0"/>
-	<!-- <rule ref="PHPCompatibility"/> -->
 </ruleset>
