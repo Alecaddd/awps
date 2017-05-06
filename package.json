@@ -1,50 +1,51 @@
 {
-	"name": "awps",
-	"version": "1.0.0",
-	"description": "Alecaddd WordPress Starter Theme for savvy developers",
-	"author": "Alessandro Castellani <me@alecaddd.com> (http://alecaddd.com)",
-	"repository" :
-	{
-	    "type" : "git",
-	    "url" : "https://github.com/Alecaddd/WP-Starter"
-	},
-	"keywords": [
-	    "wordpress",
-	    "theme",
-	    "starter"
-	],
-	"dependencies": {
-		"jquery": "^3.1.1",
-		"normalize.css": "^5.0.0",
-		"slick-carousel": "^1.6.0",
-		"scrollreveal": "^3.3.2",
-		"popper.js": "^0.6.4",
-		"background-blur": "^0.1.3",
-		"izimodal": "^1.4.1",
-		"izitoast": "^1.0.2",
-		"bricks.js": "^1.7.0",
-		"sweet-dropdown": "^1.0.0"
-	},
-	"devDependencies": {
-		"browser-sync": "^2.11.1",
-		"gulp": "^3.9.1",
-		"gulp-concat": "^2.5.2",
-		"gulp-notify": "^2.2.0",
-		"gulp-rename": "^1.2.0",
-		"gulp-sass": "^2.0.0",
-		"gulp-sourcemaps": "^1.5.2",
-		"gulp-uglify": "^2.0.0",
-		"gulp-uglifycss": "^1.0.4",
-		"gulp-autoprefixer": "^3.1.1",
-		"gulp-plumber": "^1.1.0",
-		"babelify": "^7.3.0",
-		"babel-preset-es2015": "^6.16.0",
-		"browserify": "^13.1.1",
-		"vinyl-source-stream": "^1.1.0",
-		"vinyl-buffer": "^1.0.0"
-	},
-	"babel": {
-		"presets": ["es2015"]
-	},
-	"license": "GPL-3.0"
+  "name": "awps",
+  "version": "1.0.0",
+  "description": "Alecaddd WordPress Starter Theme for savvy developers",
+  "author": "Alessandro Castellani <me@alecaddd.com> (http://alecaddd.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Alecaddd/WP-Starter"
+  },
+  "keywords": [
+    "wordpress",
+    "theme",
+    "starter"
+  ],
+  "dependencies": {
+    "background-blur": "*",
+    "bricks.js": "^1.8.0",
+    "izimodal": "*",
+    "izitoast": "^1.1.1",
+    "jquery": "^3.2.1",
+    "normalize.css": "^7.0.0",
+    "popper.js": "^1.9.1",
+    "scrollreveal": "*",
+    "slick-carousel": "*",
+    "sweet-dropdown": "*"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "*",
+    "browser-sync": "*",
+    "browserify": "*",
+    "gulp": "*",
+    "gulp-autoprefixer": "*",
+    "gulp-concat": "*",
+    "gulp-notify": "*",
+    "gulp-plumber": "*",
+    "gulp-rename": "*",
+    "gulp-sass": "*",
+    "gulp-sourcemaps": "*",
+    "gulp-uglify": "*",
+    "gulp-uglifycss": "*",
+    "vinyl-buffer": "*",
+    "vinyl-source-stream": "*"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
+  "license": "GPL-3.0"
 }
