@@ -59,8 +59,9 @@ before_script:
     # Set install path for PHPCS sniffs.
     # @link https://github.com/squizlabs/PHP_CodeSniffer/blob/4237c2fc98cc838730b76ee9cee316f99286a2a7/CodeSniffer.php#L1941
     # - if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/scripts/phpcs --config-set installed_paths $SNIFFS_DIR; fi
+    - if [[ "$SNIFF" == "1" ]]; then phpcs --config-set installed_paths $SNIFFS_DIR; fi
     # After CodeSniffer install you should refresh your path.
-    # - if [[ "$SNIFF" == "1" ]]; then phpenv rehash; fi
+    - if [[ "$SNIFF" == "1" ]]; then phpenv rehash; fi
     # Install JSCS: JavaScript Code Style checker.
     # @link http://jscs.info/
     - if [[ "$SNIFF" == "1" ]]; then npm install -g jscs; fi
