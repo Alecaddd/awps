@@ -5,16 +5,18 @@
 
 	<!-- Set a description for this ruleset. -->
 	<description>A custom set of code standard rules to check for WordPress themes.</description>
+	
+	<exclude-pattern>acf-json/index.php</exclude-pattern>
+	<exclude-pattern>config/*</exclude-pattern>
 
 	<!-- Include the WordPress ruleset, with exclusions. -->
 	<rule ref="WordPress">
 		<exclude name="Generic.WhiteSpace.ScopeIndent.IncorrectExact" />
 		<exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />
 		<exclude name="PEAR.Functions.FunctionCallSignature.Indent" />
-		<exclude-pattern>acf-json/index.php</exclude-pattern>
-		<exclude-pattern>config/*</exclude-pattern>
 	</rule>
 
 	<!-- Include sniffs for PHP cross-version compatibility. -->
 	<config name="testVersion" value="5.3-99.0"/>
+	<rule ref="PHPCompatibility"/>
 </ruleset>
