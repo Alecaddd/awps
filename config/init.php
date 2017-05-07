@@ -4,7 +4,7 @@ namespace awps;
 
 use awps\core\tags;
 use awps\core\widgets;
-use awps\core\customizer;
+use awps\core\Customizer;
 use awps\setup\setup;
 use awps\setup\menus;
 use awps\setup\header;
@@ -37,7 +37,7 @@ class init
         new setup();
         new enqueue();
         new header();
-        new customizer();
+        new Customizer();
         new extras();
         new jetpack();
         new acf();
