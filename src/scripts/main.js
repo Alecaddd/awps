@@ -8,5 +8,5 @@ import Carousel from './modules/carousel.js';
 // Export for others scripts to use
 window.$ = $;
 
-App();
-Carousel();
+new App();
+new Carousel();

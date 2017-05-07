@@ -5,15 +5,21 @@ const App = class App {
 	constructor() {
 		this.init();
 
-		$( '.el' ).on( 'click', this.elClick );
+		/**
+		 * You can use jQuery or ES6 javascript to trigger methods on DOM actions
+		 */
+
+		// $( '.el' ).on( 'click', this.elClick );
+
+		document.querySelector( '.el' ).addEventListener( 'click', this.elClick );
 	}
 
 	init() {
 		console.log( 'App Initialized' );
 	}
 
-	elClick( event ) {
-
+	elClick( e ) {
+		e.target.classList.add( 'text-light-grey' );
 	}
 
 };
