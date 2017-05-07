@@ -1,12 +1,12 @@
 <?php
-
-namespace awps\plugins;
-
 /**
  * jetpack.
  *
  * @link https://jetpack.com/
  */
+
+namespace awps\plugins;
+
 class jetpack
 {
     /*

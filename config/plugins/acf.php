@@ -1,10 +1,14 @@
 <?php
+/**
+ * ACF PRO
+ *
+ * @link https://github.com/elliotcondon/acf
+ *
+ * @package awps
+ */
 
 namespace awps\plugins;
 
-/**
- * jetpack.
- */
 class acf
 {
     /*

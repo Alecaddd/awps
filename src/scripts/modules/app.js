@@ -11,7 +11,7 @@ const App = class App {
 
 		// $( '.el' ).on( 'click', this.elClick );
 
-		document.querySelector( '.el' ).addEventListener( 'click', this.elClick );
+		// document.querySelector( '.el' ).addEventListener( 'click', this.elClick );
 	}
 
 	init() {
