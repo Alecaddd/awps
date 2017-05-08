@@ -37,7 +37,7 @@ get_header(); ?>
 						/* Start the Loop */
 						while ( have_posts() ) : the_post();
 
-							get_template_part( 'views/content/content', get_post_format() );
+							get_template_part( 'views/content', get_post_format() );
 
 						endwhile;
 
@@ -45,7 +45,7 @@ get_header(); ?>
 
 					else :
 
-						get_template_part( 'views/content/content', 'none' );
+						get_template_part( 'views/content', 'none' );
 
 					endif; ?>
 
