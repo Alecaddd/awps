@@ -1,27 +1,26 @@
 'use strict';
 
-const App = class App {
+class App {
 
 	constructor() {
+		this.el = document.querySelector( '.el' );
+
+		this.listeners();
 		this.init();
-
-		/**
-		 * You can use jQuery or ES6 javascript to trigger methods on DOM actions
-		 */
-
-		// $( '.el' ).on( 'click', this.elClick );
-
-		// document.querySelector( '.el' ).addEventListener( 'click', this.elClick );
 	}
 
 	init() {
-		console.log( 'App Initialized' );
+		console.info( 'App Initialized' );
+	}
+
+	listeners() {
+		return ( this.el ) ? this.el.addEventListener( 'click', this.elClick, false ) : '' ;
 	}
 
 	elClick( e ) {
 		e.target.classList.add( 'text-light-grey' );
 	}
 
-};
+}
 
-module.exports = App;
+export default App;

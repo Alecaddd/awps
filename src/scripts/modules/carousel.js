@@ -1,6 +1,6 @@
 'use strict';
 
-const Carousel = class Carousel {
+class Carousel {
 
     constructor() {
         this.init();
@@ -17,6 +17,6 @@ const Carousel = class Carousel {
             cssEase: 'linear'
         });
     }
-};
+}
 
-module.exports = Carousel;
+export default Carousel;
