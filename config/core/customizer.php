@@ -10,7 +10,7 @@ namespace awps\core;
 /**
  * Customizer class
  */
-class Customizer {
+class customizer {
 	/**
 	 * Contrusct class to activate actions and hooks as soon as the class is initialized
 	 */
