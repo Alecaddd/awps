@@ -21,7 +21,13 @@ This theme relies on **NPM** and **Composer** in order to load dependencies and 
 * Execute `composer install`
 * Move the `.env.example` to your WordPress root directory, rename it as `.env`, and setup your website variables
 * Move the `wp-config.sample.php` to your WordPress root directory and rename it as `wp-config.php`, to replace the default one
-* Run `gulp watch` at the beginning of every development session OR Run `gulp` to quickly compile without watching
+
+
+## Gulp
+
+* Run `gulp watch` at the beginning of every development session
+* Run `gulp` to quickly compile without watching
+* Run `gulp --production` to compile the assets for production and remove debug and console messages
 
 
 ## Features
