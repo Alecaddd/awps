@@ -1,27 +1,30 @@
-// load Gulp...of course
-var gulp         = require('gulp');
+// Load Gulp...of course
+var gulp         = require( 'gulp' );
 
 // CSS related plugins
-var sass         = require('gulp-sass');
-var autoprefixer = require('gulp-autoprefixer');
-var minifycss    = require('gulp-uglifycss');
+var sass         = require( 'gulp-sass' );
+var autoprefixer = require( 'gulp-autoprefixer' );
+var minifycss    = require( 'gulp-uglifycss' );
 
 // JS related plugins
-var concat       = require('gulp-concat');
-var uglify       = require('gulp-uglify');
-var babelify     = require("babelify");
-var browserify   = require("browserify");
-var source       = require("vinyl-source-stream");
-var buffer       = require('vinyl-buffer');
+var concat       = require( 'gulp-concat' );
+var uglify       = require( 'gulp-uglify' );
+var babelify     = require( 'babelify' );
+var browserify   = require( 'browserify' );
+var source       = require( 'vinyl-source-stream' );
+var buffer       = require( 'vinyl-buffer' );
+var stripDebug   = require( 'gulp-strip-debug' );
 
 // Utility plugins
-var rename       = require('gulp-rename');
-var sourcemaps   = require('gulp-sourcemaps');
-var notify       = require('gulp-notify');
-var plumber      = require('gulp-plumber');
+var rename       = require( 'gulp-rename' );
+var sourcemaps   = require( 'gulp-sourcemaps' );
+var notify       = require( 'gulp-notify' );
+var plumber      = require( 'gulp-plumber' );
+var options      = require( 'gulp-options' );
+var gulpif       = require( 'gulp-if' );
 
 // Browers related plugins
-var browserSync  = require('browser-sync').create();
+var browserSync  = require( 'browser-sync' ).create();
 var reload       = browserSync.reload;
 
 // Project related variables
@@ -46,7 +49,6 @@ var imgWatch     = './src/images/**/*.*';
 var fontsWatch   = './src/fonts/**/*.*';
 var phpWatch     = './**/*.php';
 
-
 // Tasks
 gulp.task( 'browser-sync', function() {
     browserSync.init({
@@ -58,15 +60,15 @@ gulp.task( 'browser-sync', function() {
 
 gulp.task( 'styles', function() {
     gulp.src( styleSRC )
-        .pipe(sourcemaps.init())
+        .pipe( sourcemaps.init() )
         .pipe( sass({
             errLogToConsole: true,
             outputStyle: 'compressed'
         }) )
-        .on('error', console.error.bind(console))
-        .pipe( autoprefixer({ browsers: ['last 2 versions', '> 5%', 'Firefox ESR'] }) )
+        .on( 'error', console.error.bind( console ) )
+        .pipe( autoprefixer({ browsers: [ 'last 2 versions', '> 5%', 'Firefox ESR' ] }) )
         .pipe( rename( { suffix: '.min' } ) )
-        .pipe( sourcemaps.write ( mapURL ) )
+        .pipe( sourcemaps.write( mapURL ) )
         .pipe( gulp.dest( styleURL ) )
         .pipe( browserSync.stream() );
 });
@@ -75,34 +77,35 @@ gulp.task( 'js', function() {
     return browserify({
         entries: [jsSRC]
     })
-    .transform(babelify)
+    .transform( babelify )
     .bundle()
-    .pipe( source("main.min.js") )
+    .pipe( source( 'main.min.js' ) )
     .pipe( buffer() )
-    .pipe( sourcemaps.init({loadMaps: true}) )
+    .pipe( gulpif( options.has( 'production' ), stripDebug() ) )
+    .pipe( sourcemaps.init({ loadMaps: true }) )
     .pipe( uglify() )
-    .pipe( sourcemaps.write(".") )
+    .pipe( sourcemaps.write( '.' ) )
     .pipe( gulp.dest( jsURL ) )
     .pipe( browserSync.stream() );
  });
 
 gulp.task( 'images', function() {
-    triggerPlumber(imgSRC, imgURL);
+    triggerPlumber( imgSRC, imgURL );
 });
 
 gulp.task( 'fonts', function() {
-    triggerPlumber(fontsSRC, fontsURL);
+    triggerPlumber( fontsSRC, fontsURL );
 });
 
-function triggerPlumber(src, url) {
+function triggerPlumber( src, url ) {
     return gulp.src( src )
     .pipe( plumber() )
     .pipe( gulp.dest( url ) );
 }
 
  gulp.task( 'default', ['styles', 'js', 'images', 'fonts'], function() {
-    gulp.src(jsURL + 'main.min.js')
-        .pipe(notify({ message: "Assets Compiled!" }));
+    gulp.src( jsURL + 'main.min.js' )
+        .pipe( notify({ message: 'Assets Compiled!' }) );
  });
 
  gulp.task( 'watch', ['default', 'browser-sync'], function() {
@@ -111,6 +114,6 @@ function triggerPlumber(src, url) {
     gulp.watch( jsWatch, [ 'js', reload ] );
     gulp.watch( imgWatch, [ 'images' ] );
     gulp.watch( fontsWatch, [ 'fonts' ] );
-    gulp.src(jsURL + 'main.min.js')
-        .pipe(notify({ message: "Gulp is Watching, Happy Coding!" }));
+    gulp.src( jsURL + 'main.min.js' )
+        .pipe( notify({ message: 'Gulp is Watching, Happy Coding!' }) );
  });
