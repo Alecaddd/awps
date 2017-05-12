@@ -14,11 +14,14 @@ class App {
 	}
 
 	listeners() {
-		return ( this.el ) ? this.el.addEventListener( 'click', this.elClick, false ) : '' ;
+		if ( this.el ) {
+			this.el.addEventListener( 'click', this.elClick );
+		}
 	}
 
 	elClick( e ) {
 		e.target.classList.add( 'text-light-grey' );
+		e.target.addEventListener( 'transitionend', ( e ) => ( 'color' === e.propertyName ) ? e.target.classList.remove( 'text-light-grey' ) : '' );
 	}
 
 }
