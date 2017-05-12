@@ -1,54 +1,54 @@
 {
-  "name": "awps",
-  "version": "1.0.0",
-  "description": "Alecaddd WordPress Starter Theme for savvy developers",
-  "author": "Alessandro Castellani <me@alecaddd.com> (http://alecaddd.com)",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Alecaddd/WP-Starter"
-  },
-  "keywords": [
-    "wordpress",
-    "theme",
-    "starter"
-  ],
-  "dependencies": {
-    "background-blur": "^0.1.3",
-    "bricks.js": "^1.8.0",
-    "izimodal": "^1.4.2",
-    "izitoast": "^1.1.1",
-    "jquery": "^3.2.1",
-    "normalize.css": "^7.0.0",
-    "popper.js": "^1.9.1",
-    "scrollreveal": "^3.3.5",
-    "slick-carousel": "^1.6.0",
-    "sweet-dropdown": "^1.0.0"
-  },
-  "devDependencies": {
-    "babel-preset-es2015": "^6.24.1",
-    "babelify": "^7.3.0",
-    "browser-sync": "^2.11.1",
-    "browserify": "^14.1.1",
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^3.1.1",
-    "gulp-concat": "^2.5.2",
-    "gulp-if": "^2.0.2",
-    "gulp-notify": "^3.0.0",
-    "gulp-options": "^1.1.1",
-    "gulp-plumber": "^1.1.0",
-    "gulp-rename": "^1.2.0",
-    "gulp-sass": "^3.1.0",
-    "gulp-sourcemaps": "^2.6.0",
-    "gulp-strip-debug": "^1.1.0",
-    "gulp-uglify": "^2.0.0",
-    "gulp-uglifycss": "^1.0.4",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0"
-  },
-  "babel": {
-    "presets": [
-      "es2015"
-    ]
-  },
-  "license": "GPL-3.0"
+	"name": "awps",
+	"version": "1.0.0",
+	"description": "Alecaddd WordPress Starter Theme for savvy developers",
+	"author": "Alessandro Castellani <me@alecaddd.com> (http://alecaddd.com)",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Alecaddd/WP-Starter"
+	},
+	"keywords": [
+		"wordpress",
+		"theme",
+		"starter"
+	],
+	"dependencies": {
+		"background-blur": "^0.1.3",
+		"bricks.js": "^1.8.0",
+		"izimodal": "^1.4.2",
+		"izitoast": "^1.1.1",
+		"jquery": "^3.2.1",
+		"normalize.css": "^7.0.0",
+		"popper.js": "^1.9.1",
+		"scrollreveal": "^3.3.5",
+		"slick-carousel": "^1.6.0",
+		"sweet-dropdown": "^1.0.0"
+	},
+	"devDependencies": {
+		"babel-preset-es2015": "^6.24.1",
+		"babelify": "^7.3.0",
+		"browser-sync": "^2.11.1",
+		"browserify": "^14.1.1",
+		"gulp": "^3.9.1",
+		"gulp-autoprefixer": "^3.1.1",
+		"gulp-concat": "^2.5.2",
+		"gulp-if": "^2.0.2",
+		"gulp-notify": "^3.0.0",
+		"gulp-options": "^1.1.1",
+		"gulp-plumber": "^1.1.0",
+		"gulp-rename": "^1.2.0",
+		"gulp-sass": "^3.1.0",
+		"gulp-sourcemaps": "^2.6.0",
+		"gulp-strip-debug": "^1.1.0",
+		"gulp-uglify": "^2.0.0",
+		"gulp-uglifycss": "^1.0.4",
+		"vinyl-buffer": "^1.0.0",
+		"vinyl-source-stream": "^1.1.0"
+	},
+	"babel": {
+		"presets": [
+			"es2015"
+		]
+	},
+	"license": "GPL-3.0"
 }
