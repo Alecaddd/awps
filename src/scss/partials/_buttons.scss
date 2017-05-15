@@ -1,45 +1,37 @@
-button
-{
-    @include transition(all $time $ease);
+button {
+	@include transition(all $time $ease);
 }
 
-.btn
-{
-    padding: ($gutter * 1.5) ($gutter * 3);
+.btn {
+	padding: ($gutter * 1.5) ($gutter * 3);
+	border: none;
+	border-radius: 2px;
 
-    border: none;
-    border-radius: 2px;
+	@extend .h3;
 
-    @extend .h3;
+	&:active {
+		box-shadow: none;
+	}
 
-    &:active
-    {
-        box-shadow: none;
-    }
+	&:focus {
+		outline: none;
+	}
 
-    &:focus
-    {
-        outline: none;
-    }
+	&.btn-sm {
+		padding: ($gutter * 0.8) ($gutter * 1.8);
 
-    &.btn-sm
-    {
-        padding: ($gutter * .8) ($gutter * 1.8);
+		@extend .h5;
+	}
 
-        @extend .h5;
-    }
+	&.btn-xs {
+		padding: ($gutter * 0.8) ($gutter * 1.8);
 
-    &.btn-xs
-    {
-        padding: ($gutter * .8) ($gutter * 1.8);
+		@include font-size(13px, 13px, 0.4px);
+	}
 
-        @include font-size(13px, 13px, .4px);
-    }
+	&.btn-xxs {
+		padding: ($gutter * 0.6) $gutter;
 
-    &.btn-xxs
-    {
-        padding: ($gutter * .6) $gutter;
-
-        @include font-size(11px, 11px, .4px);
-    }
+		@include font-size(11px, 11px, 0.4px);
+	}
 }

@@ -47,8 +47,8 @@ $base-fs: 18px;
 $time: 320ms;
 $time_slow: 700ms;
 
-$swing: cubic-bezier(.55, 0, .1, 1);
-$swift: cubic-bezier(.4, 0, .2, 1);
+$swing: cubic-bezier(0.55, 0, 0.1, 1);
+$swift: cubic-bezier(0.4, 0, 0.2, 1);
 $ease: ease;
 
 $transition-default: all $time $ease;

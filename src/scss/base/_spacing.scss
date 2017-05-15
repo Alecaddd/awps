@@ -1,65 +1,69 @@
 @each $pd, $padding in $paddings {
-  @for $i from 0 through $spacing {
-    .#{$pd}-#{$i} {
-      #{$padding}: $gutter * $i;
-    }
-  }
+	@for $i from 0 through $spacing {
+		.#{$pd}-#{$i} {
+			#{$padding}: $gutter * $i;
+		}
+	}
 
-  @for $i from 0 through $spacing {
-    @media (max-width: #{$md}) {
-      .#{$pd}-md-#{$i} {
-        #{$padding}: $gutter * $i;
-      }
-    }
-  }
+	@for $i from 0 through $spacing {
+		@media (max-width: #{$md}) {
 
-  @for $i from 0 through $spacing {
-    @media (max-width: #{$sm}) {
-      .#{$pd}-sm-#{$i} {
-        #{$padding}: $gutter * $i;
-      }
-    }
-  }
+			.#{$pd}-md-#{$i} {
+				#{$padding}: $gutter * $i;
+			}
+		}
+	}
+
+	@for $i from 0 through $spacing {
+		@media (max-width: #{$sm}) {
+
+			.#{$pd}-sm-#{$i} {
+				#{$padding}: $gutter * $i;
+			}
+		}
+	}
 }
 
 @for $i from 0 through $spacing {
-  .p-#{$i} {
-    padding: $gutter * $i;
-  }
+	.p-#{$i} {
+		padding: $gutter * $i;
+	}
 }
 
 @each $mg, $margin in $margins {
-  @for $i from 0 through $spacing {
-    .#{$mg}-#{$i} {
-      #{$margin}: $gutter * $i;
-    }
+	@for $i from 0 through $spacing {
+		.#{$mg}-#{$i} {
+			#{$margin}: $gutter * $i;
+		}
 
-    .#{$mg}-n-#{$i} {
-      #{$margin}: -$gutter * $i;
-    }
-  }
+		.#{$mg}-n-#{$i} {
+			#{$margin}: -$gutter * $i;
+		}
+	}
 
-  @for $i from 0 through $spacing {
-    @media (max-width: #{$md}) {
-      .#{$mg}-md-#{$i} {
-        #{$margin}: $gutter * $i;
-      }
+	@for $i from 0 through $spacing {
+		@media (max-width: #{$md}) {
 
-      .#{$mg}-md-n-#{$i} {
-        #{$margin}: -$gutter * $i;
-      }
-    }
-  }
+			.#{$mg}-md-#{$i} {
+				#{$margin}: $gutter * $i;
+			}
 
-  @for $i from 0 through $spacing {
-    @media (max-width: #{$sm}) {
-      .#{$mg}-sm-#{$i} {
-        #{$margin}: $gutter * $i;
-      }
+			.#{$mg}-md-n-#{$i} {
+				#{$margin}: -$gutter * $i;
+			}
+		}
+	}
 
-      .#{$mg}-sm-n-#{$i} {
-        #{$margin}: -$gutter * $i;
-      }
-    }
-  }
+	@for $i from 0 through $spacing {
+		@media (max-width: #{$sm}) {
+
+			.#{$mg}-sm-#{$i} {
+				#{$margin}: $gutter * $i;
+			}
+
+			.#{$mg}-sm-n-#{$i} {
+				#{$margin}: -$gutter * $i;
+			}
+		}
+	}
 }

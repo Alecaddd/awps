@@ -1,7 +1,6 @@
 .container,
 .container-fluid,
-.container-narrow
-{
+.container-narrow {
     box-sizing: border-box;
     width: 100%;
     margin-right: auto;
@@ -12,17 +11,14 @@
     @include clearfix;
 }
 
-.container
-{
+.container {
     max-width: $xl;
 }
 
-.container-fluid
-{
+.container-fluid {
     max-width: 100%;
 }
 
-.container-narrow
-{
+.container-narrow {
     max-width: $lg;
 }
