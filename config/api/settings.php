@@ -37,6 +37,12 @@ class settings
 	private static $enqueues = array();
 
 	/**
+	 * Admin pages array to enqueue scripts
+	 * @var private array
+	 */
+	private static $enqueue_on_pages = array();
+
+	/**
 	 * Enqueue scripts if $eneuques not empty
 	 */
 	public function __construct()
@@ -49,10 +55,10 @@ class settings
 	 * Dinamically enqueue styles and scripts in admin area
 	 *
 	 * @param  array  $scripts file paths or wp related keywords of embedded files
-	 * @param  string $type    style | script
+	 * @param  array $page    pages id where to load scripts
 	 * @return null
 	 */
-	public static function admin_enqueue( $scripts = array() )
+	public static function admin_enqueue( $scripts = array(), $pages = array() )
 	{
 		if ( empty( $scripts ) )
 			return;
@@ -65,7 +71,9 @@ class settings
 			endforeach;
 		endforeach;
 
-		return;
+		if ( !empty( $pages ) ) :
+			self::$enqueue_on_pages = $pages;
+		endif;
 	}
 
 	/**
@@ -90,19 +98,24 @@ class settings
 
 	/**
 	 * Print the methods to be called by the admin_enqueue_scripts hook
+	 *
+	 * @param  var $hook      page id or filename passed by admin_enqueue_scripts
 	 * @return null
 	 */
-	public function admin_scripts()
+	public function admin_scripts( $hook )
 	{
-		// dd(self::$enqueues);
-		foreach ( self::$enqueues as $enqueue ) :
-			if ( $enqueue === 'wp_enqueue_media' ) :
-				$enqueue();
-			else :
-				foreach( $enqueue as $key => $val ) {
-					$key($val, $val);
-				}
-			endif;
-		endforeach;
+		self::$enqueue_on_pages = ( !empty( self::$enqueue_on_pages ) ) ? self::$enqueue_on_pages : array( $hook );
+
+		if ( in_array( $hook, self::$enqueue_on_pages ) ) :
+			foreach ( self::$enqueues as $enqueue ) :
+				if ( $enqueue === 'wp_enqueue_media' ) :
+					$enqueue();
+				else :
+					foreach( $enqueue as $key => $val ) {
+						$key($val, $val);
+					}
+				endif;
+			endforeach;
+		endif;
 	}
 }

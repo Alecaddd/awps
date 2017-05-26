@@ -49,22 +49,27 @@ class init
 
         new custom();
 
-        // return $this->adminArea();
+        return $this->adminArea();
     }
 
     // Testing
-    // private function adminArea()
-    // {
-    //     settings::admin_enqueue( array(
-    //         'script' => array( 
-    //             'jquery', 
-    //             'media_uplaoder'
-    //         ),
-    //         'style' => array( 
-    //             '/assets/css/style.min.css',
-    //             'wp-color-picker'
-    //         )
-    //     ));
-    //     new settings();
-    // }
+    private function adminArea()
+    {
+        $scripts = array(
+            'script' => array( 
+                'jquery', 
+                'media_uplaoder'
+            ),
+            'style' => array( 
+                '/assets/css/style.min.css',
+                'wp-color-picker'
+            )
+        );
+
+        $pages = array( 'options-general.php' );
+
+        settings::admin_enqueue( $scripts, $pages );
+
+        new settings();
+    }
 }
