@@ -28,6 +28,10 @@
 	.p-#{$i} {
 		padding: $gutter * $i;
 	}
+
+	.m-#{$i} {
+		margin: $gutter * $i;
+	}
 }
 
 @each $mg, $margin in $margins {
