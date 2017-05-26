@@ -82,9 +82,9 @@ class settings
 		self::$script_path = pathinfo( $script );
 
 		if ( isset( self::$script_path[ 'extension' ] ) ) :
-			return ( $type === 'style' ) ? [ 'wp_enqueue_style' => get_template_directory_uri() . $script ] : [ 'wp_enqueue_script' => get_template_directory_uri() . $script ];
+			return ( $type === 'style' ) ? array( 'wp_enqueue_style' => get_template_directory_uri() . $script ) : array( 'wp_enqueue_script' => get_template_directory_uri() . $script );
 		else :
-			return ( $type === 'style' ) ? [ 'wp_enqueue_style' => $script ] : [ 'wp_enqueue_script' => $script ];
+			return ( $type === 'style' ) ? array( 'wp_enqueue_style' => $script ) : array( 'wp_enqueue_script' => $script );
 		endif;
 	}
 
