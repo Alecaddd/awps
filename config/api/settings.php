@@ -43,6 +43,7 @@ class settings
 	private static $enqueue_on_pages = array();
 
 	private static $admin_pages = array();
+	private static $admin_subpages = array();
 
 	/**
 	 * Enqueue scripts if $eneuques not empty
@@ -109,6 +110,7 @@ class settings
 	 */
 	public function admin_scripts( $hook )
 	{
+		// dd( $hook );
 		self::$enqueue_on_pages = ( !empty( self::$enqueue_on_pages ) ) ? self::$enqueue_on_pages : array( $hook );
 
 		if ( in_array( $hook, self::$enqueue_on_pages ) ) :
@@ -130,10 +132,20 @@ class settings
 		// dd(self::$admin_pages);
 	}
 
+	public static function add_admin_subpages( $pages ) 
+	{
+		self::$admin_subpages = $pages;
+		// dd(self::$admin_pages);
+	}
+
 	public function add_admin_menu()
 	{
 		foreach( self::$admin_pages as $page ) {
 			add_menu_page( $page['page_title'], $page['menu_title'], $page['capability'], $page['menu_slug'], $page['callback'], get_template_directory_uri() . $page['icon_url'], $page['position'] );
+		}
+
+		foreach( self::$admin_subpages as $page ) {
+			add_submenu_page( $page['parent_slug'], $page['page_title'], $page['menu_title'], $page['capability'], $page['menu_slug'], $page['callback'] );
 		}
 	}
 }

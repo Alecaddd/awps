@@ -49,7 +49,7 @@ class init
 
         new custom();
 
-        return $this->adminArea();
+        $this->adminArea();
     }
 
     // Testing
@@ -68,27 +68,47 @@ class init
         );
 
         // Pages array to where enqueue scripts
-        $pages = array( 'options-general.php' );
+        $pages = array( 'toplevel_page_awps' );
 
         // Enqueue files
         settings::admin_enqueue( $scripts, $pages );
 
         $admin_pages = array(
-            array (
+            array(
                 'page_title' => 'AWPS Admin Page',
                 'menu_title' => 'AWPS',
                 'capability' => 'manage_options',
                 'menu_slug' => 'awps',
-                'callback' => function() { echo '<h1>Test Page</h1>'; },
+                'callback' => function() { require_once( get_template_directory() . '/views/admin/index.php' ); },
                 'icon_url' => '/assets/images/awps-logo.png',
                 'position' => 110,
             )
         );
 
+        $admin_subpages = array(
+            array(
+                'parent_slug' => 'awps',
+                'page_title' => 'Awps Settings Page',
+                'menu_title' => 'Settings',
+                'capability' => 'manage_options',
+                'menu_slug' => 'awps',
+                'callback' => function() { require_once( get_template_directory() . '/views/admin/index.php' ); }
+            ),
+            array(
+                'parent_slug' => 'awps',
+                'page_title' => 'Awps FAQ',
+                'menu_title' => 'FAQ',
+                'capability' => 'manage_options',
+                'menu_slug' => 'awps_faq',
+                'callback' => function() { echo '<div class="wrap"><h1>FAQ Page</h1></div>'; }
+            )
+        );
+
         // Create multiple Admin menu pages
         settings::add_admin_pages( $admin_pages );
+        settings::add_admin_subpages( $admin_subpages );
 
-        // Init the class when all the settings have been specified
+        // Init the class after all the settings have been specified
         new settings();
     }
 }
