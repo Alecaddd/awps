@@ -42,6 +42,8 @@ class settings
 	 */
 	private static $enqueue_on_pages = array();
 
+	private static $admin_pages = array();
+
 	/**
 	 * Enqueue scripts if $eneuques not empty
 	 */
@@ -49,6 +51,9 @@ class settings
 	{
 		if ( !empty( self::$enqueues ) )
 			add_action( 'admin_enqueue_scripts', array( &$this, 'admin_scripts' ) );
+
+		if ( !empty( self::$admin_pages ) )
+			add_action( 'admin_menu', array( &$this, 'add_admin_menu' ) );
 	}
 
 	/**
@@ -117,5 +122,18 @@ class settings
 				endif;
 			endforeach;
 		endif;
+	}
+
+	public static function add_admin_pages( $pages ) 
+	{
+		self::$admin_pages = $pages;
+		// dd(self::$admin_pages);
+	}
+
+	public function add_admin_menu()
+	{
+		foreach( self::$admin_pages as $page ) {
+			add_menu_page( $page['page_title'], $page['menu_title'], $page['capability'], $page['menu_slug'], $page['callback'], get_template_directory_uri() . $page['icon_url'], $page['position'] );
+		}
 	}
 }

@@ -55,6 +55,7 @@ class init
     // Testing
     private function adminArea()
     {
+        // Scripts multidimensional array with styles and scripts
         $scripts = array(
             'script' => array( 
                 'jquery', 
@@ -66,10 +67,28 @@ class init
             )
         );
 
+        // Pages array to where enqueue scripts
         $pages = array( 'options-general.php' );
 
+        // Enqueue files
         settings::admin_enqueue( $scripts, $pages );
 
+        $admin_pages = array(
+            array (
+                'page_title' => 'AWPS Admin Page',
+                'menu_title' => 'AWPS',
+                'capability' => 'manage_options',
+                'menu_slug' => 'awps',
+                'callback' => function() { echo '<h1>Test Page</h1>'; },
+                'icon_url' => '/assets/images/awps-logo.png',
+                'position' => 110,
+            )
+        );
+
+        // Create multiple Admin menu pages
+        settings::add_admin_pages( $admin_pages );
+
+        // Init the class when all the settings have been specified
         new settings();
     }
 }
