@@ -5,15 +5,18 @@ namespace awps\setup;
 /**
  * enqueue.
  */
-class enqueue {
+class enqueue 
+{
     /*
         Contrusct class to activate actions and hooks as soon as the class is initialized
     */
-    public function __construct() {
+    public function __construct() 
+    {
         add_action('wp_enqueue_scripts', array(&$this, 'enqueue_scripts'));
     }
 
-    public function enqueue_scripts() {
+    public function enqueue_scripts() 
+    {
 
         // Deregister the built-in version of jQuery from WordPress
         // wp_deregister_script( 'jquery' );

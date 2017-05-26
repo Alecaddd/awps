@@ -4,7 +4,9 @@ namespace awps;
 
 use awps\core\tags;
 use awps\core\widgets;
-use awps\core\customizer;
+use awps\api\customizer;
+use awps\api\settings;
+use awps\api\rest;
 use awps\setup\setup;
 use awps\setup\menus;
 use awps\setup\header;
@@ -19,8 +21,8 @@ class init
     private static $loaded = false;
 
     /*
-        Construct class to activate actions and hooks as soon as the class is initialized
-    */
+     * Construct class to activate actions and hooks as soon as the class is initialized
+     */
     public function __construct()
     {
         $this->initClasses();
@@ -46,5 +48,23 @@ class init
         new widgets();
 
         new custom();
+
+        // return $this->adminArea();
     }
+
+    // Testing
+    // private function adminArea()
+    // {
+    //     settings::admin_enqueue( array(
+    //         'script' => array( 
+    //             'jquery', 
+    //             'media_uplaoder'
+    //         ),
+    //         'style' => array( 
+    //             '/assets/css/style.min.css',
+    //             'wp-color-picker'
+    //         )
+    //     ));
+    //     new settings();
+    // }
 }
