@@ -42,18 +42,27 @@ class settings
 	 */
 	private static $enqueue_on_pages = array();
 
+	/**
+	 * Admin pages array
+	 * @var private array
+	 */
 	private static $admin_pages = array();
+
+	/**
+	 * Admin subpages array
+	 * @var private array
+	 */
 	private static $admin_subpages = array();
 
 	/**
-	 * Enqueue scripts if $eneuques not empty
+	 * Constructor
 	 */
 	public function __construct()
 	{
 		if ( !empty( self::$enqueues ) )
 			add_action( 'admin_enqueue_scripts', array( &$this, 'admin_scripts' ) );
 
-		if ( !empty( self::$admin_pages ) )
+		if ( !empty( self::$admin_pages ) || !empty( self::$admin_subpages ) )
 			add_action( 'admin_menu', array( &$this, 'add_admin_menu' ) );
 	}
 
@@ -62,7 +71,6 @@ class settings
 	 *
 	 * @param  array  $scripts file paths or wp related keywords of embedded files
 	 * @param  array $page    pages id where to load scripts
-	 * @return null
 	 */
 	public static function admin_enqueue( $scripts = array(), $pages = array() )
 	{
@@ -106,7 +114,6 @@ class settings
 	 * Print the methods to be called by the admin_enqueue_scripts hook
 	 *
 	 * @param  var $hook      page id or filename passed by admin_enqueue_scripts
-	 * @return null
 	 */
 	public function admin_scripts( $hook )
 	{
@@ -126,18 +133,30 @@ class settings
 		endif;
 	}
 
+	/**
+	 * Injects user's defined pages array into $admin_pages array
+	 *
+	 * @param  var $pages      array of user's defined pages
+	 */
 	public static function add_admin_pages( $pages ) 
 	{
 		self::$admin_pages = $pages;
-		// dd(self::$admin_pages);
 	}
 
+	/**
+	 * Injects user's defined pages array into $admin_subpages array
+	 *
+	 * @param  var $pages      array of user's defined pages
+	 */
 	public static function add_admin_subpages( $pages ) 
 	{
 		self::$admin_subpages = $pages;
-		// dd(self::$admin_pages);
 	}
 
+	/**
+	 * Call WordPress methods to generate Admin pages and subpages
+	 *
+	 */
 	public function add_admin_menu()
 	{
 		foreach( self::$admin_pages as $page ) {
