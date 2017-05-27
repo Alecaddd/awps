@@ -72,7 +72,7 @@ class init
 		$pages = array( 'toplevel_page_awps' );
 
 		// Enqueue files in Admin area
-		settings::admin_enqueue( $scripts, $pages );
+		// settings::admin_enqueue( $scripts, $pages );
 
 		$admin_pages = array(
 			array(
@@ -109,12 +109,14 @@ class init
 		settings::add_admin_pages( $admin_pages );
 		settings::add_admin_subpages( $admin_subpages );
 
+		$callback = new settingsCallback();
+
 		// Register settings
 		$args = array(
 			array(
 				'option_group' => 'awps_options_group',
-				'option_name' => 'awps_test',
-				'callback' => array( new settingsCallback(), 'awps_sanitize_test' )
+				'option_name' => 'first_name',
+				'callback' => array( $callback, 'awps_options_group' )
 			),
 			array(
 				'option_group' => 'awps_options_group',
@@ -123,6 +125,35 @@ class init
 		);
 
 		settings::add_settings( $args );
+
+		// Register section
+		$args = array(
+			array(
+				'id' => 'awps_admin_index',
+				'title' => 'Settings',
+				'callback' => array( $callback, 'awps_admin_index' ),
+				'page' => 'awps'
+			)
+		);
+
+		settings::add_sections( $args );
+
+		// add_settings_field( $id, $title, $callback, $page, $section = 'default', $args = array() )
+		$args = array(
+			array(
+				'id' => 'first_name',
+				'title' => 'First Name',
+				'callback' => array( $callback, 'first_name' ),
+				'page' => 'awps',
+				'section' => 'awps_admin_index',
+				'args' => array(
+					'label_for' => 'first_name',
+					'class' => 'background-white'
+				)
+			)
+		);
+
+		settings::add_fields( $args );
 
 		// Init the class after all the settings have been specified
 		new settings();

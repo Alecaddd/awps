@@ -15,7 +15,7 @@
 	
 	<form method="post" action="options.php">
 		<?php settings_fields( 'awps_options_group' ); ?>
+		<?php do_settings_sections( 'awps' ); ?>
+		<?php submit_button(); ?>
 	</form>
-
-	<?php submit_button(); ?>
 </div>

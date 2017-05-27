@@ -178,23 +178,51 @@ class settings
 		}
 	}
 
+	/**
+	 * Injects user's defined settings array into $settings array
+	 *
+	 * @param  var $args      array of user's defined settings
+	 */
 	public static function add_settings( $args ) 
 	{
 		self::$settings = $args;
 	}
 
 	/**
-	 * Call WordPress methods to register settings, options, and fields
+	 * Injects user's defined sections array into $sections array
+	 *
+	 * @param  var $args      array of user's defined sections
 	 */
-	public function register_custom_settings() {
-		// register_setting( $option_group, $option_name, $callback )
+	public static function add_sections( $args ) 
+	{
+		self::$sections = $args;
+	}
+
+	/**
+	 * Injects user's defined fields array into $fields array
+	 *
+	 * @param  var $args      array of user's defined fields
+	 */
+	public static function add_fields( $args ) 
+	{
+		self::$fields = $args;
+	}
+
+	/**
+	 * Call WordPress methods to register settings, sections, and fields
+	 */
+	public function register_custom_settings() 
+	{
 		foreach( self::$settings as $setting ) {
-			// dd($setting["callback"]);
 			register_setting( $setting["option_group"], $setting["option_name"], ( isset( $setting["callback"] ) ? $setting["callback"] : '' ) );
 		}
 
-		// add_settings_section( $id, $title, $callback, $page )
+		foreach( self::$sections as $section ) {
+			add_settings_section( $section["id"], $section["title"], ( isset( $section["callback"] ) ? $section["callback"] : '' ), $section["page"] );
+		}
 
-		// add_settings_field( $id, $title, $callback, $page, $section = 'default', $args = array() )
+		foreach( self::$fields as $field ) {
+			add_settings_field( $field["id"], $field["title"], ( isset( $field["callback"] ) ? $field["callback"] : '' ), $field["page"], $field["section"], ( isset( $field["args"] ) ? $field["args"] : '' ) );
+		}
 	}
 }
