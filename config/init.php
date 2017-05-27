@@ -6,6 +6,7 @@ use awps\core\tags;
 use awps\core\widgets;
 use awps\api\customizer;
 use awps\api\settings;
+use awps\api\callback\settingsCallback;
 use awps\api\rest;
 use awps\setup\setup;
 use awps\setup\menus;
@@ -70,7 +71,7 @@ class init
 		// Pages array to where enqueue scripts
 		$pages = array( 'toplevel_page_awps' );
 
-		// Enqueue files
+		// Enqueue files in Admin area
 		settings::admin_enqueue( $scripts, $pages );
 
 		$admin_pages = array(
@@ -104,9 +105,24 @@ class init
 			)
 		);
 
-		// Create multiple Admin menu pages
+		// Create multiple Admin menu pages and subpages
 		settings::add_admin_pages( $admin_pages );
 		settings::add_admin_subpages( $admin_subpages );
+
+		// Register settings
+		$args = array(
+			array(
+				'option_group' => 'awps_options_group',
+				'option_name' => 'awps_test',
+				'callback' => array( new settingsCallback(), 'awps_sanitize_test' )
+			),
+			array(
+				'option_group' => 'awps_options_group',
+				'option_name' => 'awps_test2'
+			)
+		);
+
+		settings::add_settings( $args );
 
 		// Init the class after all the settings have been specified
 		new settings();

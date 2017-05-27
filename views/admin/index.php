@@ -11,4 +11,11 @@
 
 <div class="wrap">
 	<h1>AWPS Settings Page</h1>
+	<?php settings_errors(); ?>
+	
+	<form method="post" action="options.php">
+		<?php settings_fields( 'awps_options_group' ); ?>
+	</form>
+
+	<?php submit_button(); ?>
 </div>

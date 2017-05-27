@@ -7,11 +7,19 @@
 
 namespace awps\api;
 
+// use awps\api\callback\settingsCallback;
+
 /**
  * Settings API Class
  */
 class settings
 {
+	/**
+	 * Settings array
+	 * @var private array
+	 */
+	private static $settings = array();
+
 	/**
 	 * Sections array
 	 * @var private array
@@ -64,6 +72,9 @@ class settings
 
 		if ( !empty( self::$admin_pages ) || !empty( self::$admin_subpages ) )
 			add_action( 'admin_menu', array( &$this, 'add_admin_menu' ) );
+
+		if ( !empty( self::$settings ) )
+			add_action( 'admin_init', array( &$this, 'register_custom_settings' ) );
 	}
 
 	/**
@@ -155,7 +166,6 @@ class settings
 
 	/**
 	 * Call WordPress methods to generate Admin pages and subpages
-	 *
 	 */
 	public function add_admin_menu()
 	{
@@ -166,5 +176,25 @@ class settings
 		foreach( self::$admin_subpages as $page ) {
 			add_submenu_page( $page['parent_slug'], $page['page_title'], $page['menu_title'], $page['capability'], $page['menu_slug'], $page['callback'] );
 		}
+	}
+
+	public static function add_settings( $args ) 
+	{
+		self::$settings = $args;
+	}
+
+	/**
+	 * Call WordPress methods to register settings, options, and fields
+	 */
+	public function register_custom_settings() {
+		// register_setting( $option_group, $option_name, $callback )
+		foreach( self::$settings as $setting ) {
+			// dd($setting["callback"]);
+			register_setting( $setting["option_group"], $setting["option_name"], ( isset( $setting["callback"] ) ? $setting["callback"] : '' ) );
+		}
+
+		// add_settings_section( $id, $title, $callback, $page )
+
+		// add_settings_field( $id, $title, $callback, $page, $section = 'default', $args = array() )
 	}
 }
