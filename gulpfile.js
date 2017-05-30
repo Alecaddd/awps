@@ -32,10 +32,14 @@ var exposeConfig = { expose: { jquery: 'jQuery' } };
 var projectURL   = 'http://wp.dev';
 
 var styleSRC     = './src/scss/style.scss';
+var styleAdminSRC = './src/scss/admin.scss';
 var styleURL     = './assets/css/';
 var mapURL       = './';
 
-var jsSRC        = './src/scripts/main.js';
+var jsSRC        = './src/scripts/';
+var jsFront      = 'main.js';
+var jsAdmin      = 'admin.js';
+var jsFiles      = [ jsFront, jsAdmin ];
 var jsURL        = './assets/js/';
 
 var imgSRC       = './src/images/**/*';
@@ -60,7 +64,7 @@ gulp.task( 'browser-sync', function() {
 });
 
 gulp.task( 'styles', function() {
-	gulp.src( styleSRC )
+	gulp.src( [ styleSRC, styleAdminSRC ] )
 		.pipe( sourcemaps.init() )
 		.pipe( sass({
 			errLogToConsole: true,
@@ -75,19 +79,24 @@ gulp.task( 'styles', function() {
 });
 
 gulp.task( 'js', function() {
-	return browserify({
-		entries: [jsSRC]
-	})
-	.transform( babelify, { presets: [ 'es2015' ] } )
-	.bundle()
-	.pipe( source( 'main.min.js' ) )
-	.pipe( buffer() )
-	.pipe( gulpif( options.has( 'production' ), stripDebug() ) )
-	.pipe( sourcemaps.init({ loadMaps: true }) )
-	.pipe( uglify() )
-	.pipe( sourcemaps.write( '.' ) )
-	.pipe( gulp.dest( jsURL ) )
-	.pipe( browserSync.stream() );
+	jsFiles.map( function( entry ) {
+		return browserify({
+			entries: [jsSRC + entry]
+		})
+		.transform( babelify, { presets: [ 'es2015' ] } )
+		.bundle()
+		.pipe( source( entry ) )
+		.pipe( rename( {
+			extname: '.min.js'
+        } ) )
+		.pipe( buffer() )
+		.pipe( gulpif( options.has( 'production' ), stripDebug() ) )
+		.pipe( sourcemaps.init({ loadMaps: true }) )
+		.pipe( uglify() )
+		.pipe( sourcemaps.write( '.' ) )
+		.pipe( gulp.dest( jsURL ) )
+		.pipe( browserSync.stream() );
+	});
  });
 
 gulp.task( 'images', function() {
@@ -105,7 +114,7 @@ function triggerPlumber( src, url ) {
 }
 
  gulp.task( 'default', ['styles', 'js', 'images', 'fonts'], function() {
-	gulp.src( jsURL + 'main.min.js' )
+	gulp.src( jsURL + 'admin.min.js' )
 		.pipe( notify({ message: 'Assets Compiled!' }) );
  });
 
@@ -115,6 +124,6 @@ function triggerPlumber( src, url ) {
 	gulp.watch( jsWatch, [ 'js', reload ] );
 	gulp.watch( imgWatch, [ 'images' ] );
 	gulp.watch( fontsWatch, [ 'fonts' ] );
-	gulp.src( jsURL + 'main.min.js' )
+	gulp.src( jsURL + 'admin.min.js' )
 		.pipe( notify({ message: 'Gulp is Watching, Happy Coding!' }) );
  });
