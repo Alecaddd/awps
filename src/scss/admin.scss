@@ -1,0 +1,10 @@
+/*--------------------------------------------------------------
+# Add all your styles for the Admin area
+--------------------------------------------------------------*/
+.wp-core-ui .button-primary {
+	transition: all ease;
+	background: #27c5be;
+	border-color: #00ffc1 #07ca70 #00ca63;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
+	box-shadow: 0 10px 6px -10px rgba(0, 0, 0, 0.7);
+}
