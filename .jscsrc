@@ -3,6 +3,7 @@
     "fileExtensions": [ ".js" ],
     "excludeFiles": [
         "assets/js/customizer.js",
+        "assets/js/admin.min.js",
         "assets/js/main.min.js",
         "gulpfile.js"
     ]
