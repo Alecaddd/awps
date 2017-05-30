@@ -1,3 +1,4 @@
-assets/js/*.js
-assets/js/*
+assets/js/admin.min.js
+assets/js/main.min.js
+assets/js/customizer.js
 gulpfile.js
