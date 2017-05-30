@@ -7,8 +7,6 @@
 
 namespace awps\api;
 
-// use awps\api\callback\settingsCallback;
-
 /**
  * Settings API Class
  */

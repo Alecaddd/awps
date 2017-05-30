@@ -17,7 +17,7 @@ class admin extends settings
 	 */
 	public function __construct()
 	{
-		// $this->enqueue();
+		$this->enqueue();
 
 		$this->admin_pages();
 
@@ -40,10 +40,11 @@ class admin extends settings
 		$scripts = array(
 			'script' => array( 
 				'jquery', 
-				'media_uplaoder'
+				'media_uplaoder',
+				'/assets/js/admin.min.js'
 			),
 			'style' => array( 
-				'/assets/css/style.min.css',
+				'/assets/css/admin.min.css',
 				'wp-color-picker'
 			)
 		);
