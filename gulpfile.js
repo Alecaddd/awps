@@ -28,7 +28,6 @@ var browserSync  = require( 'browser-sync' ).create();
 var reload       = browserSync.reload;
 
 // Project related variables
-var exposeConfig = { expose: { jquery: 'jQuery' } };
 var projectURL   = 'http://wp.dev';
 
 var styleSRC     = './src/scss/style.scss';
