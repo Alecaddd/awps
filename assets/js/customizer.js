@@ -12,7 +12,7 @@
 (function( $ ) {
 
 	// Site title and description.
-	wp.customize( 'blogname', awpUpdateSiteText( '.site--title a', value ) );
+	wp.customize( 'blogname', awpUpdateSiteText( '.site-title a', value ) );
 
 	wp.customize( 'blogdescription', awpUpdateSiteText( '.site-description', value ) );
 
