@@ -110,13 +110,7 @@ class settings
 		if ( $script === 'media_uplaoder' )
 			return 'wp_enqueue_media';
 
-		self::$script_path = pathinfo( $script );
-
-		if ( isset( self::$script_path[ 'extension' ] ) ) :
-			return ( $type === 'style' ) ? array( 'wp_enqueue_style' => get_template_directory_uri() . $script ) : array( 'wp_enqueue_script' => get_template_directory_uri() . $script );
-		else :
-			return ( $type === 'style' ) ? array( 'wp_enqueue_style' => $script ) : array( 'wp_enqueue_script' => $script );
-		endif;
+		return ( $type === 'style' ) ? array( 'wp_enqueue_style' => $script ) : array( 'wp_enqueue_script' => $script );
 	}
 
 	/**
@@ -168,7 +162,7 @@ class settings
 	public function add_admin_menu()
 	{
 		foreach( self::$admin_pages as $page ) {
-			add_menu_page( $page['page_title'], $page['menu_title'], $page['capability'], $page['menu_slug'], $page['callback'], get_template_directory_uri() . $page['icon_url'], $page['position'] );
+			add_menu_page( $page['page_title'], $page['menu_title'], $page['capability'], $page['menu_slug'], $page['callback'], $page['icon_url'], $page['position'] );
 		}
 
 		foreach( self::$admin_subpages as $page ) {

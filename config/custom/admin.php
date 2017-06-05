@@ -41,10 +41,10 @@ class admin extends settings
 			'script' => array( 
 				'jquery', 
 				'media_uplaoder',
-				'/assets/js/admin.min.js'
+				get_template_directory_uri() . '/assets/js/admin.min.js'
 			),
 			'style' => array( 
-				'/assets/css/admin.min.css',
+				get_template_directory_uri() . '/assets/css/admin.min.css',
 				'wp-color-picker'
 			)
 		);
@@ -65,7 +65,7 @@ class admin extends settings
 				'capability' => 'manage_options',
 				'menu_slug' => 'awps',
 				'callback' => function() { require_once( get_template_directory() . '/views/admin/index.php' ); },
-				'icon_url' => '/assets/images/awps-logo.png',
+				'icon_url' => get_template_directory_uri() . '/assets/images/awps-logo.png',
 				'position' => 110,
 			)
 		);
