@@ -7,7 +7,7 @@ use awps\api\callback\settingsCallback;
 
 /**
  * Admin
- * use it to write your admin realted methods by extending settings or customizer api.
+ * use it to write your admin related methods by extending the settings api class.
  */
 
 class admin extends settings
