@@ -66,13 +66,13 @@ class settings
 	public function __construct()
 	{
 		if ( !empty( self::$enqueues ) )
-			add_action( 'admin_enqueue_scripts', array( &$this, 'admin_scripts' ) );
+			add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );
 
 		if ( !empty( self::$admin_pages ) || !empty( self::$admin_subpages ) )
-			add_action( 'admin_menu', array( &$this, 'add_admin_menu' ) );
+			add_action( 'admin_menu', array( $this, 'add_admin_menu' ) );
 
 		if ( !empty( self::$settings ) )
-			add_action( 'admin_init', array( &$this, 'register_custom_settings' ) );
+			add_action( 'admin_init', array( $this, 'register_custom_settings' ) );
 	}
 
 	/**

@@ -13,25 +13,31 @@ use awps\api\callback\settingsCallback;
 class admin extends settings
 {
 	/**
+	 * Callback class
+	 * @var class instance
+	 */
+	private static $callback;
+
+	/**
 	 * Constructor
 	 */
 	public function __construct()
 	{
+		self::$callback = new settingsCallback();
+
 		$this->enqueue();
 
 		$this->admin_pages();
 
 		$this->admin_subpages();
 
-		$callback = new settingsCallback();
+		$this->settings( self::$callback );
 
-		$this->settings( $callback );
+		$this->sections( self::$callback );
 
-		$this->sections( $callback );
+		$this->fields( self::$callback );
 
-		$this->fields( $callback );
-
-		$this->init_settings_api();
+		parent::__construct();
 	}
 
 	private function enqueue()
@@ -119,7 +125,7 @@ class admin extends settings
 
 	private function sections( $callback )
 	{
-		// Register section
+		// Register sections
 		$args = array(
 			array(
 				'id' => 'awps_admin_index',
@@ -134,7 +140,7 @@ class admin extends settings
 
 	private function fields( $callback )
 	{
-		// add_settings_field( $id, $title, $callback, $page, $section = 'default', $args = array() )
+		// Register fields
 		$args = array(
 			array(
 				'id' => 'first_name',
@@ -150,10 +156,5 @@ class admin extends settings
 		);
 
 		settings::add_fields( $args );
-	}
-
-	private function init_settings_api()
-	{
-		parent::__construct();
 	}
 }
