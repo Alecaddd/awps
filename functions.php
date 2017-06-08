@@ -8,11 +8,6 @@
  * @package awps
  */
 
-/**
- * Implement custom helpers functions.
- */
-require_once dirname( __FILE__ ) . '/config/helpers.php';
-
 if ( file_exists( dirname( __FILE__ ) . '/vendor/autoload.php' ) ) :
 	require_once dirname( __FILE__ ) . '/vendor/autoload.php';
 endif;

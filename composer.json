@@ -17,6 +17,7 @@
     	"vlucas/phpdotenv": "^2.4"
     },
 	"autoload": {
-		"psr-4": {"awps\\": "./config"}
+		"psr-4": {"awps\\": "./config"},
+		"files": ["./config/helpers.php"]
 	}
 }
