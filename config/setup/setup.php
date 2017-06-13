@@ -9,8 +9,8 @@ class setup
     */
     public function __construct()
     {
-        add_action( 'after_setup_theme', array(&$this, 'setup' ));
-        add_action( 'after_setup_theme', array(&$this, 'content_width' ), 0);
+        add_action( 'after_setup_theme', array($this, 'setup' ));
+        add_action( 'after_setup_theme', array($this, 'content_width' ), 0);
     }
 
     public function setup()

@@ -12,7 +12,7 @@ class menus
     */
     public function __construct()
     {
-        add_action('after_setup_theme', array(&$this, 'menus'));
+        add_action('after_setup_theme', array($this, 'menus'));
     }
 
     public function menus()

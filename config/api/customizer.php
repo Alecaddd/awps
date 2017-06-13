@@ -17,8 +17,8 @@ class customizer
 	 */
 	public function __construct() 
 	{
-		add_action( 'customize_register', array( &$this, 'setup' ) );
-		add_action( 'customize_preview_init', array( &$this, 'preview' ) );
+		add_action( 'customize_register', array( $this, 'setup' ) );
+		add_action( 'customize_preview_init', array( $this, 'preview' ) );
 	}
 
 	/**

@@ -12,7 +12,7 @@ class extras
 	*/
 	public function __construct()
 	{
-		add_filter('body_class', array(&$this, 'body_class'));
+		add_filter('body_class', array($this, 'body_class'));
 	}
 
 	public function body_class($classes)

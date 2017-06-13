@@ -16,8 +16,8 @@ class acf
     */
     public function __construct()
     {
-        add_filter('acf/settings/save_json', array(&$this, 'ritual_acf_json_save_point'));
-        add_filter('acf/settings/load_json', array(&$this, 'ritual_acf_json_load_point'));
+        add_filter('acf/settings/save_json', array($this, 'ritual_acf_json_save_point'));
+        add_filter('acf/settings/load_json', array($this, 'ritual_acf_json_load_point'));
     }
 
     public function ritual_acf_json_save_point($path)

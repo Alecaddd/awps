@@ -12,7 +12,7 @@ class widgets
     */
     public function __construct()
     {
-        add_action('widgets_init', array(&$this, 'widgets_init'));
+        add_action('widgets_init', array($this, 'widgets_init'));
     }
 
     /*

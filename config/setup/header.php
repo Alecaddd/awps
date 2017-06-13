@@ -12,7 +12,7 @@ class header
     */
     public function __construct()
     {
-        add_action('after_setup_theme', array(&$this, 'setup'));
+        add_action('after_setup_theme', array($this, 'setup'));
     }
 
     public function setup()
@@ -26,7 +26,7 @@ class header
             'width' => 1000,
             'height' => 250,
             'flex-height' => true,
-            'wp-head-callback' => array(&$this, 'header_style'),
+            'wp-head-callback' => array($this, 'header_style'),
         )));
     }
 

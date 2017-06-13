@@ -12,8 +12,8 @@ class tags
     */
     public function __construct()
     {
-        add_action('edit_category', array(&$this, 'category_transient_flusher'));
-        add_action('save_post', array(&$this, 'category_transient_flusher'));
+        add_action('edit_category', array($this, 'category_transient_flusher'));
+        add_action('save_post', array($this, 'category_transient_flusher'));
     }
 
     public static function posted_on()

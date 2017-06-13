@@ -14,7 +14,7 @@ class jetpack
     */
     public function __construct()
     {
-        add_action('after_setup_theme', array(&$this, 'setup'));
+        add_action('after_setup_theme', array($this, 'setup'));
     }
 
     public function setup()
@@ -23,7 +23,7 @@ class jetpack
         // Add theme support for Infinite Scroll.
         add_theme_support('infinite-scroll', array(
             'container' => 'main',
-            'render' => array(&$this, 'infinite_scroll_render'),
+            'render' => array($this, 'infinite_scroll_render'),
             'footer' => 'page',
         ));
         // Add theme support for Responsive Videos.
