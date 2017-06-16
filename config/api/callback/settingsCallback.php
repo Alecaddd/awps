@@ -12,6 +12,16 @@ namespace awps\api\callback;
  */
 class settingsCallback
 {
+	public static function admin_index() 
+	{
+		return require_once( get_template_directory() . '/views/admin/index.php' );
+	}
+
+	public static function admin_faq() 
+	{
+		echo '<div class="wrap"><h1>FAQ Page</h1></div>';
+	}
+
 	public static function awps_options_group( $input ) 
 	{
 		return $input;

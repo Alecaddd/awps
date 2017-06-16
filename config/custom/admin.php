@@ -16,14 +16,14 @@ class admin extends settings
 	 * Callback class
 	 * @var class instance
 	 */
-	private static $callback;
+	public $callback;
 
 	/**
 	 * Constructor
 	 */
 	public function __construct()
 	{
-		self::$callback = new settingsCallback();
+		$this->callback = new settingsCallback();
 
 		$this->enqueue();
 
@@ -31,11 +31,11 @@ class admin extends settings
 
 		$this->admin_subpages();
 
-		$this->settings( self::$callback );
+		$this->settings();
 
-		$this->sections( self::$callback );
+		$this->sections();
 
-		$this->fields( self::$callback );
+		$this->fields();
 
 		parent::__construct();
 	}
@@ -70,7 +70,7 @@ class admin extends settings
 				'menu_title' => 'AWPS',
 				'capability' => 'manage_options',
 				'menu_slug' => 'awps',
-				'callback' => function() { require_once( get_template_directory() . '/views/admin/index.php' ); },
+				'callback' => array( $this->callback, 'admin_index' ),
 				'icon_url' => get_template_directory_uri() . '/assets/images/awps-logo.png',
 				'position' => 110,
 			)
@@ -89,7 +89,7 @@ class admin extends settings
 				'menu_title' => 'Settings',
 				'capability' => 'manage_options',
 				'menu_slug' => 'awps',
-				'callback' => function() { require_once( get_template_directory() . '/views/admin/index.php' ); }
+				'callback' => array( $this->callback, 'admin_index' )
 			),
 			array(
 				'parent_slug' => 'awps',
@@ -97,7 +97,7 @@ class admin extends settings
 				'menu_title' => 'FAQ',
 				'capability' => 'manage_options',
 				'menu_slug' => 'awps_faq',
-				'callback' => function() { echo '<div class="wrap"><h1>FAQ Page</h1></div>'; }
+				'callback' => array( $this->callback, 'admin_faq' )
 			)
 		);
 
@@ -105,14 +105,14 @@ class admin extends settings
 		settings::add_admin_subpages( $admin_subpages );
 	}
 
-	private function settings( $callback )
+	private function settings()
 	{
 		// Register settings
 		$args = array(
 			array(
 				'option_group' => 'awps_options_group',
 				'option_name' => 'first_name',
-				'callback' => array( $callback, 'awps_options_group' )
+				'callback' => array( $this->callback, 'awps_options_group' )
 			),
 			array(
 				'option_group' => 'awps_options_group',
@@ -123,14 +123,14 @@ class admin extends settings
 		settings::add_settings( $args );
 	}
 
-	private function sections( $callback )
+	private function sections()
 	{
 		// Register sections
 		$args = array(
 			array(
 				'id' => 'awps_admin_index',
 				'title' => 'Settings',
-				'callback' => array( $callback, 'awps_admin_index' ),
+				'callback' => array( $this->callback, 'awps_admin_index' ),
 				'page' => 'awps'
 			)
 		);
@@ -138,14 +138,14 @@ class admin extends settings
 		settings::add_sections( $args );
 	}
 
-	private function fields( $callback )
+	private function fields()
 	{
 		// Register fields
 		$args = array(
 			array(
 				'id' => 'first_name',
 				'title' => 'First Name',
-				'callback' => array( $callback, 'first_name' ),
+				'callback' => array( $this->callback, 'first_name' ),
 				'page' => 'awps',
 				'section' => 'awps_admin_index',
 				'args' => array(
