@@ -6,7 +6,7 @@ use awps\core\tags;
 use awps\core\widgets;
 use awps\api\customizer;
 use awps\api\settings;
-use awps\api\rest;
+use awps\api\Widgets\TextWidget;
 use awps\setup\setup;
 use awps\setup\menus;
 use awps\setup\header;
@@ -41,6 +41,7 @@ class init
 		new enqueue();
 		new header();
 		new customizer();
+		new TextWidget();
 		new extras();
 		new jetpack();
 		new acf();
