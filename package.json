@@ -52,13 +52,15 @@
 		]
 	},
 	"browserify": {
-		"transform": [ "browserify-shim" ]
+		"transform": [
+			"browserify-shim"
+		]
 	},
 	"browser": {
 		"jquery": "./node_modules/jquery/dist/jquery.js"
 	},
 	"browserify-shim": {
-	    "jquery": "$"
+		"jquery": "$"
 	},
 	"license": "GPL-3.0"
 }
