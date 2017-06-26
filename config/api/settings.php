@@ -16,62 +16,67 @@ class settings
 	 * Settings array
 	 * @var private array
 	 */
-	private static $settings = array();
+	public $settings = array();
 
 	/**
 	 * Sections array
 	 * @var private array
 	 */
-	private static $sections = array();
+	public $sections = array();
 
 	/**
 	 * Fields array
 	 * @var private array
 	 */
-	private static $fields = array();
+	public $fields = array();
 
 	/**
 	 * Script path
 	 * @var string
 	 */
-	private static $script_path;
+	public $script_path;
 
 	/**
 	 * Enqueues array
 	 * @var private array
 	 */
-	private static $enqueues = array();
+	public $enqueues = array();
 
 	/**
 	 * Admin pages array to enqueue scripts
 	 * @var private array
 	 */
-	private static $enqueue_on_pages = array();
+	public $enqueue_on_pages = array();
 
 	/**
 	 * Admin pages array
 	 * @var private array
 	 */
-	private static $admin_pages = array();
+	public $admin_pages;
 
 	/**
 	 * Admin subpages array
 	 * @var private array
 	 */
-	private static $admin_subpages = array();
+	public $admin_subpages = array();
 
 	/**
 	 * Constructor
 	 */
 	public function __construct()
 	{
-		if ( !empty( self::$enqueues ) )
+		$this->admin_pages = array();
+	}
+
+	public function register()
+	{
+		if ( !empty( $this->enqueues ) )
 			add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );
 
-		if ( !empty( self::$admin_pages ) || !empty( self::$admin_subpages ) )
+		if ( !empty( $this->admin_pages ) || !empty( $this->admin_subpages ) )
 			add_action( 'admin_menu', array( $this, 'add_admin_menu' ) );
 
-		if ( !empty( self::$settings ) )
+		if ( !empty( $this->settings ) )
 			add_action( 'admin_init', array( $this, 'register_custom_settings' ) );
 	}
 
@@ -81,7 +86,7 @@ class settings
 	 * @param  array  $scripts file paths or wp related keywords of embedded files
 	 * @param  array $page    pages id where to load scripts
 	 */
-	public static function admin_enqueue( $scripts = array(), $pages = array() )
+	public function admin_enqueue( $scripts = array(), $pages = array() )
 	{
 		if ( empty( $scripts ) )
 			return;
@@ -89,13 +94,13 @@ class settings
 		$i = 0;
 		foreach ( $scripts as $key => $value ) :
 			foreach ( $value as $val ):
-				self::$enqueues[ $i ] = self::enqueue_script( $val, $key );
+				$this->enqueues[ $i ] = $this->enqueue_script( $val, $key );
 				$i++;
 			endforeach;
 		endforeach;
 
 		if ( !empty( $pages ) ) :
-			self::$enqueue_on_pages = $pages;
+			$this->enqueue_on_pages = $pages;
 		endif;
 	}
 
@@ -106,7 +111,7 @@ class settings
 	 * @param  var $type      style | script
 	 * @return variable functions
 	 */
-	private static function enqueue_script( $script, $type ) {
+	private function enqueue_script( $script, $type ) {
 		if ( $script === 'media_uplaoder' )
 			return 'wp_enqueue_media';
 
@@ -121,10 +126,10 @@ class settings
 	public function admin_scripts( $hook )
 	{
 		// dd( $hook );
-		self::$enqueue_on_pages = ( !empty( self::$enqueue_on_pages ) ) ? self::$enqueue_on_pages : array( $hook );
+		$this->enqueue_on_pages = ( !empty( $this->enqueue_on_pages ) ) ? $this->enqueue_on_pages : array( $hook );
 
-		if ( in_array( $hook, self::$enqueue_on_pages ) ) :
-			foreach ( self::$enqueues as $enqueue ) :
+		if ( in_array( $hook, $this->enqueue_on_pages ) ) :
+			foreach ( $this->enqueues as $enqueue ) :
 				if ( $enqueue === 'wp_enqueue_media' ) :
 					$enqueue();
 				else :
@@ -141,9 +146,31 @@ class settings
 	 *
 	 * @param  var $pages      array of user's defined pages
 	 */
-	public static function add_admin_pages( $pages ) 
+	public function addPages( $pages ) 
 	{
-		self::$admin_pages = $pages;
+		$this->admin_pages = $pages;
+
+		return $this;
+	}
+
+	public function withSubPage( $title = null )
+	{
+		$adminPage = $this->admin_pages[0];
+
+		$subpage = array(
+			array(
+				'parent_slug' => $adminPage['menu_slug'],
+				'page_title' => $adminPage['page_title'],
+				'menu_title' => ($title) ? $title : $adminPage['menu_title'],
+				'capability' => $adminPage['capability'],
+				'menu_slug' => $adminPage['menu_slug'],
+				'callback' => $adminPage['callback']
+			)
+		);
+
+		$this->admin_subpages = $subpage;
+
+		return $this;
 	}
 
 	/**
@@ -151,9 +178,11 @@ class settings
 	 *
 	 * @param  var $pages      array of user's defined pages
 	 */
-	public static function add_admin_subpages( $pages ) 
+	public function addSubPages( $pages ) 
 	{
-		self::$admin_subpages = $pages;
+		$this->admin_subpages = ( count( $this->admin_subpages ) == 0 ) ? $pages : array_merge( $this->admin_subpages, $pages );
+
+		return $this;
 	}
 
 	/**
@@ -161,11 +190,11 @@ class settings
 	 */
 	public function add_admin_menu()
 	{
-		foreach( self::$admin_pages as $page ) {
+		foreach( $this->admin_pages as $page ) {
 			add_menu_page( $page['page_title'], $page['menu_title'], $page['capability'], $page['menu_slug'], $page['callback'], $page['icon_url'], $page['position'] );
 		}
 
-		foreach( self::$admin_subpages as $page ) {
+		foreach( $this->admin_subpages as $page ) {
 			add_submenu_page( $page['parent_slug'], $page['page_title'], $page['menu_title'], $page['capability'], $page['menu_slug'], $page['callback'] );
 		}
 	}
@@ -175,9 +204,11 @@ class settings
 	 *
 	 * @param  var $args      array of user's defined settings
 	 */
-	public static function add_settings( $args ) 
+	public function add_settings( $args ) 
 	{
-		self::$settings = $args;
+		$this->settings = $args;
+
+		return $this;
 	}
 
 	/**
@@ -185,9 +216,11 @@ class settings
 	 *
 	 * @param  var $args      array of user's defined sections
 	 */
-	public static function add_sections( $args ) 
+	public function add_sections( $args ) 
 	{
-		self::$sections = $args;
+		$this->sections = $args;
+
+		return $this;
 	}
 
 	/**
@@ -195,9 +228,11 @@ class settings
 	 *
 	 * @param  var $args      array of user's defined fields
 	 */
-	public static function add_fields( $args ) 
+	public function add_fields( $args ) 
 	{
-		self::$fields = $args;
+		$this->fields = $args;
+
+		return $this;
 	}
 
 	/**
@@ -205,15 +240,15 @@ class settings
 	 */
 	public function register_custom_settings() 
 	{
-		foreach( self::$settings as $setting ) {
+		foreach( $this->settings as $setting ) {
 			register_setting( $setting["option_group"], $setting["option_name"], ( isset( $setting["callback"] ) ? $setting["callback"] : '' ) );
 		}
 
-		foreach( self::$sections as $section ) {
+		foreach( $this->sections as $section ) {
 			add_settings_section( $section["id"], $section["title"], ( isset( $section["callback"] ) ? $section["callback"] : '' ), $section["page"] );
 		}
 
-		foreach( self::$fields as $field ) {
+		foreach( $this->fields as $field ) {
 			add_settings_field( $field["id"], $field["title"], ( isset( $field["callback"] ) ? $field["callback"] : '' ), $field["page"], $field["section"], ( isset( $field["args"] ) ? $field["args"] : '' ) );
 		}
 	}

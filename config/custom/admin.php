@@ -27,9 +27,7 @@ class admin extends settings
 
 		$this->enqueue();
 
-		$this->admin_pages();
-
-		$this->admin_subpages();
+		$this->pages();
 
 		$this->settings();
 
@@ -37,7 +35,7 @@ class admin extends settings
 
 		$this->fields();
 
-		parent::__construct();
+		Settings::register();
 	}
 
 	private function enqueue()
@@ -62,7 +60,7 @@ class admin extends settings
 		settings::admin_enqueue( $scripts, $pages );
 	}
 
-	private function admin_pages()
+	private function pages()
 	{
 		$admin_pages = array(
 			array(
@@ -76,21 +74,7 @@ class admin extends settings
 			)
 		);
 
-		// Create multiple Admin menu pages and subpages
-		settings::add_admin_pages( $admin_pages );
-	}
-
-	private function admin_subpages()
-	{
 		$admin_subpages = array(
-			array(
-				'parent_slug' => 'awps',
-				'page_title' => 'Awps Settings Page',
-				'menu_title' => 'Settings',
-				'capability' => 'manage_options',
-				'menu_slug' => 'awps',
-				'callback' => array( $this->callback, 'admin_index' )
-			),
 			array(
 				'parent_slug' => 'awps',
 				'page_title' => 'Awps FAQ',
@@ -101,8 +85,8 @@ class admin extends settings
 			)
 		);
 
-		// Create multiple Admin menu subpages
-		settings::add_admin_subpages( $admin_subpages );
+		// Create multiple Admin menu pages and subpages
+		settings::addPages( $admin_pages )->withSubPage( 'Settings' )->addSubPages( $admin_subpages );
 	}
 
 	private function settings()
