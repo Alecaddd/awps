@@ -102,6 +102,8 @@ class settings
 		if ( !empty( $pages ) ) :
 			$this->enqueue_on_pages = $pages;
 		endif;
+
+		return $this;
 	}
 
 	/**

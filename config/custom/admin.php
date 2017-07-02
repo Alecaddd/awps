@@ -10,6 +10,54 @@ use awps\api\callback\settingsCallback;
  * use it to write your admin related methods by extending the settings api class.
  */
 
+$settings = new settings();
+$callback = new settingsCallback();
+
+$admin_pages = array(
+	array(
+		'page_title' => 'AWPS Admin Page',
+		'menu_title' => 'AWPS',
+		'capability' => 'manage_options',
+		'menu_slug' => 'awps',
+		'callback' => array( $callback, 'admin_index' ),
+		'icon_url' => get_template_directory_uri() . '/assets/images/awps-logo.png',
+		'position' => 110,
+	)
+);
+
+$admin_subpages = array(
+	array(
+		'parent_slug' => 'awps',
+		'page_title' => 'Awps FAQ',
+		'menu_title' => 'FAQ',
+		'capability' => 'manage_options',
+		'menu_slug' => 'awps_faq',
+		'callback' => array( $callback, 'admin_faq' )
+	)
+);
+
+$scripts = array(
+	'script' => array( 
+		'jquery', 
+		'media_uplaoder',
+		get_template_directory_uri() . '/assets/js/admin.min.js'
+	),
+	'style' => array( 
+		get_template_directory_uri() . '/assets/css/admin.min.css',
+		'wp-color-picker'
+	)
+);
+
+// Pages array to where enqueue scripts
+$pages = array( 'toplevel_page_awps' );
+
+// Create multiple Admin menu pages and subpages
+$settings->admin_enqueue( $scripts, $pages )
+		->addPages( $admin_pages )
+		->withSubPage( 'Settings' )
+		->addSubPages( $admin_subpages )
+		->register();
+
 class admin extends settings
 {
 	/**
@@ -21,73 +69,73 @@ class admin extends settings
 	/**
 	 * Constructor
 	 */
-	public function __construct()
-	{
-		$this->callback = new settingsCallback();
+	// public function __construct()
+	// {
+	// 	$this->callback = new settingsCallback();
 
-		$this->enqueue();
+	// 	$this->enqueue();
 
-		$this->pages();
+	// 	$this->pages();
 
-		$this->settings();
+	// 	$this->settings();
 
-		$this->sections();
+	// 	$this->sections();
 
-		$this->fields();
+	// 	$this->fields();
 
-		Settings::register();
-	}
+	// 	Settings::register();
+	// }
 
-	private function enqueue()
-	{
-		// Scripts multidimensional array with styles and scripts
-		$scripts = array(
-			'script' => array( 
-				'jquery', 
-				'media_uplaoder',
-				get_template_directory_uri() . '/assets/js/admin.min.js'
-			),
-			'style' => array( 
-				get_template_directory_uri() . '/assets/css/admin.min.css',
-				'wp-color-picker'
-			)
-		);
+	// private function enqueue()
+	// {
+	// 	// Scripts multidimensional array with styles and scripts
+	// 	$scripts = array(
+	// 		'script' => array( 
+	// 			'jquery', 
+	// 			'media_uplaoder',
+	// 			get_template_directory_uri() . '/assets/js/admin.min.js'
+	// 		),
+	// 		'style' => array( 
+	// 			get_template_directory_uri() . '/assets/css/admin.min.css',
+	// 			'wp-color-picker'
+	// 		)
+	// 	);
 
-		// Pages array to where enqueue scripts
-		$pages = array( 'toplevel_page_awps' );
+	// 	// Pages array to where enqueue scripts
+	// 	$pages = array( 'toplevel_page_awps' );
 
-		// Enqueue files in Admin area
-		settings::admin_enqueue( $scripts, $pages );
-	}
+	// 	// Enqueue files in Admin area
+	// 	settings::admin_enqueue( $scripts, $pages );
+	// }
 
-	private function pages()
-	{
-		$admin_pages = array(
-			array(
-				'page_title' => 'AWPS Admin Page',
-				'menu_title' => 'AWPS',
-				'capability' => 'manage_options',
-				'menu_slug' => 'awps',
-				'callback' => array( $this->callback, 'admin_index' ),
-				'icon_url' => get_template_directory_uri() . '/assets/images/awps-logo.png',
-				'position' => 110,
-			)
-		);
+	// private function pages()
+	// {
+	// 	$admin_pages = array(
+	// 		array(
+	// 			'page_title' => 'AWPS Admin Page',
+	// 			'menu_title' => 'AWPS',
+	// 			'capability' => 'manage_options',
+	// 			'menu_slug' => 'awps',
+	// 			'callback' => array( $this->callback, 'admin_index' ),
+	// 			'icon_url' => get_template_directory_uri() . '/assets/images/awps-logo.png',
+	// 			'position' => 110,
+	// 		)
+	// 	);
 
-		$admin_subpages = array(
-			array(
-				'parent_slug' => 'awps',
-				'page_title' => 'Awps FAQ',
-				'menu_title' => 'FAQ',
-				'capability' => 'manage_options',
-				'menu_slug' => 'awps_faq',
-				'callback' => array( $this->callback, 'admin_faq' )
-			)
-		);
+	// 	$admin_subpages = array(
+	// 		array(
+	// 			'parent_slug' => 'awps',
+	// 			'page_title' => 'Awps FAQ',
+	// 			'menu_title' => 'FAQ',
+	// 			'capability' => 'manage_options',
+	// 			'menu_slug' => 'awps_faq',
+	// 			'callback' => array( $this->callback, 'admin_faq' )
+	// 		)
+	// 	);
 
-		// Create multiple Admin menu pages and subpages
-		settings::addPages( $admin_pages )->withSubPage( 'Settings' )->addSubPages( $admin_subpages );
-	}
+	// 	// Create multiple Admin menu pages and subpages
+	// 	settings::addPages( $admin_pages )->withSubPage( 'Settings' )->addSubPages( $admin_subpages );
+	// }
 
 	private function settings()
 	{
