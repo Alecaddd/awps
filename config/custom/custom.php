@@ -5,6 +5,8 @@ namespace awps\custom;
 /**
  * custom
  * use it to write your custom functions.
+ * To apply use add Singular Name, Plural Name, Menu Icon and Menu Position.
+ * e.g. $customCPTClass = new custom( 'Publication', 'Publications', 'dashicons-book-alt', 18 );
  */
  class custom
  {
