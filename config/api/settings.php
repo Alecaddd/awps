@@ -44,9 +44,9 @@ class settings
 
 	/**
 	 * Admin pages array to enqueue scripts
-	 * @var private array
+	 * @var private int
 	 */
-	private static $enqueue_on_pages = array();
+	private static $enqueue_count = 0;
 
 	/**
 	 * Admin pages array
@@ -81,22 +81,24 @@ class settings
 	 * @param  array  $scripts file paths or wp related keywords of embedded files
 	 * @param  array $page    pages id where to load scripts
 	 */
+	
+	
 	public static function admin_enqueue( $scripts = array(), $pages = array() )
 	{
 		if ( empty( $scripts ) )
 			return;
 
-		$i = 0;
 		foreach ( $scripts as $key => $value ) :
 			foreach ( $value as $val ):
-				self::$enqueues[ $i ] = self::enqueue_script( $val, $key );
-				$i++;
+				self::$enqueues[ self::$enqueue_count ]['scripts'][] = self::enqueue_script( $val, $key );
+
 			endforeach;
 		endforeach;
 
 		if ( !empty( $pages ) ) :
-			self::$enqueue_on_pages = $pages;
+			self::$enqueues[ self::$enqueue_count ]['pages'] = $pages;
 		endif;
+		self::$enqueue_count++;
 	}
 
 	/**
@@ -120,22 +122,23 @@ class settings
 	 */
 	public function admin_scripts( $hook )
 	{
-		// dd( $hook );
-		self::$enqueue_on_pages = ( !empty( self::$enqueue_on_pages ) ) ? self::$enqueue_on_pages : array( $hook );
+		
+		foreach ( self::$enqueues as $enqueue ) :
+			$enqueue['pages'] = ( !empty( $enqueue['pages'] ) ) ? $enqueue['pages'] : array( $hook );
 
-		if ( in_array( $hook, self::$enqueue_on_pages ) ) :
-			foreach ( self::$enqueues as $enqueue ) :
-				if ( $enqueue === 'wp_enqueue_media' ) :
-					$enqueue();
-				else :
-					foreach( $enqueue as $key => $val ) {
-						$key($val, $val);
-					}
-				endif;
-			endforeach;
-		endif;
-	}
-
+			if ( in_array( $hook, $enqueue['pages'] ) ) :
+				foreach ( $enqueue['scripts'] as $script ) :
+					if ( $script === 'wp_enqueue_media' ) :
+						$script();
+					else :
+						foreach( $script as $key => $val ) {
+							$key($val, $val);
+						}
+					endif;
+				endforeach;
+			endif;
+		endforeach;
+	}	
 	/**
 	 * Injects user's defined pages array into $admin_pages array
 	 *
