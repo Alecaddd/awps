@@ -1,8 +1,8 @@
 <?php
 
-namespace awps\setup;
+namespace Awps\Setup;
 
-class setup
+class Setup
 {
     /*
         Construct class to activate actions and hooks as soon as the class is initialized

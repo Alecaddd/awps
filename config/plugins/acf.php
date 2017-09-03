@@ -7,17 +7,17 @@
  * @package awps
  */
 
-namespace awps\plugins;
+namespace Awps\Plugins;
 
-class acf
+class Acf
 {
     /*
         Contrusct class to activate actions and hooks as soon as the class is initialized
     */
     public function __construct()
     {
-        add_filter('acf/settings/save_json', array($this, 'ritual_acf_json_save_point'));
-        add_filter('acf/settings/load_json', array($this, 'ritual_acf_json_load_point'));
+        add_filter('acf/settings/save_json', array(&$this, 'ritual_acf_json_save_point'));
+        add_filter('acf/settings/load_json', array(&$this, 'ritual_acf_json_load_point'));
     }
 
     public function ritual_acf_json_save_point($path)

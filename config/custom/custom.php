@@ -1,12 +1,12 @@
 <?php
 
-namespace awps\custom;
+namespace Awps\Custom;
 
 /**
  * custom
  * use it to write your custom functions.
  */
-class custom
+class Custom
 {
 	public function __construct()
 	{

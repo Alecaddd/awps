@@ -5,12 +5,12 @@
  * @package awps
  */
 
-namespace awps\api\callback;
+namespace Awps\Api\Callbacks;
 
 /**
  * Settings API Callbacks Class
  */
-class settingsCallback
+class SettingsCallback
 {
 	public function admin_index() 
 	{

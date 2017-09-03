@@ -50,7 +50,7 @@
 							wp_nav_menu( array(
 								'theme_location' => 'primary',
 								'menu_id' => 'primary-menu',
-								'walker' => new awps\core\walkernav(),
+								'walker' => new Awps\Core\WalkerNav(),
 							) );
 						endif;
 						?>

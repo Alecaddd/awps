@@ -1,11 +1,11 @@
 <?php
 
-namespace awps\core;
+namespace Awps\Core;
 
 /**
- * widgets.
+ * sidebar.
  */
-class widgets
+class Sidebar
 {
     /*
         Contrusct class to activate actions and hooks as soon as the class is initialized

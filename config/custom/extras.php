@@ -1,11 +1,11 @@
 <?php
 
-namespace awps\custom;
+namespace Awps\Custom;
 
 /**
  * extras.
  */
-class extras
+class Extras
 {
 	/*
 		Contrusct class to activate actions and hooks as soon as the class is initialized

@@ -1,17 +1,17 @@
 <?php
 
-namespace awps\custom;
+namespace Awps\Custom;
 
-use awps\api\settings;
-use awps\api\callback\settingsCallback;
+use Awps\Api\Settings;
+use Awps\Api\Callbacks\SettingsCallback;
 
 /**
  * Admin
  * use it to write your admin related methods by extending the settings api class.
  */
 
-$settings = new settings();
-$callback = new settingsCallback();
+$settings = new Settings();
+$callback = new SettingsCallback();
 
 $admin_pages = array(
 	array(
@@ -58,7 +58,7 @@ $settings->admin_enqueue( $scripts, $pages )
 		->addSubPages( $admin_subpages )
 		->register();
 
-class admin extends settings
+class Admin extends Settings
 {
 	/**
 	 * Callback class
@@ -152,7 +152,7 @@ class admin extends settings
 			)
 		);
 
-		settings::add_settings( $args );
+		Settings::add_settings( $args );
 	}
 
 	private function sections()
@@ -167,7 +167,7 @@ class admin extends settings
 			)
 		);
 
-		settings::add_sections( $args );
+		Settings::add_sections( $args );
 	}
 
 	private function fields()
@@ -187,6 +187,6 @@ class admin extends settings
 			)
 		);
 
-		settings::add_fields( $args );
+		Settings::add_fields( $args );
 	}
 }

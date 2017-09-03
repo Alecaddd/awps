@@ -1,11 +1,11 @@
 <?php
 
-namespace awps\core;
+namespace Awps\Core;
 
 /**
  * tags.
  */
-class tags
+class Tags
 {
     /*
         Contrusct class to activate actions and hooks as soon as the class is initialized

@@ -5,12 +5,12 @@
  * @package awps
  */
 
-namespace awps\api;
+namespace Awps\Api;
 
 /**
  * Settings API Class
  */
-class settings
+class Settings
 {
 	/**
 	 * Settings array
@@ -84,7 +84,7 @@ class settings
 	 * Dinamically enqueue styles and scripts in admin area
 	 *
 	 * @param  array  $scripts file paths or wp related keywords of embedded files
-	 * @param  array $page    pages id where to load scripts
+	 * @param  array  $pages    pages id where to load scripts
 	 */
 	public function admin_enqueue( $scripts = array(), $pages = array() )
 	{

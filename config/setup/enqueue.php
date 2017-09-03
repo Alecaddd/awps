@@ -1,11 +1,11 @@
 <?php
 
-namespace awps\setup;
+namespace Awps\Setup;
 
 /**
  * enqueue.
  */
-class enqueue 
+class Enqueue 
 {
     /*
         Contrusct class to activate actions and hooks as soon as the class is initialized

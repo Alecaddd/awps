@@ -1,10 +1,10 @@
 <?php
 
-namespace awps\core;
+namespace Awps\Core;
 
 use Walker_Nav_Menu;
 
-class walkernav extends Walker_Nav_Menu
+class WalkerNav extends Walker_Nav_Menu
 {
     public function start_lvl(&$output, $depth = 0, $args = array())
     {

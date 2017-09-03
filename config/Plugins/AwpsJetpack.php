@@ -5,9 +5,11 @@
  * @link https://jetpack.com/
  */
 
-namespace awps\plugins;
+namespace Awps\Plugins;
 
-class jetpack
+use Jetpack;
+
+class AwpsJetpack
 {
     /*
         Contrusct class to activate actions and hooks as soon as the class is initialized
