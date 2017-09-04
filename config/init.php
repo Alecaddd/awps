@@ -28,7 +28,6 @@ final class Init
 			Core\Tags::class,
 			Core\Sidebar::class,
 			Api\Customizer::class,
-			Api\Settings::class,
 			Api\Widgets\TextWidget::class,
 			Setup\Setup::class,
 			Setup\Menus::class,
@@ -72,5 +71,3 @@ final class Init
 	}
 
 }
-
-Init::register_services();

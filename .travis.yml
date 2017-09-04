@@ -23,7 +23,7 @@ matrix:
         # aliased to 5.2.17
         # This theme uses namespaces and autoload
         # and can't run on version < 5.3
-        - php: '5.3'
+        - php: '5.4'
         # aliased to a recent 5.6.x version
         - php: '5.6'
           env: PHPCS_BRANCH=2.9 SNIFF=1

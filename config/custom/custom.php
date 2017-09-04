@@ -3,15 +3,19 @@
 namespace Awps\Custom;
 
 /**
- * custom
+ * Custom
  * use it to write your custom functions.
  */
 class Custom
 {
-	public function __construct()
+	/**
+     * register default hooks and actions for WordPress
+     * @return
+     */
+	public function register()
 	{
-		add_action('init', array($this, 'custom_post_type'));
-		add_action('after_switch_theme', array($this, 'rewrite_flush'));
+		add_action( 'init', array( $this, 'custom_post_type' ) );
+		add_action( 'after_switch_theme', array( $this, 'rewrite_flush' ) );
 	}
 
 	/**

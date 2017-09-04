@@ -13,9 +13,10 @@ namespace Awps\Api;
 class Customizer 
 {
 	/**
-	 * Contrusct class to activate actions and hooks as soon as the class is initialized
-	 */
-	public function __construct() 
+     * register default hooks and actions for WordPress
+     * @return
+     */
+	public function register() 
 	{
 		add_action( 'customize_register', array( $this, 'setup' ) );
 		add_action( 'customize_preview_init', array( $this, 'preview' ) );

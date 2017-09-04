@@ -18,6 +18,6 @@
 	</rule>
 
 	<!-- Include sniffs for PHP cross-version compatibility. -->
-	<config name="testVersion" value="5.3-99.0"/>
+	<config name="testVersion" value="5.4-99.0"/>
 	<rule ref="PHPCompatibility"/>
 </ruleset>

@@ -8,24 +8,40 @@ use WP_Widget;
  */
 class TextWidget extends WP_Widget
 {
-	/*
-		Contrusct class to activate actions and hooks as soon as the class is initialized
-	*/
-	public function __construct()
-	{
-		$widget_ops = array(
-			'classname' => 'widget_awps',
-			'description' => 'AWPS Custom Text Widget',
+	public $widget_ID;
+
+	public $widget_name;
+
+	public $widget_options = array();
+
+	public $control_options = array();
+
+	function __construct() {
+
+		$this->widget_ID = 'widget_awps';
+
+		$this->widget_name = 'AWPS Custom Text';
+
+		$this->widget_options = array(
+			'classname' => $this->widget_ID,
+			'description' => $this->widget_name . ' Widget',
 			'customize_selective_refresh' => true,
 		);
-		$control_ops = array(
+
+		$this->control_options = array(
 			'width' => 400,
 			'height' => 350,
 		);
+	}
+	/**
+     * register default hooks and actions for WordPress
+     * @return
+     */
+	public function register()
+	{
+		parent::__construct( $this->widget_ID, $this->widget_name, $this->widget_options, $this->control_options );
 
-		parent::__construct( 'widget_awps', 'AWPS Custom Text', $widget_ops, $control_ops);
-
-		add_action('widgets_init', array(&$this, 'widgetsInit'));
+		add_action( 'widgets_init', array( $this, 'widgetsInit' ) );
 	}
 
 	/**

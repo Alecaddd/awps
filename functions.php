@@ -13,5 +13,5 @@ if ( file_exists( dirname( __FILE__ ) . '/vendor/autoload.php' ) ) :
 endif;
 
 if ( class_exists( 'Awps\\Init' ) ) :
-	new \Awps\Init();
+	Awps\Init::register_services();
 endif;
