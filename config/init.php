@@ -13,12 +13,6 @@ namespace Awps;
 final class Init
 {
 	/**
-	 * Set loaded to true if the class was already initialized
-	 * @var boolean
-	 */
-	private static $loaded = false;
-
-	/**
 	 * Store all the classes inside an array
 	 * @return array Full list of classes
 	 */
@@ -47,17 +41,12 @@ final class Init
 	 */
 	public static function register_services()
 	{
-		if (self::$loaded)
-			return;
-
 		foreach ( self::get_services() as $class ) {
 			$service = self::instantiate( $class );
 			if ( method_exists( $service, 'register') ) {
 				$service->register();
 			}
 		}
-
-		self::$loaded = true;
 	}
 
 	/**
@@ -67,7 +56,9 @@ final class Init
 	 */
 	protected static function instantiate( $class )
 	{
-		return new $class();
+		$service = new $class();
+		
+		return $service;
 	}
 
 }
