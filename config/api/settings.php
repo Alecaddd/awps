@@ -52,7 +52,7 @@ class Settings
 	 * Admin pages array
 	 * @var private array
 	 */
-	public $admin_pages;
+	public $admin_pages = array();
 
 	/**
 	 * Admin subpages array
@@ -64,9 +64,7 @@ class Settings
 	 * Constructor
 	 */
 	public function __construct()
-	{
-		$this->admin_pages = array();
-	}
+	{}
 
 	public function register()
 	{

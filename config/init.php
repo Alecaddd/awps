@@ -54,7 +54,7 @@ final class Init
 	 * @param  class $class 		class from the services array
 	 * @return class instance 		new instance of the class
 	 */
-	protected static function instantiate( $class )
+	private static function instantiate( $class )
 	{
 		$service = new $class();
 		

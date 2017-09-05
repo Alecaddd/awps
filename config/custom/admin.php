@@ -7,59 +7,16 @@ use Awps\Api\Callbacks\SettingsCallback;
 
 /**
  * Admin
- * use it to write your admin related methods by extending the settings api class.
+ * use it to write your admin related methods by tapping the settings api class.
  */
-
-$settings = new Settings();
-$callback = new SettingsCallback();
-
-$admin_pages = array(
-	array(
-		'page_title' => 'AWPS Admin Page',
-		'menu_title' => 'AWPS',
-		'capability' => 'manage_options',
-		'menu_slug' => 'awps',
-		'callback' => array( $callback, 'admin_index' ),
-		'icon_url' => get_template_directory_uri() . '/assets/images/awps-logo.png',
-		'position' => 110,
-	)
-);
-
-$admin_subpages = array(
-	array(
-		'parent_slug' => 'awps',
-		'page_title' => 'Awps FAQ',
-		'menu_title' => 'FAQ',
-		'capability' => 'manage_options',
-		'menu_slug' => 'awps_faq',
-		'callback' => array( $callback, 'admin_faq' )
-	)
-);
-
-$scripts = array(
-	'script' => array( 
-		'jquery', 
-		'media_uplaoder',
-		get_template_directory_uri() . '/assets/js/admin.min.js'
-	),
-	'style' => array( 
-		get_template_directory_uri() . '/assets/css/admin.min.css',
-		'wp-color-picker'
-	)
-);
-
-// Pages array to where enqueue scripts
-$pages = array( 'toplevel_page_awps' );
-
-// Create multiple Admin menu pages and subpages
-$settings->admin_enqueue( $scripts, $pages )
-		->addPages( $admin_pages )
-		->withSubPage( 'Settings' )
-		->addSubPages( $admin_subpages )
-		->register();
-
-class Admin extends Settings
+class Admin
 {
+	/**
+	 * Store a new instance of the Settings API Class
+	 * @var class instance
+	 */
+	public $settings;
+
 	/**
 	 * Callback class
 	 * @var class instance
@@ -69,74 +26,120 @@ class Admin extends Settings
 	/**
 	 * Constructor
 	 */
-	// public function __construct()
-	// {
-	// 	$this->callback = new settingsCallback();
+	public function __construct()
+	{
+		$this->settings = new Settings();
 
-	// 	$this->enqueue();
+		$this->callback = new SettingsCallback();
+	}
 
-	// 	$this->pages();
+	/**
+     * register default hooks and actions for WordPress
+     * @return
+     */
+	public function register()
+	{
+		$this->enqueue()->pages()->settings()->sections()->fields()->register_settings();
 
-	// 	$this->settings();
+		$this->enqueue_faq( new Settings() );
+	}
 
-	// 	$this->sections();
+	/**
+	 * Trigger the register method of the Settings API Class
+	 * @return
+	 */
+	private function register_settings() {
+		$this->settings->register();
+	}
 
-	// 	$this->fields();
+	/**
+	 * Enqueue scripts in specific admin pages
+	 * @return $this
+	 */
+	private function enqueue()
+	{
+		// Scripts multidimensional array with styles and scripts
+		$scripts = array(
+			'script' => array( 
+				'jquery', 
+				'media_uplaoder',
+				get_template_directory_uri() . '/assets/js/admin.min.js'
+			),
+			'style' => array( 
+				get_template_directory_uri() . '/assets/css/admin.min.css',
+				'wp-color-picker'
+			)
+		);
 
-	// 	Settings::register();
-	// }
+		// Pages array to where enqueue scripts
+		$pages = array( 'toplevel_page_awps' );
 
-	// private function enqueue()
-	// {
-	// 	// Scripts multidimensional array with styles and scripts
-	// 	$scripts = array(
-	// 		'script' => array( 
-	// 			'jquery', 
-	// 			'media_uplaoder',
-	// 			get_template_directory_uri() . '/assets/js/admin.min.js'
-	// 		),
-	// 		'style' => array( 
-	// 			get_template_directory_uri() . '/assets/css/admin.min.css',
-	// 			'wp-color-picker'
-	// 		)
-	// 	);
+		// Enqueue files in Admin area
+		$this->settings->admin_enqueue( $scripts, $pages );
 
-	// 	// Pages array to where enqueue scripts
-	// 	$pages = array( 'toplevel_page_awps' );
+		return $this;
+	}
 
-	// 	// Enqueue files in Admin area
-	// 	settings::admin_enqueue( $scripts, $pages );
-	// }
+	/**
+	 * Enqueue only to a specific page different from the main enqueue
+	 * @param  Settings $settings 	a new instance of the Settings API class
+	 * @return
+	 */
+	private function enqueue_faq( Settings $settings )
+	{
+		// Scripts multidimensional array with styles and scripts
+		$scripts = array(
+			'style' => array( 
+				get_template_directory_uri() . '/assets/css/admin.min.css',
+			)
+		);
 
-	// private function pages()
-	// {
-	// 	$admin_pages = array(
-	// 		array(
-	// 			'page_title' => 'AWPS Admin Page',
-	// 			'menu_title' => 'AWPS',
-	// 			'capability' => 'manage_options',
-	// 			'menu_slug' => 'awps',
-	// 			'callback' => array( $this->callback, 'admin_index' ),
-	// 			'icon_url' => get_template_directory_uri() . '/assets/images/awps-logo.png',
-	// 			'position' => 110,
-	// 		)
-	// 	);
+		// Pages array to where enqueue scripts
+		$pages = array( 'awps_page_awps_faq' );
 
-	// 	$admin_subpages = array(
-	// 		array(
-	// 			'parent_slug' => 'awps',
-	// 			'page_title' => 'Awps FAQ',
-	// 			'menu_title' => 'FAQ',
-	// 			'capability' => 'manage_options',
-	// 			'menu_slug' => 'awps_faq',
-	// 			'callback' => array( $this->callback, 'admin_faq' )
-	// 		)
-	// 	);
+		// Enqueue files in Admin area
+		$settings->admin_enqueue( $scripts, $pages )->register();
+	}
 
-	// 	// Create multiple Admin menu pages and subpages
-	// 	settings::addPages( $admin_pages )->withSubPage( 'Settings' )->addSubPages( $admin_subpages );
-	// }
+	/**
+	 * Register admin pages and subpages at once
+	 * @return $this
+	 */
+	private function pages()
+	{
+		$admin_pages = array(
+			array(
+				'page_title' => 'AWPS Admin Page',
+				'menu_title' => 'AWPS',
+				'capability' => 'manage_options',
+				'menu_slug' => 'awps',
+				'callback' => array( $this->callback, 'admin_index' ),
+				'icon_url' => get_template_directory_uri() . '/assets/images/awps-logo.png',
+				'position' => 110,
+			)
+		);
 
+		$admin_subpages = array(
+			array(
+				'parent_slug' => 'awps',
+				'page_title' => 'Awps FAQ',
+				'menu_title' => 'FAQ',
+				'capability' => 'manage_options',
+				'menu_slug' => 'awps_faq',
+				'callback' => array( $this->callback, 'admin_faq' )
+			)
+		);
+
+		// Create multiple Admin menu pages and subpages
+		$this->settings->addPages( $admin_pages )->withSubPage( 'Settings' )->addSubPages( $admin_subpages );
+
+		return $this;
+	}
+
+	/**
+	 * Register settings in preparation of custom fields
+	 * @return $this
+	 */
 	private function settings()
 	{
 		// Register settings
@@ -152,9 +155,15 @@ class Admin extends Settings
 			)
 		);
 
-		Settings::add_settings( $args );
+		$this->settings->add_settings( $args );
+
+		return $this;
 	}
 
+	/**
+	 * Register sections in preparation of custom fields
+	 * @return $this
+	 */
 	private function sections()
 	{
 		// Register sections
@@ -167,9 +176,15 @@ class Admin extends Settings
 			)
 		);
 
-		Settings::add_sections( $args );
+		$this->settings->add_sections( $args );
+
+		return $this;
 	}
 
+	/**
+	 * Register custom admin fields
+	 * @return $this
+	 */
 	private function fields()
 	{
 		// Register fields
@@ -187,6 +202,8 @@ class Admin extends Settings
 			)
 		);
 
-		Settings::add_fields( $args );
+		$this->settings->add_fields( $args );
+
+		return $this;
 	}
 }
