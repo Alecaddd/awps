@@ -155,6 +155,10 @@ class Settings
 
 	public function withSubPage( $title = null )
 	{
+		if ( empty( $this->admin_pages ) ) {
+			return $this;
+		}
+		
 		$adminPage = $this->admin_pages[0];
 
 		$subpage = array(
