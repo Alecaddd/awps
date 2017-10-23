@@ -4,7 +4,7 @@
 	"keywords": ["WordPress", "Theme", "Starter"],
 	"homepage": "https://github.com/Alecaddd/awps",
 	"license": "GPL-3.0",
-	"version": "1.0.2",
+	"version": "2.0.0",
 	"authors": [
         {
             "name": "Alessandro Castellani",
@@ -17,7 +17,7 @@
     	"vlucas/phpdotenv": "^2.4"
     },
 	"autoload": {
-		"psr-4": {"awps\\": "./config"},
-		"files": ["./config/helpers.php"]
+		"psr-4": {"Awps\\": "./config"},
+		"files": ["./config/Helpers.php"]
 	}
 }

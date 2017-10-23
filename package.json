@@ -1,6 +1,6 @@
 {
 	"name": "awps",
-	"version": "1.0.2",
+	"version": "2.0.0",
 	"description": "Alecaddd WordPress Starter Theme for savvy developers",
 	"author": "Alessandro Castellani <me@alecaddd.com> (http://alecaddd.com)",
 	"repository": {
@@ -52,13 +52,15 @@
 		]
 	},
 	"browserify": {
-		"transform": [ "browserify-shim" ]
+		"transform": [
+			"browserify-shim"
+		]
 	},
 	"browser": {
 		"jquery": "./node_modules/jquery/dist/jquery.js"
 	},
 	"browserify-shim": {
-	    "jquery": "$"
+		"jquery": "$"
 	},
 	"license": "GPL-3.0"
 }

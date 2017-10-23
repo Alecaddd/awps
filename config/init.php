@@ -1,55 +1,64 @@
 <?php
+/**
+ *
+ * This theme uses PSR-4 and OOP logic instead of procedural coding
+ * Every function, hook and action is properly divided and organized inside related folders and files
+ * Use the file `config/custom/custom.php` to write your custom functions
+ *
+ * @package awps
+ */
 
-namespace awps;
+namespace Awps;
 
-use awps\core\tags;
-use awps\core\widgets;
-use awps\api\customizer;
-use awps\api\settings;
-use awps\api\Widgets\TextWidget;
-use awps\setup\setup;
-use awps\setup\menus;
-use awps\setup\header;
-use awps\setup\enqueue;
-use awps\custom\custom;
-use awps\custom\admin;
-use awps\custom\extras;
-use awps\plugins\jetpack;
-use awps\plugins\acf;
-
-class init
+final class Init
 {
-	private static $loaded = false;
-
-	/*
-	 * Construct class to activate actions and hooks as soon as the class is initialized
+	/**
+	 * Store all the classes inside an array
+	 * @return array Full list of classes
 	 */
-	public function __construct()
+	public static function get_services()
 	{
-		$this->initClasses();
+		return [
+			Core\Tags::class,
+			Core\Sidebar::class,
+			Api\Customizer::class,
+			Api\Widgets\TextWidget::class,
+			Setup\Setup::class,
+			Setup\Menus::class,
+			Setup\Header::class,
+			Setup\Enqueue::class,
+			Custom\Custom::class,
+			Custom\Admin::class,
+			Custom\Extras::class,
+			Plugins\AwpsJetpack::class,
+			Plugins\Acf::class
+		];
 	}
 
-	public function initClasses()
+	/**
+	 * Loop through the classes, initialize them, and call the register() method if it exists
+	 * @return
+	 */
+	public static function register_services()
 	{
-		if (self::$loaded) {
-			return;
+		foreach ( self::get_services() as $class ) {
+			$service = self::instantiate( $class );
+			if ( method_exists( $service, 'register') ) {
+				$service->register();
+			}
 		}
-
-		self::$loaded = true;
-
-		new setup();
-		new enqueue();
-		new header();
-		new customizer();
-		new TextWidget();
-		new extras();
-		new jetpack();
-		new acf();
-		new menus();
-		new tags();
-		new widgets();
-
-		new custom();
-		new admin();
 	}
+
+	/**
+	 * Initialize the class
+	 * @param  class $class 		class from the services array
+	 * @return class instance 		new instance of the class
+	 */
+	private static function instantiate( $class )
+	{
+		$service = new $class();
+		
+		return $service;
+	}
+
 }

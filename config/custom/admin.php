@@ -1,17 +1,22 @@
 <?php
 
-namespace awps\custom;
+namespace Awps\Custom;
 
-use awps\api\settings;
-use awps\api\callback\settingsCallback;
+use Awps\Api\Settings;
+use Awps\Api\Callbacks\SettingsCallback;
 
 /**
  * Admin
- * use it to write your admin related methods by extending the settings api class.
+ * use it to write your admin related methods by tapping the settings api class.
  */
-
-class admin extends settings
+class Admin
 {
+	/**
+	 * Store a new instance of the Settings API Class
+	 * @var class instance
+	 */
+	public $settings;
+
 	/**
 	 * Callback class
 	 * @var class instance
@@ -23,23 +28,34 @@ class admin extends settings
 	 */
 	public function __construct()
 	{
-		$this->callback = new settingsCallback();
+		$this->settings = new Settings();
 
-		$this->enqueue();
-
-		$this->admin_pages();
-
-		$this->admin_subpages();
-
-		$this->settings();
-
-		$this->sections();
-
-		$this->fields();
-
-		parent::__construct();
+		$this->callback = new SettingsCallback();
 	}
 
+	/**
+     * register default hooks and actions for WordPress
+     * @return
+     */
+	public function register()
+	{
+		$this->enqueue()->pages()->settings()->sections()->fields()->register_settings();
+
+		$this->enqueue_faq( new Settings() );
+	}
+
+	/**
+	 * Trigger the register method of the Settings API Class
+	 * @return
+	 */
+	private function register_settings() {
+		$this->settings->register();
+	}
+
+	/**
+	 * Enqueue scripts in specific admin pages
+	 * @return $this
+	 */
 	private function enqueue()
 	{
 		// Scripts multidimensional array with styles and scripts
@@ -59,10 +75,37 @@ class admin extends settings
 		$pages = array( 'toplevel_page_awps' );
 
 		// Enqueue files in Admin area
-		settings::admin_enqueue( $scripts, $pages );
+		$this->settings->admin_enqueue( $scripts, $pages );
+
+		return $this;
 	}
 
-	private function admin_pages()
+	/**
+	 * Enqueue only to a specific page different from the main enqueue
+	 * @param  Settings $settings 	a new instance of the Settings API class
+	 * @return
+	 */
+	private function enqueue_faq( Settings $settings )
+	{
+		// Scripts multidimensional array with styles and scripts
+		$scripts = array(
+			'style' => array( 
+				get_template_directory_uri() . '/assets/css/admin.min.css',
+			)
+		);
+
+		// Pages array to where enqueue scripts
+		$pages = array( 'awps_page_awps_faq' );
+
+		// Enqueue files in Admin area
+		$settings->admin_enqueue( $scripts, $pages )->register();
+	}
+
+	/**
+	 * Register admin pages and subpages at once
+	 * @return $this
+	 */
+	private function pages()
 	{
 		$admin_pages = array(
 			array(
@@ -76,21 +119,7 @@ class admin extends settings
 			)
 		);
 
-		// Create multiple Admin menu pages and subpages
-		settings::add_admin_pages( $admin_pages );
-	}
-
-	private function admin_subpages()
-	{
 		$admin_subpages = array(
-			array(
-				'parent_slug' => 'awps',
-				'page_title' => 'Awps Settings Page',
-				'menu_title' => 'Settings',
-				'capability' => 'manage_options',
-				'menu_slug' => 'awps',
-				'callback' => array( $this->callback, 'admin_index' )
-			),
 			array(
 				'parent_slug' => 'awps',
 				'page_title' => 'Awps FAQ',
@@ -101,10 +130,16 @@ class admin extends settings
 			)
 		);
 
-		// Create multiple Admin menu subpages
-		settings::add_admin_subpages( $admin_subpages );
+		// Create multiple Admin menu pages and subpages
+		$this->settings->addPages( $admin_pages )->withSubPage( 'Settings' )->addSubPages( $admin_subpages );
+
+		return $this;
 	}
 
+	/**
+	 * Register settings in preparation of custom fields
+	 * @return $this
+	 */
 	private function settings()
 	{
 		// Register settings
@@ -120,9 +155,15 @@ class admin extends settings
 			)
 		);
 
-		settings::add_settings( $args );
+		$this->settings->add_settings( $args );
+
+		return $this;
 	}
 
+	/**
+	 * Register sections in preparation of custom fields
+	 * @return $this
+	 */
 	private function sections()
 	{
 		// Register sections
@@ -135,9 +176,15 @@ class admin extends settings
 			)
 		);
 
-		settings::add_sections( $args );
+		$this->settings->add_sections( $args );
+
+		return $this;
 	}
 
+	/**
+	 * Register custom admin fields
+	 * @return $this
+	 */
 	private function fields()
 	{
 		// Register fields
@@ -155,6 +202,8 @@ class admin extends settings
 			)
 		);
 
-		settings::add_fields( $args );
+		$this->settings->add_fields( $args );
+
+		return $this;
 	}
 }

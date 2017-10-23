@@ -1,16 +1,17 @@
 <?php
 
-namespace awps\setup;
+namespace Awps\Setup;
 
-class setup
+class Setup
 {
-    /*
-        Construct class to activate actions and hooks as soon as the class is initialized
-    */
-    public function __construct()
+    /**
+     * register default hooks and actions for WordPress
+     * @return
+     */
+    public function register()
     {
-        add_action( 'after_setup_theme', array($this, 'setup' ));
-        add_action( 'after_setup_theme', array($this, 'content_width' ), 0);
+        add_action( 'after_setup_theme', array( $this, 'setup' ) );
+        add_action( 'after_setup_theme', array( $this, 'content_width' ), 0);
     }
 
     public function setup()

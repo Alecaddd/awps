@@ -1,18 +1,19 @@
 <?php
 
-namespace awps\core;
+namespace Awps\Core;
 
 /**
- * widgets.
+ * Sidebar.
  */
-class widgets
+class Sidebar
 {
-    /*
-        Contrusct class to activate actions and hooks as soon as the class is initialized
-    */
-    public function __construct()
+    /**
+     * register default hooks and actions for WordPress
+     * @return
+     */
+    public function register()
     {
-        add_action('widgets_init', array($this, 'widgets_init'));
+        add_action( 'widgets_init', array( $this, 'widgets_init' ) );
     }
 
     /*
@@ -20,7 +21,7 @@ class widgets
     */
     public function widgets_init()
     {
-        register_sidebar(array(
+        register_sidebar( array(
             'name' => esc_html__('Sidebar', 'awps'),
             'id' => 'awps-sidebar',
             'description' => esc_html__('Default sidebar to add all your widgets.', 'awps'),
@@ -28,6 +29,6 @@ class widgets
             'after_widget' => '</section>',
             'before_title' => '<h2 class="widget-title">',
             'after_title' => '</h2>',
-        ));
+        ) );
     }
 }

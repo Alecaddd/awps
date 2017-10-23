@@ -5,16 +5,26 @@
  * @link https://jetpack.com/
  */
 
-namespace awps\plugins;
+namespace Awps\Plugins;
 
-class jetpack
+use Jetpack;
+
+class AwpsJetpack
 {
-    /*
-        Contrusct class to activate actions and hooks as soon as the class is initialized
-    */
-    public function __construct()
+    /**
+     * register default hooks and actions for WordPress
+     * @return
+     */
+    public function register()
     {
-        add_action('after_setup_theme', array($this, 'setup'));
+        if ( ! class_exists( 'Jetpack' ) ) {
+            return;
+        }
+
+        add_action( 'after_setup_theme', array( $this, 'setup' ) );
+
+        add_filter( 'jetpack_photon_pre_args', array( $this, 'photon_compression' ) );
+
     }
 
     public function setup()
@@ -26,8 +36,9 @@ class jetpack
             'render' => array($this, 'infinite_scroll_render'),
             'footer' => 'page',
         ));
+
         // Add theme support for Responsive Videos.
-        add_theme_support('jetpack-responsive-videos');
+        add_theme_support( 'jetpack-responsive-videos' );
     }
 
     public function infinite_scroll_render()
@@ -39,5 +50,11 @@ class jetpack
                 get_template_part('views/content', get_post_format());
             endif;
         }
+    }
+
+    public function photon_compression( $args ) {
+        $args['quality'] = 100;
+        $args['strip'] = 'all';
+        return $args;
     }
 }
