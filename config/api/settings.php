@@ -44,7 +44,7 @@ class Settings
 
 	/**
 	 * Admin pages array to enqueue scripts
-	 * @var private int
+	 * @var private array
 	 */
 	public $enqueue_on_pages = array();
 
@@ -89,6 +89,7 @@ class Settings
 		if ( empty( $scripts ) )
 			return;
 
+		$i = 0;
 		foreach ( $scripts as $key => $value ) :
 			foreach ( $value as $val ):
 				$this->enqueues[ $i ] = $this->enqueue_script( $val, $key );
@@ -139,6 +140,7 @@ class Settings
 			endforeach;
 		endif;
 	}
+
 	/**
 	 * Injects user's defined pages array into $admin_pages array
 	 *
