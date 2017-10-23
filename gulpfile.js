@@ -32,7 +32,7 @@ var projectURL   = 'http://wp.dev';
 
 var styleSRC     = './src/scss/style.scss';
 var styleAdminSRC = './src/scss/admin.scss';
-var styleURL     = './assets/css/';
+var styleURL     = './';
 var mapURL       = './';
 
 var jsSRC        = './src/scripts/';
@@ -71,7 +71,7 @@ gulp.task( 'styles', function() {
 		}) )
 		.on( 'error', console.error.bind( console ) )
 		.pipe( autoprefixer({ browsers: [ 'last 2 versions', '> 5%', 'Firefox ESR' ] }) )
-		.pipe( rename( { suffix: '.min' } ) )
+		//.pipe( rename( { suffix: '.min' } ) )
 		.pipe( sourcemaps.write( mapURL ) )
 		.pipe( gulp.dest( styleURL ) )
 		.pipe( browserSync.stream() );
