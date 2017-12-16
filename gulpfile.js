@@ -28,7 +28,7 @@ var browserSync  = require( 'browser-sync' ).create();
 var reload       = browserSync.reload;
 
 // Project related variables
-var projectURL   = 'http://wp.dev';
+var projectURL   = 'https://wp.dev';
 
 var styleSRC     = './src/scss/style.scss';
 var styleAdminSRC = './src/scss/admin.scss';
@@ -57,6 +57,10 @@ var phpWatch     = './**/*.php';
 gulp.task( 'browser-sync', function() {
 	browserSync.init({
 		proxy: projectURL,
+		https: {
+			key: '/Users/alecaddd/.valet/Certificates/wp.dev.key',
+			cert: '/Users/alecaddd/.valet/Certificates/wp.dev.crt'
+		},
 		injectChanges: true,
 		open: false
 	});
@@ -82,7 +86,7 @@ gulp.task( 'js', function() {
 		return browserify({
 			entries: [jsSRC + entry]
 		})
-		.transform( babelify, { presets: [ 'es2015' ] } )
+		.transform( babelify, { presets: [ 'env' ] } )
 		.bundle()
 		.pipe( source( entry ) )
 		.pipe( rename( {
