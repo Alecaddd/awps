@@ -30,28 +30,28 @@ var reload       = browserSync.reload;
 // Project related variables
 var projectURL   = 'https://wp.dev';
 
-var styleSRC     = './src/scss/style.scss';
-var styleAdminSRC = './src/scss/admin.scss';
+var styleSRC     = 'src/scss/style.scss';
+var styleAdminSRC = 'src/scss/admin.scss';
 var styleURL     = './assets/css/';
 var mapURL       = './';
 
-var jsSRC        = './src/scripts/';
+var jsSRC        = 'src/scripts/';
 var jsFront      = 'main.js';
 var jsAdmin      = 'admin.js';
 var jsFiles      = [ jsFront, jsAdmin ];
 var jsURL        = './assets/js/';
 
-var imgSRC       = './src/images/**/*';
-var imgURL       = './assets/images/';
+var imgSRC       = 'src/images/**/*';
+var imgURL       = 'assets/images/';
 
-var fontsSRC     = './src/fonts/**/*';
-var fontsURL     = './assets/fonts/';
+var fontsSRC     = 'src/fonts/**/*';
+var fontsURL     = 'assets/fonts/';
 
-var styleWatch   = './src/scss/**/*.scss';
-var jsWatch      = './src/scripts/**/*.js';
-var imgWatch     = './src/images/**/*.*';
-var fontsWatch   = './src/fonts/**/*.*';
-var phpWatch     = './**/*.php';
+var styleWatch   = 'src/scss/**/*.scss';
+var jsWatch      = 'src/scripts/**/*.js';
+var imgWatch     = 'src/images/**/*.*';
+var fontsWatch   = 'src/fonts/**/*.*';
+var phpWatch     = '**/*.php';
 
 // Tasks
 gulp.task( 'browser-sync', function() {
