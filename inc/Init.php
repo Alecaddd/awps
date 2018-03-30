@@ -56,9 +56,7 @@ final class Init
 	 */
 	private static function instantiate( $class )
 	{
-		$service = new $class();
-		
-		return $service;
+		return new $class();
 	}
 
 }
