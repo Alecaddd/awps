@@ -63,10 +63,10 @@ class Admin
 			'script' => array( 
 				'jquery', 
 				'media_uplaoder',
-				get_template_directory_uri() . '/assets/js/admin.js'
+				get_template_directory_uri() . '/assets/dist/js/admin.js'
 			),
 			'style' => array( 
-				get_template_directory_uri() . '/assets/css/admin.css',
+				get_template_directory_uri() . '/assets/dist/css/admin.css',
 				'wp-color-picker'
 			)
 		);
@@ -90,7 +90,7 @@ class Admin
 		// Scripts multidimensional array with styles and scripts
 		$scripts = array(
 			'style' => array( 
-				get_template_directory_uri() . '/assets/css/admin.min.css',
+				get_template_directory_uri() . '/assets/dist/css/admin.css',
 			)
 		);
 
@@ -114,7 +114,7 @@ class Admin
 				'capability' => 'manage_options',
 				'menu_slug' => 'awps',
 				'callback' => array( $this->callback, 'admin_index' ),
-				'icon_url' => get_template_directory_uri() . '/assets/images/awps-logo.png',
+				'icon_url' => get_template_directory_uri() . '/assets/dist/images/awps-logo.png',
 				'position' => 110,
 			)
 		);
