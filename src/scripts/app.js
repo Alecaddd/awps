@@ -4,11 +4,11 @@
 var $ = require( 'jquery' );
 
 // Import libraries
-import 'slick-carousel';
+// import 'slick-carousel';
 
 // Import custom modules
 import App from'./modules/app.js';
-import Carousel from './modules/carousel.js';
+// import Carousel from './modules/carousel.js';
 
 const app = new App();
-const carousel = new Carousel();
+// const carousel = new Carousel();

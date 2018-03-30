@@ -63,10 +63,10 @@ class Admin
 			'script' => array( 
 				'jquery', 
 				'media_uplaoder',
-				get_template_directory_uri() . '/assets/js/admin.min.js'
+				get_template_directory_uri() . '/assets/js/admin.js'
 			),
 			'style' => array( 
-				get_template_directory_uri() . '/assets/css/admin.min.css',
+				get_template_directory_uri() . '/assets/css/admin.css',
 				'wp-color-picker'
 			)
 		);

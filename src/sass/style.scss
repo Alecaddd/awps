@@ -1,7 +1,9 @@
 /*--------------------------------------------------------------
 # Import Modules
 --------------------------------------------------------------*/
-@import '../../node_modules/normalize.css/normalize';
+@import '~normalize-scss/sass/normalize';
+
+@include normalize;
 
 /*--------------------------------------------------------------
 # Base

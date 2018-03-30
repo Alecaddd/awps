@@ -1,60 +1,46 @@
 {
-	"name": "awps",
-	"version": "2.0.0",
-	"description": "Alecaddd WordPress Starter Theme for savvy developers",
-	"author": "Alessandro Castellani <me@alecaddd.com> (http://alecaddd.com)",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/Alecaddd/WP-Starter"
-	},
-	"keywords": [
-		"wordpress",
-		"theme",
-		"starter"
-	],
-	"dependencies": {
-		"jquery": "^3.3.1",
-		"normalize.css": "^8.0.0",
-		"slick-carousel": "^1.8.1"
-	},
-	"devDependencies": {
-		"babel-core": "^6.26.0",
-		"babel-preset-env": "^1.6.1",
-		"babelify": "^8.0.0",
-		"browser-sync": "^2.23.6",
-		"browserify": "^16.1.1",
-		"browserify-shim": "^3.8.14",
-		"gulp": "^3.9.1",
-		"gulp-autoprefixer": "^5.0.0",
-		"gulp-concat": "^2.5.2",
-		"gulp-if": "^2.0.2",
-		"gulp-notify": "^3.2.0",
-		"gulp-options": "^1.1.1",
-		"gulp-plumber": "^1.2.0",
-		"gulp-rename": "^1.2.0",
-		"gulp-sass": "^3.2.1",
-		"gulp-sourcemaps": "^2.6.4",
-		"gulp-strip-debug": "^3.0.0",
-		"gulp-uglify": "^3.0.0",
-		"gulp-uglifycss": "^1.0.9",
-		"vinyl-buffer": "^1.0.1",
-		"vinyl-source-stream": "^2.0.0"
-	},
-	"babel": {
-		"presets": [
-			"env"
-		]
-	},
-	"browserify": {
-		"transform": [
-			"browserify-shim"
-		]
-	},
-	"browser": {
-		"jquery": "./node_modules/jquery/dist/jquery.js"
-	},
-	"browserify-shim": {
-		"jquery": "$"
-	},
-	"license": "GPL-3.0"
+  "name": "awps",
+  "version": "3.0.0",
+  "description": "Alecaddd WordPress Starter Theme for savvy developers",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm run development",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "npm run development -- --watch",
+    "watch-poll": "npm run watch -- --watch-poll",
+    "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "npm run production",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "devDependencies": {
+    "axios": "^0.18",
+    "bootstrap": "^4.0.0",
+    "copy-webpack-plugin": "^4.5.1",
+    "cross-env": "^5.1",
+    "imagemin-mozjpeg": "^7.0.0",
+    "imagemin-webpack-plugin": "^2.1.1",
+    "jquery": "^3.3.1",
+    "laravel-mix": "^2.0",
+    "lodash": "^4.17.4",
+    "popper.js": "^1.12",
+    "vue": "^2.5.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alecaddd/awps.git"
+  },
+  "keywords": [
+    "wordpress",
+    "theme",
+    "starter"
+  ],
+  "author": "Alessandro Castellani <me@alecaddd.com> (http://alecaddd.com)",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Alecaddd/awps/issues"
+  },
+  "homepage": "https://github.com/Alecaddd/awps#readme",
+  "dependencies": {
+    "normalize-scss": "^7.0.1"
+  }
 }
