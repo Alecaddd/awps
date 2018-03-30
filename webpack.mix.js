@@ -41,6 +41,12 @@ mix.browserSync({
 	open: false
 });
 
+// Autloading jQuery to make it accessible to all the packages, because, you know, reasons
+// You can comment this line if you don't need jQuery
+mix.autoload({
+    'jquery': ['jQuery', '$']
+});
+
 // Compile assets
 mix.js( 'assets/src/scripts/app.js', 'assets/dist/js' )
 	.js( 'assets/src/scripts/admin.js', 'assets/dist/js' )
