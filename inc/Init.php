@@ -21,8 +21,6 @@ final class Init
 		return [
 			Core\Tags::class,
 			Core\Sidebar::class,
-			Api\Customizer::class,
-			Api\Widgets\TextWidget::class,
 			Setup\Setup::class,
 			Setup\Menus::class,
 			Setup\Header::class,
@@ -30,6 +28,8 @@ final class Init
 			Custom\Custom::class,
 			Custom\Admin::class,
 			Custom\Extras::class,
+			Api\Customizer::class,
+			Api\Widgets\TextWidget::class,
 			Plugins\AwpsJetpack::class,
 			Plugins\Acf::class
 		];

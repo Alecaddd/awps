@@ -2,5 +2,6 @@
     "/assets/dist/js/app.js": "/assets/dist/js/app.js",
     "/assets/dist/css/style.css": "/assets/dist/css/style.css",
     "/assets/dist/css/admin.css": "/assets/dist/css/admin.css",
-    "/assets/dist/js/admin.js": "/assets/dist/js/admin.js"
+    "/assets/dist/js/admin.js": "/assets/dist/js/admin.js",
+    "/assets/dist/js/customizer.js": "/assets/dist/js/customizer.js"
 }

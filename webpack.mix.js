@@ -10,12 +10,11 @@ const ImageminPlugin = require( 'imagemin-webpack-plugin' ).default;
 const CopyWebpackPlugin = require( 'copy-webpack-plugin' );
 const imageminMozjpeg = require( 'imagemin-mozjpeg' );
 
-// Copy FONTS and IMAGES assets to the dist/ folder, compress IMAGES to lower file size
+// Copy IMAGES assets to the dist/ folder and IMAGES to lower file size
 mix.webpackConfig({
 	plugins: [
 		new CopyWebpackPlugin([
 			{ from: 'assets/src/images', to: 'assets/dist/images', ignore: [ '.keep' ] },
-			{ from: 'assets/src/fonts', to: 'assets/dist/fonts', ignore: [ '.keep' ] }
 		]),
 		new ImageminPlugin({
 			test: /\.(jpe?g|png|gif|svg)$/i,
@@ -50,6 +49,8 @@ mix.autoload({
 // Compile assets
 mix.js( 'assets/src/scripts/app.js', 'assets/dist/js' )
 	.js( 'assets/src/scripts/admin.js', 'assets/dist/js' )
+	.copy( 'assets/src/scripts/customizer.js', 'assets/dist/js/customizer.js' )
 	.sass( 'assets/src/sass/style.scss', 'assets/dist/css' )
 	.sass( 'assets/src/sass/admin.scss', 'assets/dist/css' )
+	.copyDirectory( 'assets/src/fonts', 'assets/dist/fonts' )
 	.sourceMaps();
