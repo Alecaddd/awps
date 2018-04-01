@@ -561,6 +561,10 @@ template {
   }
 }
 
+body {
+  background-color: #fff;
+}
+
 .container,
 .container-fluid,
 .container-narrow {
@@ -5923,13 +5927,6 @@ a img.aligncenter {
   width: auto;
   z-index: 100000;
   /* Above WP toolbar. */
-}
-
-/* =Customizer style
--------------------------------------------------------------- */
-
-#customize-preview iframe {
-  background-color: #ffffff;
 }
 
 /*--------------------------------------------------------------

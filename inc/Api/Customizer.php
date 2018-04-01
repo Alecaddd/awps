@@ -7,6 +7,9 @@
 
 namespace Awps\Api;
 
+use Awps\Api\Customizer\Sidebar;
+use Awps\Api\Customizer\Header;
+
 /**
  * Customizer class
  */
@@ -23,46 +26,30 @@ class Customizer
 	}
 
 	/**
+	 * Store all the classes inside an array
+	 * @return array Full list of classes
+	 */
+	public function get_classes()
+	{
+		return [
+			Sidebar::class,
+			Header::class
+		];
+	}
+
+	/**
 	 * Add postMessage support for site title and description for the Theme Customizer.
 	 *
 	 * @param WP_Customize_Manager $wp_customize Theme Customizer object.
 	 */
 	public function setup( $wp_customize ) 
 	{
-		$wp_customize->get_setting( 'blogname' )->transport = 'postMessage';
-		$wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
-		$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
-		$wp_customize->get_setting( 'background_color' )->transport = 'postMessage';
-
-		if ( isset( $wp_customize->selective_refresh ) ) {
-			$wp_customize->selective_refresh->add_partial( 'blogname', array(
-				'selector'        => '.site-title a',
-				'render_callback' => array( $this, 'customize_partial_blogname'),
-			) );
-			$wp_customize->selective_refresh->add_partial( 'blogdescription', array(
-				'selector'        => '.site-description',
-				'render_callback' => array( $this, 'customize_partial_blogdescription'),
-			) );
+		foreach ( $this->get_classes() as $class ) {
+			$service = new $class;
+			if ( method_exists( $class, 'register') ) {
+				$service->register( $wp_customize );
+			}
 		}
-	}
-
-	/**
-	 * Render the site title for the selective refresh partial.
-	 *
-	 * @return void
-	 */
-	public function customize_partial_blogname()
-	{
-		bloginfo( 'name' );
-	}
-	/**
-	 * Render the site tagline for the selective refresh partial.
-	 *
-	 * @return void
-	 */
-	public function customize_partial_blogdescription()
-	{
-		bloginfo( 'description' );
 	}
 
 	/**
