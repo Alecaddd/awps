@@ -49,7 +49,8 @@ class Header
         $output = '<style type="text/css">';
 
         if (!display_header_text()) :
-            $output .= '.site-title,.site-description{position:absolute;clip:rect(1px, 1px, 1px, 1px);}'; else :
+            $output .= '.site-title,.site-description{position:absolute;clip:rect(1px, 1px, 1px, 1px);}'; 
+        else :
             $output .= '.site-title a,.site-description{color:#'.esc_attr($this->header_text_color).';}';
         endif;
 

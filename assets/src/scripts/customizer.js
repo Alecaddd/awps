@@ -36,10 +36,25 @@
 			} else {
 				$( '.site-title a, .site-description' ).css({
 					'clip': 'auto',
-					'position': 'relative'
-				});
-				$( '.site-title a, .site-description' ).css({
+					'position': 'relative',
 					'color': to
+				});
+			}
+		});
+	});
+
+	wp.customize( 'awps_sidebar_background_color', function( value ) {
+		value.bind( function( to ) {
+			if ( 'blank' === to ) {
+				$( '.widget-area' ).css({
+					'clip': 'rect(1px, 1px, 1px, 1px)',
+					'position': 'absolute'
+				});
+			} else {
+				$( '.widget-area' ).css({
+					'clip': 'auto',
+					'position': 'relative',
+					'background-color': to
 				});
 			}
 		});
