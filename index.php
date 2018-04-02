@@ -16,7 +16,7 @@ get_header(); ?>
 
 <div class="container">
 
-	<div class="row">
+	<div class="row align-stretch">
 
 		<div class="col-sm-8">
 
@@ -55,8 +55,6 @@ get_header(); ?>
 		</div><!-- .col- -->
 
 		<div id="sidebar" class="col-sm-4">
-			<?php if ( is_customize_preview() ) echo '<div id="awps-sidebar-control"></div>'; ?>
-
 			<?php get_sidebar(); ?>
 		</div><!-- .col- -->
 

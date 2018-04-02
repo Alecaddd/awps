@@ -53,7 +53,7 @@ class Sidebar
 	public function output()
 	{
 		echo '<style type="text/css">';
-			echo Customizer::css( '.widget-area', 'background-color', 'awps_sidebar_background_color' );
+			echo Customizer::css( '#sidebar', 'background-color', 'awps_sidebar_background_color' );
 		echo '</style>';
 	}
 }
