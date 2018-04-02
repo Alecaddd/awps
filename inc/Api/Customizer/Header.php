@@ -78,17 +78,17 @@ class Header
 			) );
 			$wp_customize->selective_refresh->add_partial( 'awps_header_background_color', array(
 				'selector' => '#awps-header-control',
-				'render_callback' => array( $this, 'output' ),
+				'render_callback' => array( $this, 'outputCss' ),
 				'fallback_refresh' => true
 			) );
 			$wp_customize->selective_refresh->add_partial( 'awps_header_text_color', array(
 				'selector' => '#awps-header-control',
-				'render_callback' => array( $this, 'output' ),
+				'render_callback' => array( $this, 'outputCss' ),
 				'fallback_refresh' => true
 			) );
 			$wp_customize->selective_refresh->add_partial( 'awps_header_link_color', array(
 				'selector' => '#awps-header-control',
-				'render_callback' => array( $this, 'output' ),
+				'render_callback' => array( $this, 'outputCss' ),
 				'fallback_refresh' => true
 			) );
 		}
@@ -97,7 +97,7 @@ class Header
 	/**
 	 * Generate inline CSS for customizer async reload
 	 */
-	public function output()
+	public function outputCss()
 	{
 		echo '<style type="text/css">';
 			echo Customizer::css( '.site-header', 'background-color', 'awps_header_background_color' );

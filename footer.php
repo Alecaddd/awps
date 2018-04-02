@@ -13,11 +13,14 @@
 
 	</div><!-- #content -->
 
+	<?php if ( is_customize_preview() ) echo '<div id="awps-footer-control" style="margin-top:-30px;position:absolute;"></div>'; ?>
+
 	<footer id="colophon" class="site-footer container-fluid" role="contentinfo">
+
 		<div class="site-info">
-			<a href="<?php
+			<a <?php if ( is_customize_preview() ) echo 'id="awps-footer-copy-control"'; ?> href="<?php
 				/* translators: %s: Github repo URL. */
-				echo esc_url( __( 'https://github.com/Alecaddd/awps', 'awps' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'awps' ), 'AWPS' ); ?></a>
+				echo esc_url( __( 'https://github.com/Alecaddd/awps', 'awps' ) ); ?>"><?php echo Awps\Api\Customizer::text( 'awps_footer_copy_text' ); ?></a>
 			<span class="sep"> | </span>
 			<?php
 				/* translators: %1: Theme name. */

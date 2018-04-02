@@ -9,6 +9,7 @@ namespace Awps\Api;
 
 use Awps\Api\Customizer\Sidebar;
 use Awps\Api\Customizer\Header;
+use Awps\Api\Customizer\Footer;
 
 /**
  * Customizer class
@@ -35,6 +36,7 @@ class Customizer
 	{
 		return [
 			Sidebar::class,
+			Footer::class,
 			Header::class
 		];
 	}
@@ -69,7 +71,7 @@ class Customizer
 	public function output()
 	{
 		echo '<!--Customizer CSS--> <style type="text/css">';
-			echo self::css('.widget-area', 'background-color', 'awps_sidebar_background_color');
+			echo self::css('#sidebar', 'background-color', 'awps_sidebar_background_color');
 			echo self::css( '.site-header', 'background-color', 'awps_header_background_color' );
 			echo self::css( '.site-header', 'color', 'awps_header_text_color' );
 			echo self::css( '.site-header a', 'color', 'awps_header_link_color' );
@@ -77,7 +79,7 @@ class Customizer
 	}
 
 	/**
-	 * This will generate a line of CSS for use in header output. If the setting
+	 * This will generate a line of CSS for use in selective refresh. If the setting
 	 * ($mod_name) has no defined value, the CSS will not be output.
 	 * 
 	 * @uses get_theme_mod()
@@ -93,6 +95,24 @@ class Customizer
 
 		if ( ! empty( $theme_mod ) ) {
 			return sprintf('%s { %s:%s; }', $selector, $property, $theme_mod );
+		}
+	}
+
+	/**
+	 * This will generate text for use inin selective refresh. If the setting
+	 * ($mod_name) has no defined value, the text will not be output.
+	 * 
+	 * @uses get_theme_mod()
+	 * @param string $mod_name The name of the 'theme_mod' option to fetch
+	 * @param bool $echo Optional. Whether to print directly to the page (default: true).
+	 * @return string Returns a single line of text.
+	 */
+	public static function text( $theme_mod )
+	{
+		$theme_mod = get_theme_mod($theme_mod);
+
+		if ( ! empty( $theme_mod ) ) {
+			return $theme_mod;
 		}
 	}
 }
