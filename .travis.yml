@@ -20,16 +20,16 @@ matrix:
 
     include:
         # Current $required_php_version for WordPress: 5.2.4
-        # aliased to 5.2.17
         # This theme uses namespaces and autoload
         # and can't run on version < 5.6
         # aliased to a recent 5.6.x version
         - php: '5.6'
-          env: PHPCS_BRANCH=2.9 SNIFF=1
+          # env: PHPCS_BRANCH=2.9 SNIFF=1
         # aliased to a recent 7.0.x version
         - php: '7.0'
         # aliased to a recent 7.1.x version
         - php: '7.1'
+          env: PHPCS_BRANCH=master SNIFF=1
 
 # Use this to prepare the system to install prerequisites or dependencies.
 # e.g. sudo apt-get update.
