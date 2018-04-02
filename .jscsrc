@@ -2,9 +2,9 @@
     "preset": "wordpress",
     "fileExtensions": [ ".js" ],
     "excludeFiles": [
-    	"assets/dist/js/admin.js",
-		"assets/dist/js/app.js",
-		"assets/dist/js/gutenberg.js"
+        "assets/dist/js/admin.js",
+        "assets/dist/js/app.js",
+        "assets/dist/js/gutenberg.js",
         "webpack.min.js"
     ]
 }
