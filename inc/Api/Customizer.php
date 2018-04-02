@@ -24,7 +24,6 @@ class Customizer
 		add_action( 'wp_head', array($this , 'output') );
 
 		add_action( 'customize_register', array( $this, 'setup' ) );
-		add_action( 'customize_preview_init', array( $this, 'preview' ) );
 	}
 
 	/**
@@ -52,14 +51,6 @@ class Customizer
 				$service->register( $wp_customize );
 			}
 		}
-	}
-
-	/**
-	 * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
-	 */
-	public function preview() 
-	{
-		wp_enqueue_script( 'awps_customizer', get_template_directory_uri() . '/assets/dist/js/customizer.js', array( 'customize-preview' ), '1.0.0', true );
 	}
 
 	/**
