@@ -18,6 +18,10 @@ class Gutenberg
 	 */
 	public function register() 
 	{
+		if ( ! function_exists( 'register_block_type' ) ) {
+			return;
+		}
+
 		add_action( 'init', array( $this, 'gutenberg_enqueue' ) );
 	}
 
