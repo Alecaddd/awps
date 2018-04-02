@@ -25,6 +25,8 @@
 
 		<header id="masthead" class="site-header" role="banner">
 
+			<?php if ( is_customize_preview() ) echo '<div id="awps-header-control"></div>'; ?>
+
 			<div class="container container-fluid">
 
 				<div class="row">

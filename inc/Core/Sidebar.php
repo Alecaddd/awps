@@ -25,7 +25,7 @@ class Sidebar
             'name' => esc_html__('Sidebar', 'awps'),
             'id' => 'awps-sidebar',
             'description' => esc_html__('Default sidebar to add all your widgets.', 'awps'),
-            'before_widget' => '<section id="%1$s" class="widget %2$s">',
+            'before_widget' => '<section id="%1$s" class="widget %2$s p-2">',
             'after_widget' => '</section>',
             'before_title' => '<h2 class="widget-title">',
             'after_title' => '</h2>',

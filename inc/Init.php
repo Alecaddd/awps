@@ -23,7 +23,6 @@ final class Init
 			Core\Sidebar::class,
 			Setup\Setup::class,
 			Setup\Menus::class,
-			Setup\Header::class,
 			Setup\Enqueue::class,
 			Custom\Custom::class,
 			Custom\Admin::class,

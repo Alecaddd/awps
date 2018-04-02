@@ -7,6 +7,9 @@
 
 namespace Awps\Api\Customizer;
 
+use WP_Customize_Color_Control;
+use Awps\Api\Customizer;
+
 /**
  * Customizer class
  */
@@ -18,40 +21,88 @@ class Header
 	 */
 	public function register( $wp_customize ) 
 	{
+		$wp_customize->add_section( 'awps_header_section' , array(
+			'title' => __( 'Header', 'awps' ),
+			'description' => __( 'Customize the Header' ),
+			'priority' => 35
+		) );
+
+		$wp_customize->add_setting( 'awps_header_background_color' , array(
+			'default' => '#ffffff',
+			'transport' => 'postMessage', // or refresh if you want the entire page to reload
+		) );
+
+		$wp_customize->add_setting( 'awps_header_text_color' , array(
+			'default' => '#333333',
+			'transport' => 'postMessage', // or refresh if you want the entire page to reload
+		) );
+
+		$wp_customize->add_setting( 'awps_header_link_color' , array(
+			'default' => '#004888',
+			'transport' => 'postMessage', // or refresh if you want the entire page to reload
+		) );
+
+		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'awps_header_background_color', array(
+			'label' => __( 'Header Background Color', 'awps' ),
+			'section' => 'awps_header_section',
+			'settings' => 'awps_header_background_color',
+		) ) );
+
+		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'awps_header_text_color', array(
+			'label' => __( 'Header Text Color', 'awps' ),
+			'section' => 'awps_header_section',
+			'settings' => 'awps_header_text_color',
+		) ) );
+
+		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'awps_header_link_color', array(
+			'label' => __( 'Header Link Color', 'awps' ),
+			'section' => 'awps_header_section',
+			'settings' => 'awps_header_link_color',
+		) ) );
+
 		$wp_customize->get_setting( 'blogname' )->transport = 'postMessage';
 		$wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
-
-		$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
-		$wp_customize->get_setting( 'background_color' )->transport = 'postMessage';
 
 		if ( isset( $wp_customize->selective_refresh ) ) {
 			$wp_customize->selective_refresh->add_partial( 'blogname', array(
 				'selector' => '.site-title a',
-				'render_callback' => array( $this, 'customize_partial_blogname'),
+				'render_callback' => function() {
+					bloginfo( 'name' );
+				},
 			) );
 			$wp_customize->selective_refresh->add_partial( 'blogdescription', array(
 				'selector' => '.site-description',
-				'render_callback' => array( $this, 'customize_partial_blogdescription'),
+				'render_callback' => function() {
+					bloginfo( 'description' );
+				},
+			) );
+			$wp_customize->selective_refresh->add_partial( 'awps_header_background_color', array(
+				'selector' => '#awps-header-control',
+				'render_callback' => array( $this, 'output' ),
+				'fallback_refresh' => true
+			) );
+			$wp_customize->selective_refresh->add_partial( 'awps_header_text_color', array(
+				'selector' => '#awps-header-control',
+				'render_callback' => array( $this, 'output' ),
+				'fallback_refresh' => true
+			) );
+			$wp_customize->selective_refresh->add_partial( 'awps_header_link_color', array(
+				'selector' => '#awps-header-control',
+				'render_callback' => array( $this, 'output' ),
+				'fallback_refresh' => true
 			) );
 		}
 	}
 
 	/**
-	 * Render the site title for the selective refresh partial.
-	 *
-	 * @return void
+	 * Generate inline CSS for customizer async reload
 	 */
-	public function customize_partial_blogname()
+	public function output()
 	{
-		bloginfo( 'name' );
-	}
-	/**
-	 * Render the site tagline for the selective refresh partial.
-	 *
-	 * @return void
-	 */
-	public function customize_partial_blogdescription()
-	{
-		bloginfo( 'description' );
+		echo '<style type="text/css">';
+			echo Customizer::css( '.site-header', 'background-color', 'awps_header_background_color' );
+			echo Customizer::css( '.site-header', 'color', 'awps_header_text_color' );
+			echo Customizer::css( '.site-header a', 'color', 'awps_header_link_color' );
+		echo '</style>';
 	}
 }

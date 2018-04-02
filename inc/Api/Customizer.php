@@ -21,6 +21,8 @@ class Customizer
 	 */
 	public function register() 
 	{
+		add_action( 'wp_head', array($this , 'output') );
+
 		add_action( 'customize_register', array( $this, 'setup' ) );
 		add_action( 'customize_preview_init', array( $this, 'preview' ) );
 	}
@@ -58,5 +60,39 @@ class Customizer
 	public function preview() 
 	{
 		wp_enqueue_script( 'awps_customizer', get_template_directory_uri() . '/assets/dist/js/customizer.js', array( 'customize-preview' ), '1.0.0', true );
+	}
+
+	/**
+	 * Generate inline CSS for customizer options
+	 * here you should list all your custom options with the relative class and CSS attribute it affects
+	 */
+	public function output()
+	{
+		echo '<!--Customizer CSS--> <style type="text/css">';
+			echo self::css('.widget-area', 'background-color', 'awps_sidebar_background_color');
+			echo self::css( '.site-header', 'background-color', 'awps_header_background_color' );
+			echo self::css( '.site-header', 'color', 'awps_header_text_color' );
+			echo self::css( '.site-header a', 'color', 'awps_header_link_color' );
+		echo '</style><!--/Customizer CSS-->';
+	}
+
+	/**
+	 * This will generate a line of CSS for use in header output. If the setting
+	 * ($mod_name) has no defined value, the CSS will not be output.
+	 * 
+	 * @uses get_theme_mod()
+	 * @param string $selector CSS selector
+	 * @param string $property The name of the CSS *property* to modify
+	 * @param string $mod_name The name of the 'theme_mod' option to fetch
+	 * @param bool $echo Optional. Whether to print directly to the page (default: true).
+	 * @return string Returns a single line of CSS with selectors and a property.
+	 */
+	public static function css( $selector, $property, $theme_mod )
+	{
+		$theme_mod = get_theme_mod($theme_mod);
+
+		if ( ! empty( $theme_mod ) ) {
+			return sprintf('%s { %s:%s; }', $selector, $property, $theme_mod );
+		}
 	}
 }

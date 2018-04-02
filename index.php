@@ -54,7 +54,9 @@ get_header(); ?>
 
 		</div><!-- .col- -->
 
-		<div class="col-sm-4">
+		<div id="sidebar" class="col-sm-4">
+			<?php if ( is_customize_preview() ) echo '<div id="awps-sidebar-control"></div>'; ?>
+
 			<?php get_sidebar(); ?>
 		</div><!-- .col- -->
 
