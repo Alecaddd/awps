@@ -7,8 +7,8 @@
 	<description>A custom set of code standard rules to check for WordPress themes.</description>
 	
 	<exclude-pattern>acf-json/index.php</exclude-pattern>
-	<exclude-pattern>*\config\*</exclude-pattern>
-	<exclude-pattern>*/config/*</exclude-pattern>
+	<exclude-pattern>*\inc\*</exclude-pattern>
+	<exclude-pattern>*/inc/*</exclude-pattern>
 
 	<!-- Include the WordPress ruleset, with exclusions. -->
 	<rule ref="WordPress">
