@@ -49,7 +49,9 @@ mix.autoload({
 // Compile assets
 mix.js( 'assets/src/scripts/app.js', 'assets/dist/js' )
 	.js( 'assets/src/scripts/admin.js', 'assets/dist/js' )
+	.react( 'assets/src/scripts/gutenberg.js', 'assets/dist/js' )
 	.sass( 'assets/src/sass/style.scss', 'assets/dist/css' )
 	.sass( 'assets/src/sass/admin.scss', 'assets/dist/css' )
+	.sass( 'assets/src/sass/gutenberg.scss', 'assets/dist/css' )
 	.copyDirectory( 'assets/src/fonts', 'assets/dist/fonts' )
 	.sourceMaps();

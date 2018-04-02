@@ -14,6 +14,7 @@
   },
   "devDependencies": {
     "axios": "^0.18",
+    "babel-preset-react": "^6.24.1",
     "bootstrap": "^4.0.0",
     "browser-sync": "^2.23.6",
     "browser-sync-webpack-plugin": "^2.0.1",

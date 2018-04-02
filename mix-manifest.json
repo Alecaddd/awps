@@ -2,6 +2,7 @@
     "/assets/dist/js/app.js": "/assets/dist/js/app.js",
     "/assets/dist/css/style.css": "/assets/dist/css/style.css",
     "/assets/dist/css/admin.css": "/assets/dist/css/admin.css",
-    "/assets/dist/js/admin.js": "/assets/dist/js/admin.js",
-    "/assets/dist/js/customizer.js": "/assets/dist/js/customizer.js"
+    "/assets/dist/css/gutenberg.css": "/assets/dist/css/gutenberg.css",
+    "/assets/dist/js/gutenberg.js": "/assets/dist/js/gutenberg.js",
+    "/assets/dist/js/admin.js": "/assets/dist/js/admin.js"
 }
