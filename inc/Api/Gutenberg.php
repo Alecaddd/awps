@@ -36,5 +36,32 @@ class Gutenberg
 			'editor_style' => 'gutenberg-test', // Load style in the editor
 			'style' => 'gutenberg-test', // Load style in the front-end
 		) );
+
+		register_block_type( 'gutenberg-test/latest-post', array(
+			'render_callback' => array( $this, 'awps_render_block_latest_post' ),
+			'editor_style' => 'gutenberg-test',
+			'style' => 'gutenberg-test'
+		) );
+	}
+
+	public function awps_render_block_latest_post( $attributes )
+	{
+		$recent_posts = wp_get_recent_posts( array(
+			'numberposts' => 1,
+			'post_status' => 'publish',
+		) );
+
+		if ( count( $recent_posts ) === 0 ) {
+			return 'No posts';
+		}
+
+		$post = $recent_posts[ 0 ];
+		$post_id = $post[ 'ID' ];
+
+		return sprintf(
+			'<a class="wp-block-awps-latest-post" href="%1$s">%2$s</a>',
+			esc_url( get_permalink( $post_id ) ),
+			esc_html( get_the_title( $post_id ) )
+		);
 	}
 }
