@@ -6215,7 +6215,8 @@ a:focus {
   visibility: visible;
 }
 
-.video-container {
+.video-container,
+figure.wp-block-embed {
   position: relative;
   padding-bottom: 56.25%;
   height: 0;
@@ -6225,7 +6226,11 @@ a:focus {
 .video-container iframe,
 .video-container embed,
 .video-container object,
-.video-container video {
+.video-container video,
+figure.wp-block-embed iframe,
+figure.wp-block-embed embed,
+figure.wp-block-embed object,
+figure.wp-block-embed video {
   position: absolute;
   top: 0;
   left: 0;

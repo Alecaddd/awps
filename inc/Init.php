@@ -28,6 +28,7 @@ final class Init
 			Custom\Admin::class,
 			Custom\Extras::class,
 			Api\Customizer::class,
+			Api\Gutenberg::class,
 			Api\Widgets\TextWidget::class,
 			Plugins\AwpsJetpack::class,
 			Plugins\Acf::class
