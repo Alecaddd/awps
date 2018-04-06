@@ -10,11 +10,12 @@ namespace Awps\Api;
 /**
  * Customizer class
  */
-class Gutenberg 
+class Gutenberg
 {
 	/**
-	 * register default hooks and actions for WordPress
-	 * @return
+	 * Register default hooks and actions for WordPress
+	 *
+	 * @return WordPress add_action()
 	 */
 	public function register() 
 	{
