@@ -30,6 +30,8 @@ mix.autoload({
     'jquery': ['jQuery', '$']
 });
 
+mix.setPublicPath('./');
+
 // Compile assets
 mix.js( 'assets/src/scripts/app.js', 'assets/dist/js' )
 	.js( 'assets/src/scripts/admin.js', 'assets/dist/js' )
