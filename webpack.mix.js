@@ -27,8 +27,11 @@ mix.browserSync({
 // Autloading jQuery to make it accessible to all the packages, because, you know, reasons
 // You can comment this line if you don't need jQuery
 mix.autoload({
-    'jquery': ['jQuery', '$']
+	'jquery': ['jQuery', '$']
 });
+
+// Fix for Windows Environment
+mix.setPublicPath('./');
 
 // Compile assets
 mix.js( 'assets/src/scripts/app.js', 'assets/dist/js' )
@@ -36,6 +39,4 @@ mix.js( 'assets/src/scripts/app.js', 'assets/dist/js' )
 	.react( 'assets/src/scripts/gutenberg.js', 'assets/dist/js' )
 	.sass( 'assets/src/sass/style.scss', 'assets/dist/css' )
 	.sass( 'assets/src/sass/admin.scss', 'assets/dist/css' )
-	.sass( 'assets/src/sass/gutenberg.scss', 'assets/dist/css' )
-	.copyDirectory( 'assets/src/fonts', 'assets/dist/fonts' )
-	.copyDirectory( 'assets/src/images', 'assets/dist/images' );
+	.sass( 'assets/src/sass/gutenberg.scss', 'assets/dist/css' );
