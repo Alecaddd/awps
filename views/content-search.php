@@ -15,7 +15,7 @@
 
 				<?php if ( 'post' === get_post_type() ) : ?>
 						<div class="entry-meta">
-							<?php awps\core\tags::posted_on(); ?>
+							<?php Awps\Core\Tags::posted_on(); ?>
 						</div><!-- .entry-meta -->
 
 		<?php endif; ?>

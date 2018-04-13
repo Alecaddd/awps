@@ -9,7 +9,7 @@ namespace Awps\Plugins;
 
 use Jetpack;
 
-class AwpsJetpack
+class ThemeJetpack
 {
     /**
      * register default hooks and actions for WordPress
