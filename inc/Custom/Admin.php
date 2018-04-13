@@ -114,7 +114,7 @@ class Admin
 				'capability' => 'manage_options',
 				'menu_slug' => 'awps',
 				'callback' => array( $this->callback, 'admin_index' ),
-				'icon_url' => get_template_directory_uri() . '/assets/dist/images/awps-logo.png',
+				'icon_url' => get_template_directory_uri() . '/assets/dist/images/admin-icon.png',
 				'position' => 110,
 			)
 		);
