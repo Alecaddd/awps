@@ -10,11 +10,7 @@ let mix = require( 'laravel-mix' );
 // BrowserSync and LiveReload on `npm run watch` command
 // Update the `proxy` and the location of your SSL Certificates if you're developing over HTTPS
 mix.browserSync({
-	proxy: 'https://wp.dev',
-	https: {
-		key: '/Users/alecaddd/.valet/Certificates/wp.dev.key',
-		cert: '/Users/alecaddd/.valet/Certificates/wp.dev.crt'
-	},
+	proxy: 'http://localhost',
 	files: [
 		'**/*.php',
 		'assets/dist/css/**/*.css',
@@ -30,8 +26,7 @@ mix.autoload({
 	'jquery': ['jQuery', '$']
 });
 
-// Fix for Windows Environment
-mix.setPublicPath('./');
+mix.setPublicPath('./assets/dist');
 
 // Compile assets
 mix.js( 'assets/src/scripts/app.js', 'assets/dist/js' )
@@ -40,3 +35,8 @@ mix.js( 'assets/src/scripts/app.js', 'assets/dist/js' )
 	.sass( 'assets/src/sass/style.scss', 'assets/dist/css' )
 	.sass( 'assets/src/sass/admin.scss', 'assets/dist/css' )
 	.sass( 'assets/src/sass/gutenberg.scss', 'assets/dist/css' );
+
+// Add versioning to assets in production environment
+if ( mix.inProduction() ) {
+	mix.version();
+}
