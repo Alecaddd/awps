@@ -58,6 +58,17 @@ class Setup
             'audio',
             'chat',
         ) );
+        
+        /*
+            Add WP custom logo functionality + define the size for the logo
+        */
+        add_theme_support( 'custom-logo', array(
+            'height'      => 250,
+            'width'       => 250,
+            'flex-height' => true,
+            'flex-width'  => true,
+            'header-text' => array( 'site-title', 'site-description' ),
+        ) );
     }
 
     /*
