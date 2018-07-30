@@ -59,8 +59,17 @@ class Setup
             'audio',
             'chat',
         ) );
-
-        add_theme_support( 'custom-logo', $defaults );
+        
+        /*
+            Add WP custom logo functionality + define the size for the logo
+        */
+        add_theme_support( 'custom-logo', array(
+            'height'      => 250,
+            'width'       => 250,
+            'flex-height' => true,
+            'flex-width'  => true,
+            'header-text' => array( 'site-title', 'site-description' ),
+        ) );
     }
 
     /*
@@ -71,16 +80,6 @@ class Setup
         $GLOBALS[ 'content_width' ] = apply_filters( 'content_width', 1440 );
     }
     
-    /*
-        Define the size for the logo
-    */
-    public function custom_logo() {
-        $defaults = array(
-            'height'      => 250,
-            'width'       => 250,
-            'flex-height' => true,
-            'flex-width'  => true,
-            'header-text' => array( 'site-title', 'site-description' ),
-        );
-    }
+    
+    
 }
