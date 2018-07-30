@@ -33,6 +33,15 @@
 					<div class="col-xs-12 col-sm-4">
 
 						<div class="site-branding">
+							<?php
+								$custom_logo_id = get_theme_mod( 'custom_logo' );
+								$logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+								if ( has_custom_logo() ) {
+									echo '<img src="'. esc_url( $logo[0] ) .'">';
+								} else {
+									echo '<h1 class="site-title"><a href="'. esc_url( home_url( '/' ) ) .'" rel="home">' . bloginfo( 'name' ) . '</a></h1>';
+								}
+							?>
 							<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 							<?php
 							$description = get_bloginfo( 'description', 'display' );
