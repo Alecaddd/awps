@@ -12,6 +12,7 @@ class Setup
     {
         add_action( 'after_setup_theme', array( $this, 'setup' ) );
         add_action( 'after_setup_theme', array( $this, 'content_width' ), 0);
+        add_action( 'after_setup_theme', array( $this, 'custom_logo' ) );
     }
 
     public function setup()
@@ -58,6 +59,8 @@ class Setup
             'audio',
             'chat',
         ) );
+
+        add_theme_support( 'custom-logo', $defaults );
     }
 
     /*
@@ -66,5 +69,18 @@ class Setup
     public function content_width()
     {
         $GLOBALS[ 'content_width' ] = apply_filters( 'content_width', 1440 );
+    }
+    
+    /*
+        Define the size for the logo
+    */
+    public function custom_logo() {
+        $defaults = array(
+            'height'      => 250,
+            'width'       => 250,
+            'flex-height' => true,
+            'flex-width'  => true,
+            'header-text' => array( 'site-title', 'site-description' ),
+        );
     }
 }
