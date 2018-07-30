@@ -80,6 +80,4 @@ class Setup
         $GLOBALS[ 'content_width' ] = apply_filters( 'content_width', 1440 );
     }
     
-    
-    
 }
