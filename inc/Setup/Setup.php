@@ -80,5 +80,7 @@ class Setup
             'flex-width'  => true,
             'header-text' => array( 'site-title', 'site-description' ),
         );
+        
+        add_theme_support( 'custom-logo', $defaults );
     }
 }
