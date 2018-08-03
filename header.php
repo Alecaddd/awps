@@ -33,8 +33,14 @@
 					<div class="col-xs-12 col-sm-4">
 
 						<div class="site-branding">
-							<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 							<?php
+							$custom_logo_id = get_theme_mod( 'custom_logo' );
+							$logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+							if ( has_custom_logo() ) {
+								echo '<a href="'. esc_url( home_url( '/' ) ) .'" rel="home"><img src="'. esc_url( $logo[0] ) .'" alt=' . bloginfo( 'name' ) . '></a>';
+							} else {
+								echo '<h1 class="site-title"><a href="'. esc_url( home_url( '/' ) ) .'" rel="home">' . bloginfo( 'name' ) . '</a></h1>';
+							}
 							$description = get_bloginfo( 'description', 'display' );
 							if ( $description || is_customize_preview() ) : ?>
 								<p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
