@@ -26,72 +26,93 @@ class Custom
 		/**
 		 * Add the post types and their details
 		 */
-		$customPosts = array (
+		$custom_posts = array(
 			array(
+				'slug' => 'artist',
 				'singular' => 'Artist',
 				'plural' => 'Artists',
 				'menu_icon' => 'dashicons-admin-customizer',
 				'menu_position' => 18,
-				'text_domain' => 'text-domain',
-				'supports' => array( 'title', /*'editor', 'thumbnail' , 'excerpt', 'author', 'comments'*/ )
+				'text_domain' => 'awps',
+				'supports' => array( 'title', /*'editor', 'thumbnail' , 'excerpt', 'author', 'comments'*/ ),
+				'description' => 'Artists Custom Post Type',
+				'public' => true,
+				'publicly_queryable' => true,
+				'show_ui' => true,
+				'show_in_menu' => true,
+				'query_var' => true,
+				'capability_type' => 'post',
+				'has_archive' => true,
+				'hierarchical' => false,
+				'show_in_rest' => true,
 			),
 			array(
+				'slug' => 'book',
 				'singular' => 'Book',
 				'plural'  => 'Books',
 				'menu_icon' => 'dashicons-book-alt',
 				'menu_position' => 18,
-				'text_domain' => 'text-domain',
-				'supports' => array( 'title', 'editor', 'thumbnail' , 'excerpt', 'author', /*'comments'*/ )
-			)
-		);
-		
-		
-		foreach ( $customPosts as $customPost ) {
-			$labels = array(
-				'name'               => _x( $customPost['plural'], 'post type general name', $customPost['text_domain'] ),
-				'singular_name'      => _x( $singular, 'post type singular name', $customPost['text_domain'] ),
-				'menu_name'          => _x( $customPost['plural'], 'admin menu', $customPost['text_domain'] ),
-				'name_admin_bar'     => _x( $customPost['singular'], 'add new on admin bar', $customPost['text_domain'] ),
-				'add_new'            => _x( 'Add New ' . $customPost['singular'], ' awps' ),
-				'add_new_item'       => __( 'Add New ' . $customPost['singular'], ' awps' ),
-				'new_item'           => __( 'New ' . $customPost['singular'], ' awps' ),
-				'edit_item'          => __( 'Edit ' . $customPost['singular'], ' awps' ),
-				'view_item'          => __( 'View ' . $customPost['singular'], ' awps' ),
-				'view_items'         => __( 'View ' . $customPost['plural'], ' awps' ),
-				'all_items'          => __( 'All ' . $customPost['plural'], ' awps' ),
-				'search_items'       => __( 'Search' . $customPost['plural'], ' awps' ),
-				'parent_item_colon'  => __( 'Parent ' . $customPost['plural'], ' awps' ),
-				'not_found'          => __( 'No ' . $customPost['plural'] . ' found.', $customPost['text_domain'] ),
-				'not_found_in_trash' => __( 'No ' . $customPost['plural'] . ' found in Trash.', $customPost['text_domain'] )
-			  );
-			  $args = array(
-				'labels'             => $labels,
-				'description'        => __( 'Description.', $customPost['text_domain'] ),
-				'public'             => true,
+				'text_domain' => 'awps',
+				'supports' => array( 'title', 'editor', 'thumbnail' , 'excerpt', 'author', /*'comments'*/ ),
+				'description' => 'Artists Custom Post Type',
+				'public' => true,
 				'publicly_queryable' => true,
-				'show_ui'            => true,
-				'show_in_menu'       => true,
-				'menu_icon'          => $customPost['menu_icon'],
-				'query_var'          => true,
-				'rewrite'            => array( 'slug' => strtolower( $customPost['plural'] ) ),
-				'capability_type'    => 'post',
-				'has_archive'        => true,
-				'hierarchical'       => false,
-				'menu_position'      => $customPost['menu_position'],
-				'supports'           => $customPost['supports'],
-				'show_in_rest'       => true
-			  );
-			  register_post_type( strtolower( $customPost['plural'] ), $args );
+				'show_ui' => true,
+				'show_in_menu' => true,
+				'query_var' => true,
+				'capability_type' => 'post',
+				'has_archive' => true,
+				'hierarchical' => false,
+				'show_in_rest' => true,
+			),
+		);
+
+		foreach ( $custom_posts as $custom_post ) {
+			$labels = array(
+				'name'               => _x( $custom_post['plural'], 'post type general name', $custom_post['text_domain'] ),
+				'singular_name'      => _x( $custom_post['singular'], 'post type singular name', $custom_post['text_domain'] ),
+				'menu_name'          => _x( $custom_post['plural'], 'admin menu', $custom_post['text_domain'] ),
+				'name_admin_bar'     => _x( $custom_post['singular'], 'add new on admin bar', $custom_post['text_domain'] ),
+				'add_new'            => _x( 'Add New ' . $custom_post['singular'], ' awps' ),
+				'add_new_item'       => __( 'Add New ' . $custom_post['singular'], ' awps' ),
+				'new_item'           => __( 'New ' . $custom_post['singular'], ' awps' ),
+				'edit_item'          => __( 'Edit ' . $custom_post['singular'], ' awps' ),
+				'view_item'          => __( 'View ' . $custom_post['singular'], ' awps' ),
+				'view_items'         => __( 'View ' . $custom_post['plural'], ' awps' ),
+				'all_items'          => __( 'All ' . $custom_post['plural'], ' awps' ),
+				'search_items'       => __( 'Search' . $custom_post['plural'], ' awps' ),
+				'parent_item_colon'  => __( 'Parent ' . $custom_post['plural'], ' awps' ),
+				'not_found'          => __( 'No ' . $custom_post['plural'] . ' found.', $custom_post['text_domain'] ),
+				'not_found_in_trash' => __( 'No ' . $custom_post['plural'] . ' found in Trash.', $custom_post['text_domain'] ),
+			);
+			$args = array(
+				'labels'             => $labels,
+				'description'        => __( 'Description.', $custom_post['text_domain'] ),
+				'public'             => $custom_post['public'],
+				'publicly_queryable' => $custom_post['publicly_queryable'],
+				'show_ui'            => $custom_post['show_ui'],
+				'show_in_menu'       => $custom_post['show_in_menu'],
+				'menu_icon'          => $custom_post['menu_icon'],
+				'query_var'          => $custom_post['query_var'],
+				'rewrite'            => array( 'slug' => $custom_post['slug'] ),
+				'capability_type'    => $custom_post['capability_type'],
+				'has_archive'        => $custom_post['has_archive'],
+				'hierarchical'       => $custom_post['hierarchical'],
+				'menu_position'      => $custom_post['menu_position'],
+				'supports'           => $custom_post['supports'],
+				'show_in_rest'       => $custom_post['show_in_rest'],
+			);
+
+			register_post_type( $custom_post['slug'], $args );
 		}
-    }
+	}
+
   /**
     * Flush Rewrite on CPT activation
     * @return empty
     */
     public function rewrite_flush()
     {
-        // call the CPT init function
-        $this->custom_post_type();
         // Flush the rewrite rules only on theme activation
         flush_rewrite_rules();
     }
