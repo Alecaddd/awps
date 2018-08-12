@@ -6,18 +6,21 @@
 	"license": "GPL-3.0",
 	"version": "3.0.0",
 	"authors": [
-        {
-            "name": "Alessandro Castellani",
-            "email": "me@alecaddd.com",
-            "homepage": "http://alecaddd.com",
-            "role": "Developer"
-        }
+		{
+			"name": "Alessandro Castellani",
+			"email": "me@alecaddd.com",
+			"homepage": "http://alecaddd.com",
+			"role": "Developer"
+		}
 	],
-    "require": {
-    	"vlucas/phpdotenv": "^2.4"
-    },
+	"require": {
+		"vlucas/phpdotenv": "^2.4"
+	},
+	"require-dev": {
+		"jakub-onderka/php-parallel-lint": "^1.0.0"
+	},
 	"autoload": {
-		"psr-4": {"Awps\\": "./inc"},
-		"files": ["./inc/Helpers.php"]
+		"psr-4": { "Awps\\": "./inc" },
+		"files": [ "./inc/Helpers.php" ]
 	}
 }
