@@ -1,6 +1,6 @@
-const { registerBlockType, RichText, BlockControls, AlignmentToolbar, source } = wp.blocks;
+const { registerBlockType, RichText, BlockControls, AlignmentToolbar, source } = wp.blocks
 
-registerBlockType( 'gutenberg-test/hello-world', {
+registerBlockType('gutenberg-test/hello-world', {
 	title: 'Hello World',
 	icon: 'universal-access-alt',
 	category: 'layout',
@@ -16,15 +16,15 @@ registerBlockType( 'gutenberg-test/hello-world', {
 		}
 	},
 
-	edit( { attributes, className, isSelected, setAttributes } ) {
-		const { content, alignment } = attributes;
+	edit ({ attributes, className, isSelected, setAttributes }) {
+		const { content, alignment } = attributes
 
-		function onChangeContent( newContent ) {
-			setAttributes( { content: newContent } );
+		function onChangeContent (newContent) {
+			setAttributes({ content: newContent })
 		}
 
-		function onChangeAlignment( newAlignment ) {
-			setAttributes( { alignment: newAlignment } );
+		function onChangeAlignment (newAlignment) {
+			setAttributes({ alignment: newAlignment })
 		}
 
 		return [
@@ -44,12 +44,12 @@ registerBlockType( 'gutenberg-test/hello-world', {
 				onChange={ onChangeContent }
 				value={ content }
 			/>
-		];
+		]
 	},
 
-	save( { attributes, className } ) {
-		const { content, alignment } = attributes;
+	save ({ attributes, className }) {
+		const { content, alignment } = attributes
 
-		return <p className={ className } style={ { textAlign: alignment } }>{ content }</p>;
+		return <p className={ className } style={ { textAlign: alignment } }>{ content }</p>
 	}
-} );
+})
