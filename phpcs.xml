@@ -23,6 +23,8 @@
 	<exclude-pattern>acf-json/index.php</exclude-pattern>
 	<exclude-pattern>*\inc\*</exclude-pattern>
 	<exclude-pattern>*/inc/*</exclude-pattern>
+	<exclude-pattern>.\vendor\*</exclude-pattern>
+	<exclude-pattern>./vendor/*</exclude-pattern>
 
 	<!-- Include WordPress ruleset, with exclusions. -->
 	<rule ref="WordPress">
