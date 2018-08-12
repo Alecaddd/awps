@@ -47,7 +47,7 @@ matrix:
             # @link http://jshint.com/docs/
             - npm install -g jscs jshint
             # Pull in WordPress Core jshint rules.
-            - wget -nv "https://develop.svn.wordpress.org/trunk/.jshintrc"
+            - wget -N "https://develop.svn.wordpress.org/trunk/.jshintrc"
           # Run test script commands.
           # Default is specific to project language.
           # All commands must exit with code 0 on success. Anything else is considered failure.
