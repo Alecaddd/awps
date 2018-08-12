@@ -16,16 +16,20 @@
 
 	<div class="page-content">
 		<?php
-		if ( is_home() && current_user_can( 'publish_posts' ) ) : ?>
+		if ( is_home() && current_user_can( 'publish_posts' ) ) :
+		?>
 
 			<p>
-				<?php printf(
+				<?php
+				printf(
 					/* translators: 1: link. */
 					wp_kses( __( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'awps' ), array(
 						'a' => array(
 							'href' => array(),
 						),
-					) ), esc_url( admin_url( 'post-new.php' ) ) ); ?>
+					) ), esc_url( admin_url( 'post-new.php' ) )
+				);
+				?>
 			</p>
 
 		<?php elseif ( is_search() ) : ?>
@@ -34,12 +38,18 @@
 			<?php
 				get_search_form();
 
-			else : ?>
+			else :
+			?>
 
-			<p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'awps' ); ?></p>
+			<p>
+			<?php
+			esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'awps' );
+			?>
+			</p>
 			<?php
 				get_search_form();
 
-		endif; ?>
+		endif;
+		?>
 	</div><!-- .page-content -->
 </section><!-- .no-results -->
