@@ -39,7 +39,7 @@ matrix:
             - git clone -b master --depth 1 "https://github.com/wimg/PHPCompatibility.git" "$SNIFFS_DIR/PHPCompatibility"
             # Join WPCS and PHPCompatibility
             # @link https://github.com/PHPCompatibility/PHPCompatibility/pull/729
-            - mv -v "$SNIFFS_DIR/PHPCompatibility/PHPCompatibility/"* "$SNIFFS_DIR/PHPCompatibility/PHPCSAliases.php" "$SNIFFS_DIR/PHPCompatibility/"
+            - mv "$SNIFFS_DIR/PHPCompatibility/PHPCompatibility/"* "$SNIFFS_DIR/PHPCompatibility/" && mv "$SNIFFS_DIR/PHPCompatibility/PHPCSAliases.php" "$SNIFFS_DIR/"
             # After CodeSniffer install you should refresh your path.
             - phpenv rehash
             # Install JSCS: JavaScript Code Style checker and JSHint, a JavaScript Code Quality Tool.
