@@ -11,13 +11,14 @@ registerBlockType( 'gutenberg-test/latest-post', {
             posts: '/wp/v2/posts?per_page=1'
         };
     } )( ( { posts, className } ) => {
+        var post;
         if ( ! posts.data ) {
             return 'loading !';
         }
-        if ( posts.data.length === 0 ) {
+        if ( 0 === posts.data.length ) {
             return 'No posts';
         }
-        var post = posts.data[ 0 ];
+        post = posts.data[ 0 ];
 
         return <a className={ className } href={ post.link }>
             { post.title.rendered }
@@ -25,6 +26,7 @@ registerBlockType( 'gutenberg-test/latest-post', {
     } ),
 
     save() {
+
         // Rendering in PHP
         return null;
     }

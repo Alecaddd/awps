@@ -28,7 +28,6 @@ matrix:
         - php: "7.0"
         # aliased to a recent 7.1.x version
         - php: "7.1"
-          env: PHPCS_BRANCH=2.9
           # Use this to prepare your build for testing.
           # e.g. copy database configurations, environment variables, etc.
           # Failures in this section will result in build status 'errored'.
@@ -39,17 +38,15 @@ matrix:
             # Install PHP Compatibility sniffs.
             - git clone -b master --depth 1 "https://github.com/wimg/PHPCompatibility.git" "$SNIFFS_DIR/PHPCompatibility"
             # Join WPCS and PHPCompatibility
-            # @link https://github.com/PHPCompatibility/PHPCompatibility/pull/72
-            - mv "$SNIFFS_DIR/PHPCompatibility/PHPCompatibility/"* "$SNIFFS_DIR/PHPCompatibility/PHPCSAliases.php" "$SNIFFS_DIR/"
+            # @link https://github.com/PHPCompatibility/PHPCompatibility/pull/729
+            - mv -v "$SNIFFS_DIR/PHPCompatibility/PHPCompatibility/"* "$SNIFFS_DIR/PHPCompatibility/PHPCSAliases.php" "$SNIFFS_DIR/" && ls -l "$SNIFFS_DIR/"
             # After CodeSniffer install you should refresh your path.
             - phpenv rehash
-            # Install JSCS: JavaScript Code Style checker.
+            # Install JSCS: JavaScript Code Style checker and JSHint, a JavaScript Code Quality Tool.
             # @link http://jscs.info/
-            - npm install -g jscs
-            # Install JSHint, a JavaScript Code Quality Tool.
             # @link http://jshint.com/docs/
-            - npm install -g jshint
-            # Pull in WP Core jshint rules.
+            - npm install -g jscs jshint
+            # Pull in WordPress Core jshint rules.
             - wget -nv "https://develop.svn.wordpress.org/trunk/.jshintrc"
           # Run test script commands.
           # Default is specific to project language.
