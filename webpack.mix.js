@@ -10,7 +10,11 @@ let mix = require( 'laravel-mix' );
 // BrowserSync and LiveReload on `npm run watch` command
 // Update the `proxy` and the location of your SSL Certificates if you're developing over HTTPS
 mix.browserSync({
-	proxy: 'http://localhost',
+	proxy: 'https://wp.dev',
+	https: {
+		key: '/Users/alecaddd/.valet/Certificates/wp.dev.key',
+		cert: '/Users/alecaddd/.valet/Certificates/wp.dev.crt'
+	},
 	files: [
 		'**/*.php',
 		'assets/dist/css/**/*.css',
