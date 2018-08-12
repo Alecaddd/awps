@@ -112,7 +112,7 @@ class Settings
 	 * @return variable functions
 	 */
 	private function enqueue_script( $script, $type ) {
-		if ( $script === 'media_uplaoder' )
+		if ( $script === 'media_uploader' )
 			return 'wp_enqueue_media';
 
 		return ( $type === 'style' ) ? array( 'wp_enqueue_style' => $script ) : array( 'wp_enqueue_script' => $script );

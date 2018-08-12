@@ -62,7 +62,7 @@ class Admin
 		$scripts = array(
 			'script' => array( 
 				'jquery', 
-				'media_uplaoder',
+				'media_uploader',
 				get_template_directory_uri() . '/assets/dist/js/admin.js'
 			),
 			'style' => array( 
