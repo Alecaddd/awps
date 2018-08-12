@@ -46,6 +46,10 @@ vendor
 wpcs/
 composer.lock
 
+# JSHint #
+##########
+/.jshintrc
+
 # Bower #
 ##########
 assets/bower_components/*
