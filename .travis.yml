@@ -32,6 +32,7 @@ matrix:
           # e.g. copy database configurations, environment variables, etc.
           # Failures in this section will result in build status 'errored'.
           before_script:
+            # Install PHP packages.
             - composer install --ansi --prefer-dist --no-suggest
             # Install JSCS: JavaScript Code Style checker and JSHint, a JavaScript Code Quality Tool.
             # @link http://jscs.info/
@@ -53,6 +54,8 @@ matrix:
             - ./vendor/bin/phpcs
 
 before_script:
+  # Install PHP packages.
+  - composer install --ansi --prefer-dist --no-suggest
 script:
   # Search for PHP syntax errors.
   - ./vendor/bin/parallel-lint --blame --exclude vendor/ .
