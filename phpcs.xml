@@ -6,8 +6,6 @@
 	<!-- Set a description for this ruleset. -->
 	<description>A custom set of code standard rules to check for WordPress themes.</description>
 
-	<!-- Set WPCS path. -->
-	<config name="installed_paths" value="/tmp/wpcs"/>
 	<!-- Include sniffs for PHP cross-version compatibility. -->
 	<config name="testVersion" value="5.4-99.0"/>
 
@@ -32,6 +30,6 @@
 		<exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />
 		<exclude name="PEAR.Functions.FunctionCallSignature.Indent" />
 	</rule>
-	<!-- Include PHP Compatibility Coding Standard. -->
-	<rule ref="PHPCompatibility" />
+	<!-- Include PHP Compatibility Coding Standard for WordPress. -->
+	<rule ref="PHPCompatibilityWP" />
 </ruleset>
