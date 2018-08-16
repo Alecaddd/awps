@@ -5,19 +5,31 @@
 
 	<!-- Set a description for this ruleset. -->
 	<description>A custom set of code standard rules to check for WordPress themes.</description>
-	
+
+	<!-- Include sniffs for PHP cross-version compatibility. -->
+	<config name="testVersion" value="5.4-99.0"/>
+
+	<!-- A comma separated list of file extensions to check. -->
+	<arg name="extensions" value="php" />
+	<!-- How many files should be checked simultaneously. -->
+	<arg name="parallel" value="4" />
+	<!-- Show progress of the run. -->
+	<arg value="p" />
+
+	<!-- Check the whole Theme, with exclusions. -->
+	<file>.</file>
 	<exclude-pattern>acf-json/index.php</exclude-pattern>
 	<exclude-pattern>*\inc\*</exclude-pattern>
 	<exclude-pattern>*/inc/*</exclude-pattern>
+	<exclude-pattern>.\vendor\*</exclude-pattern>
+	<exclude-pattern>./vendor/*</exclude-pattern>
 
-	<!-- Include the WordPress ruleset, with exclusions. -->
+	<!-- Include WordPress ruleset, with exclusions. -->
 	<rule ref="WordPress">
 		<exclude name="Generic.WhiteSpace.ScopeIndent.IncorrectExact" />
 		<exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />
 		<exclude name="PEAR.Functions.FunctionCallSignature.Indent" />
 	</rule>
-
-	<!-- Include sniffs for PHP cross-version compatibility. -->
-	<config name="testVersion" value="5.4-99.0"/>
-	<!-- <rule ref="PHPCompatibility"/> -->
+	<!-- Include PHP Compatibility Coding Standard for WordPress. -->
+	<rule ref="PHPCompatibilityWP" />
 </ruleset>

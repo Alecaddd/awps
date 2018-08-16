@@ -21,7 +21,8 @@ get_header(); ?>
 					<?php
 
 					/* Start the Loop */
-					while ( have_posts() ) : the_post();
+					while ( have_posts() ) :
+						the_post();
 
 						get_template_part( 'views/content', get_post_format() );
 

@@ -40,6 +40,8 @@
   },
   "homepage": "https://github.com/Alecaddd/awps#readme",
   "dependencies": {
+    "jscs": "^3.0.7",
+    "jshint": "^2.9.6",
     "normalize-scss": "^7.0.1",
     "slick-carousel": "^1.8.1"
   }

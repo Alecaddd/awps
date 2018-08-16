@@ -25,7 +25,11 @@
 
 		<header id="masthead" class="site-header" role="banner">
 
-			<?php if ( is_customize_preview() ) echo '<div id="awps-header-control"></div>'; ?>
+			<?php
+			if ( is_customize_preview() ) {
+				echo '<div id="awps-header-control"></div>';
+			}
+			?>
 
 			<div class="container container-fluid">
 
@@ -36,9 +40,12 @@
 							<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 							<?php
 							$description = get_bloginfo( 'description', 'display' );
-							if ( $description || is_customize_preview() ) : ?>
+							if ( $description || is_customize_preview() ) :
+							?>
 								<p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
-							<?php endif; ?>
+							<?php
+							endif;
+							?>
 					</div><!-- .site-branding -->
 
 				</div><!-- .col -->
@@ -50,8 +57,8 @@
 						if ( has_nav_menu( 'primary' ) ) :
 							wp_nav_menu( array(
 								'theme_location' => 'primary',
-								'menu_id' => 'primary-menu',
-								'walker' => new Awps\Core\WalkerNav(),
+								'menu_id'        => 'primary-menu',
+								'walker'         => new Awps\Core\WalkerNav(),
 							) );
 						endif;
 						?>

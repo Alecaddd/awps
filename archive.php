@@ -19,7 +19,8 @@ get_header(); ?>
 				<main id="main" class="site-main" role="main">
 
 				<?php
-				if ( have_posts() ) : ?>
+				if ( have_posts() ) :
+				?>
 
 					<header>
 						<?php
@@ -30,7 +31,9 @@ get_header(); ?>
 
 					<?php
 					/* Start the Loop */
-					while ( have_posts() ) : the_post();
+					while ( have_posts() ) :
+
+						the_post();
 
 						get_template_part( 'views/content', get_post_format() );
 
@@ -42,7 +45,8 @@ get_header(); ?>
 
 					get_template_part( 'views/content', 'none' );
 
-				endif; ?>
+				endif;
+				?>
 
 				</main><!-- #main -->
 			</div><!-- #primary -->
