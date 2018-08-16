@@ -29,7 +29,7 @@ registerBlockType('gutenberg-test/hello-world', {
 
 		return [
 			isSelected && (
-				<BlockControls key="controls">
+				<BlockControls key='controls'>
 					<AlignmentToolbar
 						value={ alignment }
 						onChange={ onChangeAlignment }
@@ -37,8 +37,8 @@ registerBlockType('gutenberg-test/hello-world', {
 				</BlockControls>
 			),
 			<RichText
-				key="editable"
-				tagName="p"
+				key='editable'
+				tagName='p'
 				className={ className }
 				style={ { textAlign: alignment } }
 				onChange={ onChangeContent }

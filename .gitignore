@@ -43,8 +43,11 @@ Thumbs.db
 ##########
 vendor
 !assets/js/vendor/
-wpcs/
 composer.lock
+
+# JSHint #
+##########
+/.jshintrc
 
 # Bower #
 ##########

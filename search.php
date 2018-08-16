@@ -19,29 +19,38 @@ get_header(); ?>
 				<main id="main" class="site-main" role="main">
 
 				<?php
-					if ( have_posts() ) : ?>
+				if ( have_posts() ) :
+				?>
 
-						<header>
-							<h1 class="page-title"><?php printf(
+					<header>
+						<h1 class="page-title">
+						?php
+						printf(
 							/* translators: %s: Search Term. */
-							esc_html__( 'Search Results for: %s', 'awps' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
-						</header><!-- .page-header -->
+							esc_html__( 'Search Results for: %s', 'awps' ), '<span>' . get_search_query() . '</span>'
+						);
+						?>
+						</h1>
+					</header><!-- .page-header -->
 
 					<?php
-								/* Start the Loop */
-								while ( have_posts() ) : the_post();
+					/* Start the Loop */
+					while ( have_posts() ) :
 
-										get_template_part( 'views/content', 'search' );
+						the_post();
 
-								endwhile;
+						get_template_part( 'views/content', 'search' );
 
-								the_posts_navigation();
+					endwhile;
 
-						else :
+					the_posts_navigation();
 
-								get_template_part( 'views/content', 'none' );
+				else :
 
-						endif; ?>
+					get_template_part( 'views/content', 'none' );
+
+				endif;
+				?>
 
 				</main><!-- #main -->
 			</div><!-- #primary -->
