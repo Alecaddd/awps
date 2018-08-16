@@ -21,15 +21,15 @@
 /**
  * Include Dotenv library to pull config options from .env file.
  */
-if (file_exists(__DIR__ . '/wp-content/themes/awps/vendor/autoload.php')) :
+if ( file_exists( __DIR__ . '/wp-content/themes/awps/vendor/autoload.php' ) ) :
 	require_once __DIR__ . '/wp-content/themes/awps/vendor/autoload.php';
-	$dotenv = new Dotenv\Dotenv(__DIR__);
+	$dotenv = new Dotenv\Dotenv( __DIR__ );
 	$dotenv->load();
 endif;
 
-if (file_exists(dirname(__DIR__) . '/wp-content/themes/awps/vendor/autoload.php')) :
-	require_once dirname(__DIR__) . '/wp-content/themes/awps/vendor/autoload.php';
-	$dotenv = new Dotenv\Dotenv(dirname(__DIR__));
+if ( file_exists( dirname( __DIR__ ) . '/wp-content/themes/awps/vendor/autoload.php' ) ) :
+	require_once dirname( __DIR__ ) . '/wp-content/themes/awps/vendor/autoload.php';
+	$dotenv = new Dotenv\Dotenv( dirname( __DIR__ ) );
 	$dotenv->load();
 endif;
 
@@ -37,21 +37,21 @@ endif;
  * The name of the database for WordPress
  */
 
-define('DB_NAME', getenv('DB_NAME'));
+define( 'DB_NAME', getenv( 'DB_NAME' ) );
 
 /* MySQL database username */
-define('DB_USER', getenv('DB_USER'));
+define( 'DB_USER', getenv( 'DB_USER' ) );
 
 /* MySQL database password */
-define('DB_PASSWORD', getenv('DB_PASSWORD'));
+define( 'DB_PASSWORD', getenv( 'DB_PASSWORD' ) );
 
 /* MySQL hostname */
-define('DB_HOST', getenv('DB_HOST'));
+define( 'DB_HOST', getenv( 'DB_HOST' ) );
 
 /* Database Charset to use in creating database tables. */
-define('DB_CHARSET', 'utf8');
+define( 'DB_CHARSET', 'utf8' );
 /* The Database Collate type. Don't change this if in doubt. */
-define('DB_COLLATE', '');
+define( 'DB_COLLATE', '' );
 
 /**
  * Authentication Unique Keys and Salts.
@@ -63,14 +63,14 @@ define('DB_COLLATE', '');
  * @since 2.6.0
  */
 
-define('AUTH_KEY', 'put your unique phrase here');
-define('SECURE_AUTH_KEY', 'put your unique phrase here');
-define('LOGGED_IN_KEY', 'put your unique phrase here');
-define('NONCE_KEY', 'put your unique phrase here');
-define('AUTH_SALT', 'put your unique phrase here');
-define('SECURE_AUTH_SALT', 'put your unique phrase here');
-define('LOGGED_IN_SALT', 'put your unique phrase here');
-define('NONCE_SALT', 'put your unique phrase here');
+define( 'AUTH_KEY', 'put your unique phrase here' );
+define( 'SECURE_AUTH_KEY', 'put your unique phrase here' );
+define( 'LOGGED_IN_KEY', 'put your unique phrase here' );
+define( 'NONCE_KEY', 'put your unique phrase here' );
+define( 'AUTH_SALT', 'put your unique phrase here' );
+define( 'SECURE_AUTH_SALT', 'put your unique phrase here' );
+define( 'LOGGED_IN_SALT', 'put your unique phrase here' );
+define( 'NONCE_SALT', 'put your unique phrase here' );
 
 /**#@-*/
 /**
@@ -80,7 +80,7 @@ define('NONCE_SALT', 'put your unique phrase here');
  * prefix. Only numbers, letters, and underscores please!
  */
 
-$table_prefix = getenv('DB_PREFIX');
+$table_prefix = getenv( 'DB_PREFIX' );
 
 /*
  * For developers: WordPress debugging mode.
@@ -95,28 +95,28 @@ $table_prefix = getenv('DB_PREFIX');
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
 
-define('WP_DEBUG', getenv('APP_ENV') === 'development' ? true : false);
+define( 'WP_DEBUG', getenv( 'APP_ENV' ) === 'development' ? true : false );
 
 /**
  * Define home and site url
  * reduces DB calls and increase performance
  */
 
-define('WP_HOME', getenv('WP_HOME'));
-define('WP_SITEURL', getenv('WP_SITEURL'));
+define( 'WP_HOME', getenv( 'WP_HOME' ) );
+define( 'WP_SITEURL', getenv( 'WP_SITEURL' ) );
 
 /**
  * Manage Post revisions and autosave
  */
 
-define('AUTOSAVE_INTERVAL', getenv('AUTOSAVE_INTERVAL'));
-define('WP_POST_REVISIONS', getenv('WP_POST_REVISIONS'));
+define( 'AUTOSAVE_INTERVAL', getenv( 'AUTOSAVE_INTERVAL' ) );
+define( 'WP_POST_REVISIONS', getenv( 'WP_POST_REVISIONS' ) );
 
 /**
  * Manage Trash auto empty
  */
 
-define('EMPTY_TRASH_DAYS', getenv('EMPTY_TRASH_DAYS'));
+define( 'EMPTY_TRASH_DAYS', getenv( 'EMPTY_TRASH_DAYS' ) );
 
 /**
  * Increase PHP memory limit
@@ -124,14 +124,14 @@ define('EMPTY_TRASH_DAYS', getenv('EMPTY_TRASH_DAYS'));
  * This might not work for some hosting providers
  */
 
-define('WP_MEMORY_LIMIT', getenv('WP_MEMORY_LIMIT'));
+define( 'WP_MEMORY_LIMIT', getenv( 'WP_MEMORY_LIMIT' ) );
 
 /* That's all, stop editing! Happy blogging. */
 
 /* Absolute path to the WordPress directory. */
 
-if (! defined('ABSPATH')) :
-	define('ABSPATH', dirname(__FILE__) . '/');
+if ( ! defined( 'ABSPATH' ) ) :
+	define( 'ABSPATH', dirname( __FILE__ ) . '/' );
 endif;
 
 /* Sets up WordPress vars and included files. */
