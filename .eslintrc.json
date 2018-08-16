@@ -1,7 +1,8 @@
 {
-    "extends": "standard",
+    "extends": "wordpress",
     "rules": {
         "indent": ["error", "tab"],
-        "no-tabs": 0
+        "no-tabs": 0,
+        "no-unused-vars": 0
     }
 }
