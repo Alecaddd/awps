@@ -46,7 +46,7 @@ matrix:
             - composer install --ansi --prefer-dist --no-suggest
             # Install ESLint shareable config for WordPress.
             # @link https://github.com/WordPress-Coding-Standards/eslint-config-wordpress
-            - npm install
+            - npm install eslint eslint-config-wordpress
             # Pull in WordPress Core eslint rules.
             # - wget -N "https://github.com/WordPress-Coding-Standards/eslint-config-wordpress/blob/master/.eslintrc.json"
           # Run test script commands.
