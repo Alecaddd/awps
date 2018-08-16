@@ -1,5 +1,6 @@
 {
     "preset": "wordpress",
+    "esversion": 6,
     "fileExtensions": [ ".js" ],
     "excludeFiles": [
         "assets/dist/js/admin.js",
