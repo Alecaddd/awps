@@ -16,15 +16,15 @@ registerBlockType( 'gutenberg-test/hello-world', {
 		}
 	},
 
-	edit( { attributes, className, isSelected, setAttributes } ) {
+	edit({ attributes, className, isSelected, setAttributes }) {
 		const { content, alignment } = attributes;
 
 		function onChangeContent( newContent ) {
-			setAttributes( { content: newContent } );
+			setAttributes({ content: newContent });
 		}
 
 		function onChangeAlignment( newAlignment ) {
-			setAttributes( { alignment: newAlignment } );
+			setAttributes({ alignment: newAlignment });
 		}
 
 		return [
@@ -47,9 +47,9 @@ registerBlockType( 'gutenberg-test/hello-world', {
 		];
 	},
 
-	save( { attributes, className } ) {
+	save({ attributes, className }) {
 		const { content, alignment } = attributes;
 
 		return <p className={ className } style={ { textAlign: alignment } }>{ content }</p>;
 	}
-} );
+});

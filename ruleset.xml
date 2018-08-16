@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<ruleset name="AWPS PSR2 Coding Standard">
+    <description>PSR2 with tabs instead of spaces.</description>
+    <arg name="tab-width" value="4"/>
+    <rule ref="PSR2">
+        <exclude name="Generic.WhiteSpace.DisallowTabIndent"/>
+    </rule>
+    <rule ref="Generic.WhiteSpace.DisallowSpaceIndent"/>
+    <rule ref="Generic.WhiteSpace.ScopeIndent">
+        <properties>
+            <property name="indent" value="4"/>
+            <property name="tabIndent" value="true"/>
+        </properties>
+    </rule>
+    <!-- Class Name: Pascal Case -->
+    <!-- Method and property Name: Camel Case -->
+    <!-- Global functions and variables: Lower underscore case -->
+</ruleset>
