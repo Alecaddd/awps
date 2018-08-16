@@ -6,9 +6,11 @@
 	<!-- Set a description for this ruleset. -->
 	<description>A custom set of code standard rules to check for WordPress themes.</description>
 
-	<!-- Include sniffs for PHP cross-version compatibility. -->
-	<config name="testVersion" value="5.4-99.0"/>
+	<!-- Specify what PHP version the code has to be compatible with. -->
+	<config name="testVersion" value="5.6-" />
 
+	<!-- PATH for PHPCS -->
+	<arg name="basepath" value="." />
 	<!-- A comma separated list of file extensions to check. -->
 	<arg name="extensions" value="php" />
 	<!-- How many files should be checked simultaneously. -->
@@ -19,10 +21,8 @@
 	<!-- Check the whole Theme, with exclusions. -->
 	<file>.</file>
 	<exclude-pattern>acf-json/index.php</exclude-pattern>
-	<exclude-pattern>*\inc\*</exclude-pattern>
 	<exclude-pattern>*/inc/*</exclude-pattern>
-	<exclude-pattern>.\vendor\*</exclude-pattern>
-	<exclude-pattern>./vendor/*</exclude-pattern>
+	<exclude-pattern>*/vendor/*</exclude-pattern>
 
 	<!-- Include WordPress ruleset, with exclusions. -->
 	<rule ref="WordPress">
@@ -30,6 +30,14 @@
 		<exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />
 		<exclude name="PEAR.Functions.FunctionCallSignature.Indent" />
 	</rule>
+	<!-- Include WordPress I18n ruleset-->
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array" value="awps,tgmpa" />
+		</properties>
+	</rule>
 	<!-- Include PHP Compatibility Coding Standard for WordPress. -->
 	<rule ref="PHPCompatibilityWP" />
+
+	<config name="minimum_supported_wp_version" value="4.6"/>
 </ruleset>
