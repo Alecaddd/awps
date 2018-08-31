@@ -24,7 +24,7 @@ get_header(); ?>
 
 					<header>
 						<h1 class="page-title">
-						?php
+						<?php
 						printf(
 							/* translators: %s: Search Term. */
 							esc_html__( 'Search Results for: %s', 'awps' ), '<span>' . get_search_query() . '</span>'

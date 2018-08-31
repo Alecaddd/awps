@@ -22,11 +22,13 @@
 	<footer id="colophon" class="site-footer container-fluid" role="contentinfo">
 
 		<div class="site-info">
-			printf( '<a %s href="%s">%s</a>',
-				is_customize_preview() ? 'id="awps-footer-copy-control"' : '',
-				esc_url( __( 'https://github.com/Alecaddd/awps', 'awps' ) ),
-				esc_html( Awps\Api\Customizer::text( 'awps_footer_copy_text' ) )
-			);
+			<?php
+				printf( '<a %s href="%s">%s</a>',
+					is_customize_preview() ? 'id="awps-footer-copy-control"' : '',
+					esc_url( __( 'https://github.com/Alecaddd/awps', 'awps' ) ),
+					esc_html( Awps\Api\Customizer::text( 'awps_footer_copy_text' ) )
+				);
+			?>
 			<span class="sep"> | </span>
 			<?php
 				/* translators: %1: Theme name. */
