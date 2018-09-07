@@ -14,12 +14,17 @@ This theme relies on **NPM** and **Composer** in order to load dependencies and 
 
 ## Installation
 
+### Manual
+
 * Move the `.env.example` to your WordPress root directory, rename it as `.env`, and setup your website variables
 * Move the `wp-config.sample.php` to your WordPress root directory and rename it as `wp-config.php`, to replace the default one
-* Open a Terminal window on the location of the theme folder
+* Open the location of the theme folder in a Terminal window 
 * Execute `composer install`
 * Execute `npm install`
 
+### Awps CLI
+
+Use the automated [Awps CLI](https://github.com/alecaddd/awps-cli)
 
 ## Webpack
 
