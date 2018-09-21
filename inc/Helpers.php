@@ -63,7 +63,7 @@ if (! function_exists('mix')) {
 		if ($manifestDirectory && ! starts_with($manifestDirectory, '/')) {
 			$manifestDirectory = "/{$manifestDirectory}";
 		}
-		$rootDir = dirname(__FILE__, 2);
+		$rootDir = dirname(dirname(__FILE__));
 		if (file_exists($rootDir . '/' . $manifestDirectory.'/hot')) {
 			return getenv('WP_SITEURL') . ":8080" . $path;
 		}
