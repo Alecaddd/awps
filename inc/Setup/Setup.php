@@ -19,17 +19,20 @@ class Setup
         /*
          * You can activate this if you're planning to build a multilingual theme
          */
-        
-        //load_theme_textdomain( 'awps', get_template_directory() . '/languages' );
+        // load_theme_textdomain( 'awps', get_template_directory() . '/languages' );
 
         /*
          * Default Theme Support options better have
          */
-        
         add_theme_support( 'automatic-feed-links' );
         add_theme_support( 'title-tag' );
         add_theme_support( 'post-thumbnails' );
         add_theme_support( 'customize-selective-refresh-widgets' );
+        
+        /**
+        * Add woocommerce support and woocommerce override
+        */
+        // add_theme_support( 'woocommerce' );
 
         add_theme_support( 'html5', array(
             'search-form',
