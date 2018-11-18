@@ -1,5 +1,5 @@
 const { registerBlockType } = wp.blocks;
-const { withAPIData } = wp.components;
+const { withAPIData, withSelect } = wp.data;
 
 registerBlockType( 'gutenberg-test/latest-post', {
 	title: 'Latest Post',
