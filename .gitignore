@@ -63,11 +63,15 @@ assets/bower_components/*
 ##########
 node_modules
 package-lock.json
+yarn.lock
 
 # Compiled Files and Build Dirs #
 ##########
 /README.html
 /build/
+/assets/dist/css/*.css
+/assets/dist/js/*.js
+mix-manifest.json
 
 # PhpStrom Project Files #
 .idea/
