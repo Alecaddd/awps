@@ -1,6 +1,6 @@
 {
   "name": "awps",
-  "version": "3.0.0",
+  "version": "3.0.4",
   "description": "Alecaddd WordPress Starter Theme for savvy developers",
   "main": "index.js",
   "scripts": {
@@ -19,16 +19,16 @@
     "browser-sync-webpack-plugin": "^2.0.1",
     "cross-env": "^5.1",
     "eslint": "^5.3.0",
-    "eslint-config-standard": "^11.0.0",
+    "eslint-config-standard": "^12.0.0",
     "eslint-plugin-import": "^2.13.0",
-    "eslint-plugin-node": "^7.0.1",
-    "eslint-plugin-promise": "^3.8.0",
-    "eslint-plugin-standard": "^3.1.0",
+    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
     "jquery": "^3.3.1",
     "laravel-mix": "^2.0",
     "lodash": "^4.17.4",
     "popper.js": "^1.12",
-    "tailwindcss": "^0.6.4",
+    "tailwindcss": "^0.7.2",
     "vue": "^2.5.7"
   },
   "repository": {
