@@ -1,4 +1,5 @@
-const { registerBlockType, RichText, BlockControls, AlignmentToolbar, source } = wp.blocks;
+const { registerBlockType } = wp.blocks;
+const { RichText } = wp.editor;
 
 registerBlockType( 'gutenberg-test/hello-world', {
 	title: 'Hello World',
@@ -10,46 +11,20 @@ registerBlockType( 'gutenberg-test/hello-world', {
 			type: 'array',
 			source: 'children',
 			selector: 'p'
-		},
-		alignment: {
-			type: 'string'
 		}
 	},
 
-	edit({ attributes, className, isSelected, setAttributes }) {
-		const { content, alignment } = attributes;
-
-		function onChangeContent( newContent ) {
+	edit: ( props ) => {
+		const { attributes: { content }, setAttributes, className } = props;
+		const onChangeContent = ( newContent ) => {
 			setAttributes({ content: newContent });
-		}
-
-		function onChangeAlignment( newAlignment ) {
-			setAttributes({ alignment: newAlignment });
-		}
-
-		return [
-			isSelected && (
-				<BlockControls key='controls'>
-					<AlignmentToolbar
-						value={ alignment }
-						onChange={ onChangeAlignment }
-					/>
-				</BlockControls>
-			),
-			<RichText
-				key='editable'
-				tagName='p'
-				className={ className }
-				style={ { textAlign: alignment } }
-				onChange={ onChangeContent }
-				value={ content }
-			/>
-		];
+		};
+		return (
+			<RichText tagName="p" className={className} onChange={onChangeContent} value={content}/>
+		);
 	},
 
-	save({ attributes, className }) {
-		const { content, alignment } = attributes;
-
-		return <p className={ className } style={ { textAlign: alignment } }>{ content }</p>;
+	save: ( props ) => {
+		return <RichText.Content tagName="p" value={props.attributes.content} />;
 	}
 });
