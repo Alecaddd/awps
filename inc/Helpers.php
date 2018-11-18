@@ -83,36 +83,36 @@ if (! function_exists('mix')) {
 
 		return get_template_directory_uri() . $path;
 	}
+}
 
-	if ( ! function_exists('assets') ) {
-		/**
-		 * Easily point tot he assets dist folder.
-		 *
-		 * @param  string  $path
-		 */
-		function assets($path)
-		{
-			if (! $path) {
-				return;
-			}
-
-			echo get_template_directory_uri() . '/assets/dist/' . $path;
+if ( ! function_exists('assets') ) {
+	/**
+	 * Easily point tot he assets dist folder.
+	 *
+	 * @param  string  $path
+	 */
+	function assets($path)
+	{
+		if (! $path) {
+			return;
 		}
+
+		echo get_template_directory_uri() . '/assets/dist/' . $path;
 	}
+}
 
-	if ( ! function_exists('svg') ) {
-		/**
-		 * Easily point tot he assets dist folder.
-		 *
-		 * @param  string  $path
-		 */
-		function svg($path)
-		{
-			if (! $path) {
-				return;
-			}
-
-			echo get_template_part('assets/dist/svg/inline', $path . '.svg');
+if ( ! function_exists('svg') ) {
+	/**
+	 * Easily point tot he assets dist folder.
+	 *
+	 * @param  string  $path
+	 */
+	function svg($path)
+	{
+		if (! $path) {
+			return;
 		}
+
+		echo get_template_part('assets/dist/svg/inline', $path . '.svg');
 	}
 }
