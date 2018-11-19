@@ -30,7 +30,9 @@ endif;
 			<?php
 				printf(
 					/* translators: 1: Comments count. */
-					esc_html( _n( '%d Comment.', '%d Comments.', get_comments_number(), 'awps' ) ), absint( get_comments_number() ) );
+					esc_html( _n( '%d Comment.', '%d Comments.', get_comments_number(), 'awps' ) ),
+					absint( get_comments_number() )
+					);
 			?>
 		</h2><!-- .comments-title -->
 
@@ -48,10 +50,12 @@ endif;
 
 		<ol class="comment-list">
 			<?php
-				wp_list_comments( array(
-					'style'      => 'ol',
-					'short_ping' => true,
-				) );
+				wp_list_comments(
+					array(
+						'style'      => 'ol',
+						'short_ping' => true,
+					)
+				);
 			?>
 		</ol><!-- .comment-list -->
 

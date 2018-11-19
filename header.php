@@ -39,7 +39,7 @@
 						<div class="site-branding">
 							<h1 class="site-title">
 								<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-									<?php svg('wordpress'); ?>
+									<?php svg( 'WordPress' ); ?>
 									<?php bloginfo( 'name' ); ?>
 								</a>
 							</h1>
@@ -60,11 +60,13 @@
 					<nav id="site-navigation" class="main-navigation" role="navigation">
 						<?php
 						if ( has_nav_menu( 'primary' ) ) :
-							wp_nav_menu( array(
-								'theme_location' => 'primary',
-								'menu_id'        => 'primary-menu',
-								'walker'         => new Awps\Core\WalkerNav(),
-							) );
+							wp_nav_menu(
+								array(
+									'theme_location' => 'primary',
+									'menu_id'        => 'primary-menu',
+									'walker'         => new Awps\Core\WalkerNav(),
+								)
+							);
 						endif;
 						?>
 					</nav>

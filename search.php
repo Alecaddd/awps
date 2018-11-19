@@ -27,7 +27,8 @@ get_header(); ?>
 						<?php
 						printf(
 							/* translators: %s: Search Term. */
-							esc_html__( 'Search Results for: %s', 'awps' ), '<span>' . get_search_query() . '</span>'
+							esc_html__( 'Search Results for: %s', 'awps' ),
+							'<span>' . get_search_query() . '</span>'
 						);
 						?>
 						</h1>

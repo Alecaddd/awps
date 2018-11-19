@@ -23,7 +23,8 @@
 
 		<div class="site-info">
 			<?php
-				printf( '<a %s href="%s">%s</a>',
+				printf(
+					'<a %s href="%s">%s</a>',
 					is_customize_preview() ? 'id="awps-footer-copy-control"' : '',
 					esc_url( __( 'https://github.com/Alecaddd/awps', 'awps' ) ),
 					esc_html( Awps\Api\Customizer::text( 'awps_footer_copy_text' ) )
