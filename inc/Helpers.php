@@ -87,7 +87,7 @@ if (! function_exists('mix')) {
 
 if ( ! function_exists('assets') ) {
 	/**
-	 * Easily point tot he assets dist folder.
+	 * Easily point to the assets dist folder.
 	 *
 	 * @param  string  $path
 	 */
@@ -103,7 +103,7 @@ if ( ! function_exists('assets') ) {
 
 if ( ! function_exists('svg') ) {
 	/**
-	 * Easily point tot he assets dist folder.
+	 * Easily point to the assets dist folder.
 	 *
 	 * @param  string  $path
 	 */
