@@ -23,7 +23,53 @@ class Gutenberg
 			return;
 		}
 
+		add_action( 'init', array( $this, 'gutenberg_init' ) );
+
 		add_action( 'init', array( $this, 'gutenberg_enqueue' ) );
+
+		add_action( 'enqueue_block_assets', array( $this, 'gutenberg_assets' ) );
+	}
+
+	/**
+	 * Custom Gutenberg settings
+	 * @return
+	 */
+	public function gutenberg_init()
+	{
+		add_theme_support( 'gutenberg', array(
+			// Theme supports responsive video embeds
+			'responsive-embeds' => true,
+            // Theme supports wide images, galleries and videos.
+            'wide-images' => true,
+		) );
+		
+		add_theme_support( 'editor-color-palette', array(
+			array(
+				'name'  => __( 'White', 'awps' ),
+				'slug'  => 'white',
+				'color' => '#ffffff',
+			),
+			array(
+				'name'  => __( 'Black', 'awps' ),
+				'slug'  => 'black',
+				'color' => '#333333',
+			),
+			array(
+				'name'  => __( 'Gold', 'awps' ),
+				'slug'  => 'gold',
+				'color' => '#FCBB6D',
+			),
+			array(
+				'name'  => __( 'Pink', 'awps' ),
+				'slug'  => 'pink',
+				'color' => '#FF4444',
+			),
+			array(
+				'name'  => __( 'Grey', 'awps' ),
+				'slug'  => 'grey',
+				'color' => '#b8c2cc',
+			),
+		) );
 	}
 
 	/**
@@ -32,41 +78,19 @@ class Gutenberg
 	 */
 	public function gutenberg_enqueue()
 	{
-		wp_register_script( 'gutenberg-test', get_template_directory_uri() . '/assets/dist/js/gutenberg.js', array( 'wp-blocks', 'wp-element' ) );
+		wp_register_script( 'gutenberg-awps', get_template_directory_uri() . '/assets/dist/js/gutenberg.js', array( 'wp-blocks', 'wp-element', 'wp-editor' ) );
 
-		wp_register_style( 'gutenberg-test', get_template_directory_uri() . '/assets/dist/css/gutenberg.css', array( 'wp-edit-blocks' ), time() );
-
-		register_block_type( 'gutenberg-test/hello-world', array(
-			'editor_script' => 'gutenberg-test', // Load script in the editor
-			'editor_style' => 'gutenberg-test', // Load style in the editor
-			'style' => 'gutenberg-test', // Load style in the front-end
-		) );
-
-		register_block_type( 'gutenberg-test/latest-post', array(
-			'render_callback' => array( $this, 'awps_render_block_latest_post' ),
-			'editor_style' => 'gutenberg-test',
-			'style' => 'gutenberg-test'
+		register_block_type( 'gutenberg-awps/awps-cta', array(
+			'editor_script' => 'gutenberg-awps', // Load script in the editor
 		) );
 	}
 
-	public function awps_render_block_latest_post( $attributes )
+	/**
+	 * Enqueue scripts and styles of your Gutenberg blocks in the editor
+	 * @return
+	 */
+	public function gutenberg_assets()
 	{
-		$recent_posts = wp_get_recent_posts( array(
-			'numberposts' => 1,
-			'post_status' => 'publish',
-		) );
-
-		if ( count( $recent_posts ) === 0 ) {
-			return 'No posts';
-		}
-
-		$post = $recent_posts[ 0 ];
-		$post_id = $post[ 'ID' ];
-
-		return sprintf(
-			'<a class="wp-block-awps-latest-post" href="%1$s">%2$s</a>',
-			esc_url( get_permalink( $post_id ) ),
-			esc_html( get_the_title( $post_id ) )
-		);
+		wp_enqueue_style( 'gutenberg-awps-cta', get_template_directory_uri() . '/assets/dist/css/gutenberg.css', null );
 	}
 }
