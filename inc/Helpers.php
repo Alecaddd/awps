@@ -40,6 +40,7 @@ if ( ! function_exists( 'starts_with' ) ) {
 		return false;
 	}
 }
+
 if (! function_exists('mix')) {
 	/**
 	 * Get the path to a versioned Mix file.
