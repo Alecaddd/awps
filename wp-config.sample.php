@@ -23,13 +23,13 @@
  */
 if ( file_exists( __DIR__ . '/wp-content/themes/awps/vendor/autoload.php' ) ) :
 	require_once __DIR__ . '/wp-content/themes/awps/vendor/autoload.php';
-	$dotenv = new Dotenv\Dotenv( __DIR__ );
+	$dotenv = Dotenv\Dotenv::create( __DIR__ );
 	$dotenv->load();
 endif;
 
 if ( file_exists( dirname( __DIR__ ) . '/wp-content/themes/awps/vendor/autoload.php' ) ) :
 	require_once dirname( __DIR__ ) . '/wp-content/themes/awps/vendor/autoload.php';
-	$dotenv = new Dotenv\Dotenv( dirname( __DIR__ ) );
+	$dotenv = Dotenv\Dotenv::create( dirname( __DIR__ ) );
 	$dotenv->load();
 endif;
 
