@@ -98,7 +98,7 @@ $table_prefix = getenv( 'DB_PREFIX' );
 define( 'WP_DEBUG', getenv( 'APP_ENV' ) === 'development' ? true : false );
 define( 'JETPACK_DEV_DEBUG', getenv( 'APP_ENV' ) === 'development' ? true : false );
 define( 'WPCF7_AUTOP', getenv( 'WPCF7_AUTOP' ) );
-define( 'FS_METHOD', getenv( 'FS_METHOD' ) );
+define( 'FS_METHOD', 'direct' );
 
 /**
  * Define home and site url
@@ -120,14 +120,6 @@ define( 'WP_POST_REVISIONS', getenv( 'WP_POST_REVISIONS' ) );
  */
 
 define( 'EMPTY_TRASH_DAYS', getenv( 'EMPTY_TRASH_DAYS' ) );
-
-/**
- * Increase PHP memory limit
- *
- * This might not work for some hosting providers
- */
-
-define( 'WP_MEMORY_LIMIT', getenv( 'WP_MEMORY_LIMIT' ) );
 
 /* That's all, stop editing! Happy blogging. */
 
