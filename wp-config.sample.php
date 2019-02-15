@@ -96,6 +96,9 @@ $table_prefix = getenv( 'DB_PREFIX' );
  */
 
 define( 'WP_DEBUG', getenv( 'APP_ENV' ) === 'development' ? true : false );
+define( 'JETPACK_DEV_DEBUG', getenv( 'APP_ENV' ) === 'development' ? true : false );
+define( 'WPCF7_AUTOP', getenv( 'WPCF7_AUTOP' ) );
+define( 'FS_METHOD', getenv( 'FS_METHOD' ) );
 
 /**
  * Define home and site url
