@@ -6,7 +6,7 @@ namespace Awps\Custom;
  * Custom
  * use it to write your custom functions.
  */
-class Custom
+class PostTypes
 {
 	/**
      * register default hooks and actions for WordPress
