@@ -54,7 +54,7 @@ class PostTypes
 				'menu_position' => 18,
 				'text_domain' => 'awps',
 				'supports' => array( 'title', 'editor', 'thumbnail' , 'excerpt', 'author', /*'comments'*/ ),
-				'description' => 'Artists Custom Post Type',
+				'description' => 'Books Custom Post Type',
 				'public' => true,
 				'publicly_queryable' => true,
 				'show_ui' => true,
