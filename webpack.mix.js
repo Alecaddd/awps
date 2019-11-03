@@ -38,7 +38,8 @@ mix.js( 'assets/src/scripts/app.js', 'assets/dist/js' )
 	.react( 'assets/src/scripts/gutenberg.js', 'assets/dist/js' )
 	.sass( 'assets/src/sass/style.scss', 'assets/dist/css' )
 	.sass( 'assets/src/sass/admin.scss', 'assets/dist/css' )
-	.sass( 'assets/src/sass/gutenberg.scss', 'assets/dist/css' );
+	.sass( 'assets/src/sass/gutenberg.scss', 'assets/dist/css' )
+	.sass( 'node_modules/slick-carousel/slick/slick.scss', 'assets/dist/css' );
 
 // Add versioning to assets in production environment
 if ( mix.inProduction() ) {

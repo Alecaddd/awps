@@ -31,6 +31,7 @@ class Enqueue
 
 		// CSS
 		wp_enqueue_style( 'main', mix('css/style.css'), array(), '1.0.0', 'all' );
+		wp_enqueue_style( 'slick', mix('css/slick.css'), array(), '1.0.0', 'all' );
 
 		// JS
 		wp_enqueue_script( 'main', mix('js/app.js'), array(), '1.0.0', true );
