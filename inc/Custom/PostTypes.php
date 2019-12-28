@@ -87,7 +87,7 @@ class PostTypes
 			);
 			$args = array(
 				'labels'             => $labels,
-				'description'        => __( 'Description.', $custom_post['text_domain'] ),
+				'description'        => __( $custom_post['description'], $custom_post['text_domain'] ),
 				'public'             => $custom_post['public'],
 				'publicly_queryable' => $custom_post['publicly_queryable'],
 				'show_ui'            => $custom_post['show_ui'],
