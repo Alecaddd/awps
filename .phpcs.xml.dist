@@ -7,7 +7,7 @@
 	<description>A custom set of code standard rules to check for WordPress themes.</description>
 
 	<!-- Specify what PHP version the code has to be compatible with. -->
-	<config name="testVersion" value="5.6-" />
+	<config name="testVersion" value="7.4-" />
 
 	<!-- PATH for PHPCS -->
 	<arg name="basepath" value="." />
@@ -15,8 +15,12 @@
 	<arg name="extensions" value="php" />
 	<!-- How many files should be checked simultaneously. -->
 	<arg name="parallel" value="4" />
+
+    <!-- Show colors in console -->
+    <arg value="-colors"/>
+
 	<!-- Show progress of the run. -->
-	<arg value="p" />
+	<arg value="sp" />
 
 	<!-- Check the whole Theme, with exclusions. -->
 	<file>.</file>
@@ -41,5 +45,5 @@
 	<!-- Include PHP Compatibility Coding Standard for WordPress. -->
 	<rule ref="PHPCompatibilityWP" />
 
-	<config name="minimum_supported_wp_version" value="4.6"/>
+	<config name="minimum_supported_wp_version" value="5.5"/>
 </ruleset>
