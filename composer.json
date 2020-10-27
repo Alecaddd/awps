@@ -14,7 +14,7 @@
 		}
 	],
 	"require": {
-		"vlucas/phpdotenv": "^3.3"
+		"vlucas/phpdotenv": "^5.2"
 	},
 	"require-dev": {
 		"roave/security-advisories": "dev-master",
