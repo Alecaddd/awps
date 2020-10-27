@@ -33,6 +33,7 @@ matrix:
         - php: "7.2"
         - php: "7.3"
         - php: "7.4"
+        - php: "nightly"
           # Use this to prepare your build for testing.
           # e.g. copy database configurations, environment variables, etc.
           # Failures in this section will result in build status 'errored'.
@@ -61,7 +62,7 @@ before_script:
   - composer install --ansi --prefer-dist --no-suggest
 script:
   # Search for PHP syntax errors.
-  - ./vendor/bin/parallel-lint --blame --exclude vendor/ .
+  - composer test
 
 # Receive notifications for build results.
 # @link http://docs.travis-ci.com/user/notifications/#Email-notifications
