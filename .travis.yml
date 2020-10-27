@@ -31,9 +31,7 @@ matrix:
         # This theme uses namespaces and autoload
         # and can't run on version < 5.6
         - php: "7.2"
-        # aliased to a recent 7.2.x version
         - php: "7.3"
-        # aliased to a recent 7.2.x version
         - php: "7.4"
           # Use this to prepare your build for testing.
           # e.g. copy database configurations, environment variables, etc.
