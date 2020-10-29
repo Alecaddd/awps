@@ -20,7 +20,7 @@
     "browser-sync-webpack-plugin": "^2.0.1",
     "cross-env": "^7.0",
     "eslint": "^7.12.1",
-    "eslint-config-standard": "^15.0.1",
+    "eslint-config-standard": "^16.0.0",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.0.1",
