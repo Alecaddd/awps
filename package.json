@@ -24,7 +24,7 @@
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.0.1",
-    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-standard": "^5.0.0",
     "jquery": "^3.3.1",
     "laravel-mix": "^5.0.7",
     "laravel-mix-tailwind": "^0.1.0",
