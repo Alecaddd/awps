@@ -70,7 +70,7 @@ yarn.lock
 /README.html
 /build/
 /assets/dist/css/*.css
-/assets/dist/js/*.js
+/assets/dist/js/*.**
 mix-manifest.json
 
 # PhpStrom Project Files #
