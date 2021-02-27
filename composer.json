@@ -4,12 +4,12 @@
 	"keywords": ["WordPress", "Theme", "Starter"],
 	"homepage": "https://github.com/Alecaddd/awps",
 	"license": "GPL-3.0",
-	"version": "3.0.5",
+	"version": "4.0.0",
 	"authors": [
 		{
 			"name": "Alessandro Castellani",
 			"email": "me@alecaddd.com",
-			"homepage": "http://alecaddd.com",
+			"homepage": "https://alecaddd.com",
 			"role": "Developer"
 		}
 	],
