@@ -6,6 +6,7 @@
  */
 
 let mix = require( 'laravel-mix' );
+require( '@tinypixelco/laravel-mix-wp-blocks' );
 
 // BrowserSync and LiveReload on `npm run watch` command
 // Update the `proxy` and the location of your SSL Certificates if you're developing over HTTPS
@@ -35,7 +36,7 @@ mix.setPublicPath( './assets/dist' );
 // Compile assets
 mix.js( 'assets/src/scripts/app.js', 'assets/dist/js' )
 	.js( 'assets/src/scripts/admin.js', 'assets/dist/js' )
-	.react( 'assets/src/scripts/gutenberg.js', 'assets/dist/js' )
+	.block( 'assets/src/scripts/gutenberg.js', 'assets/dist/js' )
 	.sass( 'assets/src/sass/style.scss', 'assets/dist/css' )
 	.sass( 'assets/src/sass/admin.scss', 'assets/dist/css' )
 	.sass( 'assets/src/sass/gutenberg.scss', 'assets/dist/css' );
