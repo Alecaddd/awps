@@ -1,8 +1,9 @@
 {
   "name": "awps",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "description": "Alecaddd WordPress Starter Theme for savvy developers",
   "main": "index.js",
+  "prettier": "@wordpress/prettier-config",
   "scripts": {
     "dev": "mix",
     "development": "mix",
@@ -18,6 +19,7 @@
     "@babel/preset-react": "^7.0.0",
     "@popperjs/core": "^2.8.6",
     "@tinypixelco/laravel-mix-wp-blocks": "^1.1.0",
+    "@wordpress/prettier-config": "^1.0.1",
     "autoprefixer": "^10.2.4",
     "axios": "^0.21",
     "babel-preset-react": "^6.24.1",

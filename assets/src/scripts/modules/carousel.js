@@ -1,11 +1,10 @@
 class Carousel {
-
 	constructor() {
 		this.init();
 	}
 
 	init() {
-		$( '.fade-carousel' ).slick({
+		$( '.fade-carousel' ).slick( {
 			dots: true,
 			arrows: false,
 			autoplay: true,
@@ -13,7 +12,7 @@ class Carousel {
 			speed: 500,
 			fade: true,
 			cssEase: 'linear'
-		});
+		} );
 	}
 }
 

@@ -2,7 +2,7 @@
  * AWPS uses Laravel Mix
  *
  * Check the documentation at
- * https://laravel.com/docs/5.6/mix
+ * https://laravel-mix.com/
  */
 
 let mix = require( 'laravel-mix' );
