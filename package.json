@@ -62,7 +62,7 @@
   },
   "homepage": "https://github.com/Alecaddd/awps#readme",
   "dependencies": {
-    "@wordpress/scripts": "^13.0.3",
+    "@wordpress/scripts": "^14.1.1",
     "normalize-scss": "^7.0.1",
     "slick-carousel": "^1.8.1"
   }
