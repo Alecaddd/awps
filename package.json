@@ -30,7 +30,7 @@
     "eslint-config-standard": "^16.0.0",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-promise": "^5.1.0",
     "jquery": "^3.3.1",
     "laravel-mix": "^6.0.13",
     "laravel-mix-tailwind": "^0.1.0",
