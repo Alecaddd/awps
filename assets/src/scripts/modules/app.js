@@ -19,7 +19,11 @@ class App {
 
 	elClick( e ) {
 		e.target.classList.add( 'text-light-grey' );
-		e.target.addEventListener( 'transitionend', ( e ) => ( 'color' === e.propertyName ) ? e.target.classList.remove( 'text-light-grey' ) : '' );
+		e.target.addEventListener( 'transitionend', ( event ) =>
+			'color' === event.propertyName
+				? event.target.classList.remove( 'text-light-grey' )
+				: ''
+		);
 	}
 }
 
