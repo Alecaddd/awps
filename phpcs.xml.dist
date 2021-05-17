@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="WordPress Twenty Twenty-One Theme Coding Standards" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/squizlabs/PHP_CodeSniffer/master/phpcs.xsd">
+	<!-- See https://github.com/squizlabs/PHP_CodeSniffer/wiki/Annotated-ruleset.xml -->
+	<!-- See https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards -->
+	<!-- See https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/wiki -->
+	<!-- See https://github.com/wimg/PHPCompatibility -->
+
+	<exclude-pattern>node_modules</exclude-pattern>
+	<exclude-pattern>vendor</exclude-pattern>
+	<exclude-pattern>bin</exclude-pattern>
+	<exclude-pattern>tests/</exclude-pattern>
+	<exclude-pattern>acf-json</exclude-pattern>
+	<exclude-pattern>wp-config.sample.php</exclude-pattern>
+	<exclude-pattern>inc</exclude-pattern>
+	<exclude-pattern>assets</exclude-pattern>
+
+	<!-- Set a description for this ruleset. -->
+	<description>A custom set of code standard rules to check for WordPress themes.</description>
+
+	<!-- Pass some flags to PHPCS:
+		 p flag: Show progress of the run.
+		 s flag: Show sniff codes in all reports.
+		 v flag: Print verbose output.
+		 n flag: Do not print warnings.
+	-->
+	<arg value="psv"/>
+
+	<!-- Run in parallel, it's faster. -->
+	<arg name="parallel" value="8"/>
+
+	<!-- Only check the PHP, CSS and SCSS files. JS files are checked separately with JSCS and JSHint. -->
+	<arg name="extensions" value="php"/>
+
+	<!-- Check all files in this directory and the directories below it. -->
+	<file>.</file>
+
+	<!-- Include the WordPress ruleset. -->
+	<rule ref="WordPress">
+		<exclude name="WPThemeReview.PluginTerritory.ForbiddenFunctions.editor_blocks_register_block_style" />
+		<exclude name="WPThemeReview.PluginTerritory.ForbiddenFunctions.editor_blocks_register_block_pattern" />
+		<exclude name="WPThemeReview.PluginTerritory.ForbiddenFunctions.editor_blocks_register_block_pattern_category" />
+		<exclude name="PHPCompatibility.FunctionDeclarations.NewClosure.Found" />
+	</rule>
+	<rule ref="WPThemeReview" />
+
+	<rule ref="WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound">
+		<exclude-pattern>inc/customizer.php</exclude-pattern>
+	</rule>
+
+	<rule ref="WPThemeReview.Templates.ReservedFileNamePrefix.ReservedTemplatePrefixFound">
+		<exclude-pattern>template-parts/post/author-bio.php</exclude-pattern>
+	</rule>
+
+	<!-- Verify that the text_domain is set to the desired text-domain.
+		 Multiple valid text domains can be provided as a comma-delimited list. -->
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array" value="twentytwentyone" />
+		</properties>
+	</rule>
+
+	<!-- Allow for theme specific exceptions to the file name rules based
+		 on the theme hierarchy. -->
+	<rule ref="WordPress.Files.FileName">
+		<properties>
+			<property name="is_theme" value="true" />
+		</properties>
+	</rule>
+
+	<!-- Verify that no WP functions are used which are deprecated or have been removed.
+		 The minimum version set here should be in line with the minimum WP version
+		 as set in the "Requires at least" tag in the readme.txt file. -->
+	<rule ref="WordPress.WP.DeprecatedFunctions">
+		<properties>
+			<property name="minimum_supported_version" value="5.3" />
+		</properties>
+	</rule>
+
+	<!-- Include sniffs for PHP cross-version compatibility. -->
+	<config name="testVersion" value="5.6-"/>
+	<rule ref="PHPCompatibility"/>
+</ruleset>
