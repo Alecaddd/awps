@@ -1,4 +1,4 @@
 /**
  * Import your Gutenberg custom blocks here
  */
-require( './blocks/cta.js' );
+import './blocks/cta.js';

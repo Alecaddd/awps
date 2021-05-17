@@ -60,7 +60,7 @@ registerBlockType( 'gutenberg-awps/awps-cta', {
 		}
 	},
 
-	edit({ attributes, className, setAttributes }) {
+	edit( { attributes, className, setAttributes } ) {
 		const {
 			title,
 			body,
@@ -74,42 +74,42 @@ registerBlockType( 'gutenberg-awps/awps-cta', {
 		} = attributes;
 
 		function onSelectImage( newImage ) {
-			setAttributes({ backgroundImage: newImage.sizes.full.url });
+			setAttributes( { backgroundImage: newImage.sizes.full.url } );
 		}
 
 		function onChangeBody( newBody ) {
-			setAttributes({ body: newBody });
+			setAttributes( { body: newBody } );
 		}
 
 		function onChangeTitle( newTitle ) {
-			setAttributes({ title: newTitle });
+			setAttributes( { title: newTitle } );
 		}
 
 		function onTitleColorChange( newColor ) {
-			setAttributes({ titleColor: newColor });
+			setAttributes( { titleColor: newColor } );
 		}
 
 		function onBodyColorChange( newColor ) {
-			setAttributes({ bodyColor: newColor });
+			setAttributes( { bodyColor: newColor } );
 		}
 
 		function onOverlayColorChange( newColor ) {
-			setAttributes({ overlayColor: newColor });
+			setAttributes( { overlayColor: newColor } );
 		}
 
 		function onOverlayOpacityChange( newOpacity ) {
-			setAttributes({ overlayOpacity: newOpacity });
+			setAttributes( { overlayOpacity: newOpacity } );
 		}
 
 		function changeButtonText( newText ) {
-			setAttributes({ buttonText: newText });
+			setAttributes( { buttonText: newText } );
 		}
 
 		function onChangeUrl( newUrl ) {
-			setAttributes({ url: newUrl });
+			setAttributes( { url: newUrl } );
 		}
 
-		return ([
+		return ( [
 			<InspectorControls style={{ marginBottom: '40px' }}>
 				<PanelBody title={'Font Color Settings'}>
 					<div style={{ marginTop: '20px' }}>
@@ -133,7 +133,7 @@ registerBlockType( 'gutenberg-awps/awps-cta', {
 						onSelect={onSelectImage}
 						type="image"
 						value={backgroundImage}
-						render={({ open }) => (
+						render={( { open } ) => (
 							<IconButton
 								className="editor-media-placeholder__button is-button is-default is-large"
 								icon="upload"
@@ -204,10 +204,10 @@ registerBlockType( 'gutenberg-awps/awps-cta', {
 					/>
 				</div>
 			</div>
-		]);
+		] );
 	},
 
-	save({ attributes }) {
+	save( { attributes } ) {
 		const {
 			title,
 			body,
@@ -248,4 +248,4 @@ registerBlockType( 'gutenberg-awps/awps-cta', {
 			</div>
 		);
 	}
-});
+} );
