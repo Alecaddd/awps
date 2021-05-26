@@ -35,6 +35,6 @@ class SettingsCallback
 	public function first_name()
 	{
 		$first_name = esc_attr( get_option( 'first_name' ) );
-		echo '<input type="text" class="regular-text" name="first_name" value="'.$first_name.'" placeholder="First Name" />';
+		echo '<input id="first_name" type="text" class="regular-text" name="first_name" value="'.$first_name.'" placeholder="First Name" />';
 	}
 }
