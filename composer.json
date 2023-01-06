@@ -20,7 +20,7 @@
 		"roave/security-advisories": "dev-master",
 		"php-parallel-lint/php-parallel-lint": "^1.2",
 		"phpcompatibility/phpcompatibility-wp": "^2.1",
-		"dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
+		"dealerdirect/phpcodesniffer-composer-installer": "^1.0.0",
 		"wp-coding-standards/wpcs": "^2.3",
 		"wptrt/wpthemereview": "^0.2.1"
 	},
